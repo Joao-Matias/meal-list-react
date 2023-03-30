@@ -5,41 +5,48 @@
   cursor: pointer;
 }
 
+.imgBox:hover .enterListBtn {
+  scale: 105%;
+  opacity: 1;
+}
+
 .imgBox:hover {
   scale: 105%;
   opacity: 1;
 }
 
 .img {
-  width: 48rem;
+  width: 58rem;
   background-size: cover;
   border-radius: 1rem;
 }
 
-.enterMealBtn {
-  font-size: 2rem;
-  width: 20rem;
-  height: 10rem;
+.enterListBtn {
+  font-size: 3rem;
+  width: 35rem;
+  height: 12rem;
   color: #16451f;
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #eaf3ec;
+  padding: 1rem;
 
+  opacity: 0;
   border-radius: 1rem;
   transition: all 0.3s ease-out;
   cursor: pointer;
 }
 
-.enterMealBtn:hover {
+.enterListBtn:hover {
   background-color: #16451f;
   color: #eaf3ec;
   box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
   transform: translate(-50%, -5%);
 }
 
-.enterMealBtn strong {
-  font-size: 3rem;
+.enterListBtn strong {
+  font-size: 3.7rem;
   text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.6);
 }

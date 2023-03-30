@@ -1,13 +1,31 @@
 import './App.css';
-import Meal from './components/meal';
-import List from './components/list';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+import MealLanding from './components/meal-landing';
+import ListLanding from './components/list-landing';
+
+import MealPage from './components/meal-page';
 
 function App() {
   return (
-    <div className='app'>
-      <Meal />
-      <List />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/meals' element={<MealPage />}></Route>
+        <Route path='/lists'></Route>
+        <Route
+          path='/'
+          element={
+            <div className='app'>
+              <Link to='/meals'>
+                <MealLanding />
+              </Link>
+              <ListLanding />
+            </div>
+          }
+        ></Route>
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,13 +1,16 @@
-.app {
-  font-size: 62.5%;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  display: flex;
-  font-family: 'Rubik', sans-serif;
-  color: #16451f;
-  max-width: 100rem;
+* {
+  max-width: 120rem;
   margin: 0 auto;
+  font-size: 62.5%;
+  font-family: 'Rubik', sans-serif;
+  box-sizing: border-box;
+  background-color: #eaf3ec;
+}
+
+.app {
+  display: flex;
+  color: #16451f;
+
   margin-top: 2rem;
   margin-bottom: 2rem;
 
