@@ -1,8 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import Meal from './components/meal';
+import List from './components/list';
 
 function App() {
-  return <div className='App'></div>;
+  return (
+    <div className='app'>
+      <Meal />
+      <List />
+    </div>
+  );
 }
 
 export default App;
