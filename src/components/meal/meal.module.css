@@ -36,6 +36,7 @@
   background-color: #16451f;
   color: #eaf3ec;
   box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -5%);
 }
 
 .enterMealBtn strong {
