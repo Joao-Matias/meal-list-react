@@ -10,7 +10,7 @@ const MealPage = () => {
   return (
     <div className={style.mealPageContainer}>
       <sidebar className={style.listOfMealsContainer}>
-        <button className={style.listOfMealsBtn}>Let's create a recipe!</button>
+        <button className={style.listOfMealsBtn}>Start a Recipe</button>
       </sidebar>
       <section className={style.mealContainer}></section>
 
