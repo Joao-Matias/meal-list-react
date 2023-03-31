@@ -24,10 +24,10 @@
 .enterListBtn {
   font-size: 3rem;
   width: 35rem;
-  height: 12rem;
+  height: 15rem;
   color: #16451f;
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #eaf3ec;
@@ -46,7 +46,13 @@
   transform: translate(-50%, -5%);
 }
 
+.enterListBtn:hover strong {
+  background-color: #16451f;
+  color: #eaf3ec;
+}
+
 .enterListBtn strong {
-  font-size: 3.7rem;
+  transition: all 0.3s ease-out;
+  font-size: 4.5rem;
   text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.6);
 }

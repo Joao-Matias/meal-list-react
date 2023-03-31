@@ -7,7 +7,7 @@ const MealLanding = () => {
     <section className={styles.imgBox}>
       <img className={styles.img} src={mealImg} alt='A jar with ingredients' />
       <button className={styles.enterMealBtn}>
-        Let's create delicious <strong>Meals</strong>
+        Let's create some <strong>Meals</strong>
       </button>
     </section>
   );

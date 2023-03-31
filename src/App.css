@@ -16,3 +16,19 @@
 
   justify-content: space-between;
 }
+
+.title {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+
+  font-size: 8rem;
+  padding: 2rem 5rem;
+  border-radius: 1rem;
+  border: groove #55a16586;
+  color: #0d2913;
+  background-color: transparent;
+  backdrop-filter: blur(10rem);
+  z-index: 2;
+}

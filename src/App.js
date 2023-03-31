@@ -16,12 +16,15 @@ function App() {
         <Route
           path='/'
           element={
-            <div className='app'>
-              <Link to='/meals'>
-                <MealLanding />
-              </Link>
-              <ListLanding />
-            </div>
+            <>
+              <h1 className='title'>MeaList</h1>
+              <div className='app'>
+                <Link to='/meals'>
+                  <MealLanding />
+                </Link>
+                <ListLanding />
+              </div>
+            </>
           }
         ></Route>
       </Routes>
