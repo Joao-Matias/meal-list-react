@@ -1,34 +1,22 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import MealLanding from './components/meal-landing';
-import ListLanding from './components/list-landing';
-
+import Landing from './components/landing';
 import MealPage from './components/meal-page';
+import ListPage from './components/list-page';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/meals' element={<MealPage />}></Route>
-        <Route path='/lists'></Route>
-        <Route
-          path='/'
-          element={
-            <>
-              <h1 className='title'>MeaList</h1>
-              <div className='app'>
-                <Link to='/meals'>
-                  <MealLanding />
-                </Link>
-                <ListLanding />
-              </div>
-            </>
-          }
-        ></Route>
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route exact path='/meals' element={<MealPage />}></Route>
+          <Route exact path='/lists' element={<ListPage />}></Route>
+          <Route path='/' element={<Landing />}></Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
