@@ -1,16 +1,16 @@
 .mealPageContainer {
   display: flex;
   justify-content: space-between;
-  height: 95rem;
+  height: 97rem;
+  background-color: white;
 }
 
 .mealContainer {
-  margin: 1rem;
   background-color: white;
   border-radius: 1rem;
 }
 
-.mealPageSwitchBox {
+.listPageSwitchBox {
   width: 15rem;
   overflow: hidden;
   right: 0%;
@@ -19,12 +19,12 @@
   opacity: 0.4;
 }
 
-.mealPageSwitchBox:hover {
+.listPageSwitchBox:hover {
   width: 35rem;
   opacity: 1;
 }
 
-.mealPageSwitchImg {
+.listPageSwitchImg {
   height: 97rem;
 }
 
@@ -43,4 +43,54 @@
   backdrop-filter: blur(10rem);
   z-index: 2;
   opacity: 1;
+}
+
+.listOfMealsContainer {
+  position: absolute;
+  left: 0;
+  width: 35rem;
+  height: 97rem;
+  display: flex;
+}
+
+.listOfMealsBtn {
+  position: relative;
+  height: 10%;
+  top: 5%;
+  font-size: 3rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease-out;
+  padding: 2rem;
+
+  font-weight: 530;
+  box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
+  background-color: #113719;
+  color: #d5e8d8;
+  animation-name: bounce;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  cursor: pointer;
+}
+
+.listOfMealsBtn:hover,
+.listOfMealsBtn:target {
+  background-color: #95c59f;
+  color: #113719;
+  animation-name: none;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-10%);
+  }
+}
+
+.bounce {
+  animation-name: bounce;
 }

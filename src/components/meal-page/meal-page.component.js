@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './meal-page.module.css';
 import listImg from '../../img/list.jpg';
 
 import { Link } from 'react-router-dom';
 
 const MealPage = () => {
+  const [showBtn, setShowBtn] = useState(false);
+
   return (
     <div className={style.mealPageContainer}>
-      <section>
-        <div className={style.mealContainer}></div>
-      </section>
-      <Link to='/lists' className={style.mealPageSwitchBox}>
+      <sidebar className={style.listOfMealsContainer}>
+        <button className={style.listOfMealsBtn}>Let's create a recipe!</button>
+      </sidebar>
+      <section className={style.mealContainer}></section>
+
+      <Link
+        onMouseEnter={() => {
+          setShowBtn(true);
+        }}
+        onMouseLeave={() => {
+          setShowBtn(false);
+        }}
+        to='/lists'
+        className={style.listPageSwitchBox}
+      >
         <img
-          className={style.mealPageSwitchImg}
+          className={style.listPageSwitchImg}
           src={listImg}
-          alt='A jar with ingredients'
+          alt='Someone writing in a book'
         />
-        <h1 className={style.listSwitchBtn}>Lists</h1>
+        {showBtn && <h1 className={style.listSwitchBtn}>Lists</h1>}
       </Link>
     </div>
   );
