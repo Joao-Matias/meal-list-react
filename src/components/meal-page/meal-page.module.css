@@ -78,7 +78,6 @@
 .listOfMealsBtn:target {
   background-color: #95c59f;
   color: #113719;
-  animation-name: none;
 }
 
 @keyframes bounce {
