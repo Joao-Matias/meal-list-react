@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
 const MealForm = () => {
-  const [recipe, setRecipe] = useState({ mealName: '', mealImg: '' });
+  const [recipe, setRecipe] = useState({
+    mealName: '',
+    mealImg: '',
+    ingList: [{}],
+  });
   const [ingredientNumber, setIngredientNumber] = useState(1);
 
   const [listOfIng, setListOfIng] = useState([]);
@@ -11,25 +15,35 @@ const MealForm = () => {
   };
 
   const addExtraIngredient = () => {
-    const ing = 'ingredient' + ingredientNumber;
-    setListOfIng((prevState) => [
-      ...prevState,
-      <>
-        <input onChange={updateRecipe} name={ing} type='text' />
-        <input name='counter' type='number' defaultValue='1' />
-      </>,
-    ]);
-
-    setIngredientNumber((prevState) => prevState + 1);
+    setRecipe((prevState) => {
+      return {
+        ...prevState,
+        ingList: [
+          ...prevState.ingList,
+          { ingredient: '', id: Data.now(), quantity: 1 },
+        ],
+      };
+    });
   };
 
-  console.log(listOfIng);
   const updateRecipe = (event) => {
     const {
-      target: { name, value },
+      target: { name, value, id },
     } = event;
-
-    setRecipe({ ...recipe, [name]: value });
+    setRecipe((prevState) => {
+      if (name === 'ingredient') {
+        const ingList = recipe.ingList.map((ing) => {
+          if (id === ing.id) {
+            return { [name]: value, id: id };
+          } else {
+            return ing;
+          }
+        });
+        return { ...prevState, ingList };
+      } else {
+        return { ...prevState, [name]: value };
+      }
+    });
   };
 
   return (
@@ -38,10 +52,19 @@ const MealForm = () => {
         Recipe Name:
         <input onChange={updateRecipe} name='mealName' type='text' />
       </label>
-      <label>Ingredient: </label>
-      <input onChange={updateRecipe} name='ingredient' type='text' />
-      <input name='counter' type='number' defaultValue='1' />
-      {listOfIng.map((ingredient) => ingredient)}
+
+      {recipe.ingList.map((ing) => {
+        return (
+          <div key={ing.id}>
+            <input
+              onChange={updateRecipe}
+              type='text'
+              id={ing.id}
+              name='ingredient'
+            />
+          </div>
+        );
+      })}
 
       <button onClick={addExtraIngredient}>Add an Ingredient</button>
 
