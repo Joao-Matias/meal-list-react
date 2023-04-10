@@ -8,14 +8,27 @@ import { Link } from 'react-router-dom';
 const MealPage = () => {
   const [showBtn, setShowBtn] = useState(false);
 
+  const [openFormModal, setOpenFormModal] = useState(false);
+
+  const toggleForm = () => {
+    setOpenFormModal(true);
+  };
+
+  const openFormModal1 = () => {
+    openFormModal();
+  };
+
   return (
     <div className={style.mealPageContainer}>
       <div className={style.listOfMealsContainer}>
-        <button className={style.listOfMealsBtn}>Start a Recipe</button>
+        <button onClick={toggleForm} className={style.listOfMealsBtn}>
+          Start a Recipe
+        </button>
       </div>
 
       <section className={style.mealContainer}>
-        <MealForm />
+        {/* {openFormModal &&<MealForm /> } */}
+        <MealForm onClick={openFormModal1} />
       </section>
       <Link
         onMouseEnter={() => {

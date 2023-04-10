@@ -4,11 +4,8 @@ const MealForm = () => {
   const [recipe, setRecipe] = useState({
     mealName: '',
     mealImg: '',
-    ingList: [{}],
+    ingList: [{ ingredient: '', id: Date.now() }],
   });
-  const [ingredientNumber, setIngredientNumber] = useState(1);
-
-  const [listOfIng, setListOfIng] = useState([]);
 
   const submitMealForm = (event) => {
     event.preventDefault();
@@ -18,30 +15,29 @@ const MealForm = () => {
     setRecipe((prevState) => {
       return {
         ...prevState,
-        ingList: [
-          ...prevState.ingList,
-          { ingredient: '', id: Data.now(), quantity: 1 },
-        ],
+        ingList: [...prevState.ingList, { ingredient: '', id: Date.now() }],
       };
     });
   };
-
+  console.log(recipe);
   const updateRecipe = (event) => {
     const {
       target: { name, value, id },
     } = event;
+
     setRecipe((prevState) => {
-      if (name === 'ingredient') {
-        const ingList = recipe.ingList.map((ing) => {
-          if (id === ing.id) {
-            return { [name]: value, id: id };
-          } else {
-            return ing;
-          }
-        });
-        return { ...prevState, ingList };
-      } else {
-        return { ...prevState, [name]: value };
+      switch (name) {
+        case 'mealName':
+          return { ...prevState, [name]: value };
+        case 'ingredient':
+          const ingList = recipe.ingList.map((task) => {
+            if (task.id === +id) {
+              return { ...task, [name]: value };
+            } else {
+              return task;
+            }
+          });
+          return { ...prevState, ingList };
       }
     });
   };
@@ -52,24 +48,20 @@ const MealForm = () => {
         Recipe Name:
         <input onChange={updateRecipe} name='mealName' type='text' />
       </label>
-
-      {recipe.ingList.map((ing) => {
-        return (
-          <div key={ing.id}>
+      <div>
+        {recipe.ingList.map((ing) => {
+          return (
             <input
+              key={ing.id}
               onChange={updateRecipe}
               type='text'
-              id={ing.id}
               name='ingredient'
+              id={ing.id}
             />
-          </div>
-        );
-      })}
-
+          );
+        })}
+      </div>
       <button onClick={addExtraIngredient}>Add an Ingredient</button>
-
-      <input name='mealImg' />
-
       <button>Save</button>
       <button>Discard</button>
     </form>
