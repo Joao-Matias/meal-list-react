@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import styles from './meal-form.module.css';
 
 const MealForm = () => {
   const [recipe, setRecipe] = useState({
     mealName: '',
     mealImg: '',
-    ingList: [{ ingredient: '', id: Date.now() }],
+    ingList: [{}],
   });
 
   const submitMealForm = (event) => {
@@ -19,6 +20,7 @@ const MealForm = () => {
       };
     });
   };
+
   console.log(recipe);
   const updateRecipe = (event) => {
     const {
@@ -38,29 +40,40 @@ const MealForm = () => {
             }
           });
           return { ...prevState, ingList };
+        default:
+          return false;
       }
     });
   };
 
   return (
-    <form onSubmit={submitMealForm}>
+    <form onSubmit={submitMealForm} className={styles.form}>
       <label>
         Recipe Name:
         <input onChange={updateRecipe} name='mealName' type='text' />
       </label>
-      <div>
+      <ul>
         {recipe.ingList.map((ing) => {
           return (
-            <input
-              key={ing.id}
-              onChange={updateRecipe}
-              type='text'
-              name='ingredient'
-              id={ing.id}
-            />
+            <li key={Date.now()} className={styles.items}>
+              <label>
+                Ingredient:
+                <input
+                  key={ing.id}
+                  onChange={updateRecipe}
+                  type='text'
+                  name='ingredient'
+                  id={ing.id}
+                />
+              </label>
+              <label>
+                Quantity:
+                <input type='number' name='quantity' />
+              </label>
+            </li>
           );
         })}
-      </div>
+      </ul>
       <button onClick={addExtraIngredient}>Add an Ingredient</button>
       <button>Save</button>
       <button>Discard</button>
