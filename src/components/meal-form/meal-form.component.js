@@ -5,7 +5,7 @@ const MealForm = () => {
   const [recipe, setRecipe] = useState({
     mealName: '',
     mealImg: '',
-    ingList: [{}],
+    ingList: [],
   });
 
   const submitMealForm = (event) => {
@@ -22,6 +22,7 @@ const MealForm = () => {
   };
 
   console.log(recipe);
+
   const updateRecipe = (event) => {
     const {
       target: { name, value, id },
@@ -32,7 +33,7 @@ const MealForm = () => {
         case 'mealName':
           return { ...prevState, [name]: value };
         case 'ingredient':
-          const ingList = recipe.ingList.map((task) => {
+          const ingList = prevState.ingList.map((task) => {
             if (task.id === +id) {
               return { ...task, [name]: value };
             } else {
@@ -41,7 +42,7 @@ const MealForm = () => {
           });
           return { ...prevState, ingList };
         default:
-          return false;
+          return;
       }
     });
   };
@@ -52,23 +53,20 @@ const MealForm = () => {
         Recipe Name:
         <input onChange={updateRecipe} name='mealName' type='text' />
       </label>
+
       <ul>
         {recipe.ingList.map((ing) => {
           return (
-            <li key={Date.now()} className={styles.items}>
+            <li key={Math.random()} className={styles.items}>
               <label>
                 Ingredient:
                 <input
-                  key={ing.id}
                   onChange={updateRecipe}
                   type='text'
                   name='ingredient'
                   id={ing.id}
+                  value={ing.ingredient}
                 />
-              </label>
-              <label>
-                Quantity:
-                <input type='number' name='quantity' />
               </label>
             </li>
           );
