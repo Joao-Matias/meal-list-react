@@ -4,7 +4,6 @@ import styles from './meal-form.module.css';
 const MealForm = () => {
   const [recipe, setRecipe] = useState({
     mealName: '',
-    mealImg: '',
     ingList: [],
   });
 
@@ -21,8 +20,6 @@ const MealForm = () => {
     });
   };
 
-  console.log(recipe);
-
   const updateRecipe = (event) => {
     const {
       target: { name, value, id },
@@ -32,15 +29,18 @@ const MealForm = () => {
       switch (name) {
         case 'mealName':
           return { ...prevState, [name]: value };
+
         case 'ingredient':
-          const ingList = prevState.ingList.map((task) => {
+          const ingList = recipe.ingList.map((task) => {
             if (task.id === +id) {
               return { ...task, [name]: value };
             } else {
               return task;
             }
           });
+
           return { ...prevState, ingList };
+
         default:
           return;
       }
@@ -61,11 +61,14 @@ const MealForm = () => {
               <label>
                 Ingredient:
                 <input
-                  onChange={updateRecipe}
+                  onChange={(event) => {
+                    updateRecipe(event);
+                  }}
                   type='text'
                   name='ingredient'
                   id={ing.id}
                   value={ing.ingredient}
+                  autoFocus
                 />
               </label>
             </li>
