@@ -1,83 +1,107 @@
 import React, { useState } from 'react';
 import styles from './meal-form.module.css';
 
-const MealForm = () => {
+const MealForm = (props) => {
+  const { setOpenFormModal, setListOfRecipes } = props;
+
   const [recipe, setRecipe] = useState({
     mealName: '',
     ingList: [],
   });
+  const [newIng, setNewIng] = useState();
 
-  const submitMealForm = (event) => {
+  const [openNewIngTab, setOpenNewIngTab] = useState(false);
+
+  const submitForm = (event) => {
     event.preventDefault();
+    setListOfRecipes((prevState) => {
+      return [...prevState, { ...recipe }];
+    });
+
+    setOpenFormModal(false);
   };
 
   const addExtraIngredient = () => {
-    setRecipe((prevState) => {
-      return {
-        ...prevState,
-        ingList: [...prevState.ingList, { ingredient: '', id: Date.now() }],
-      };
+    setOpenNewIngTab(true);
+  };
+
+  const handleChangeNewIng = (event) => {
+    const {
+      target: { name, value },
+    } = event;
+
+    setNewIng(() => {
+      return { [name]: value, id: Date.now() };
     });
   };
 
-  const updateRecipe = (event) => {
+  const saveNewIng = () => {
+    setRecipe((prevState) => {
+      return {
+        ...prevState,
+        ingList: [...prevState.ingList, newIng],
+      };
+    });
+
+    setOpenNewIngTab(false);
+  };
+
+  const updateRecipeName = (event) => {
     const {
-      target: { name, value, id },
+      target: { name, value },
     } = event;
 
     setRecipe((prevState) => {
-      switch (name) {
-        case 'mealName':
-          return { ...prevState, [name]: value };
-
-        case 'ingredient':
-          const ingList = recipe.ingList.map((task) => {
-            if (task.id === +id) {
-              return { ...task, [name]: value };
-            } else {
-              return task;
-            }
-          });
-
-          return { ...prevState, ingList };
-
-        default:
-          return;
-      }
+      return { ...prevState, [name]: value };
     });
   };
 
   return (
-    <form onSubmit={submitMealForm} className={styles.form}>
+    <form onSubmit={submitForm} className={styles.form}>
       <label>
         Recipe Name:
-        <input onChange={updateRecipe} name='mealName' type='text' />
+        <input onChange={updateRecipeName} name='mealName' type='text' />
       </label>
 
       <ul>
-        {recipe.ingList.map((ing) => {
+        {recipe.ingList.map((ing, index) => {
           return (
-            <li key={Math.random()} className={styles.items}>
-              <label>
-                Ingredient:
-                <input
-                  onChange={(event) => {
-                    updateRecipe(event);
-                  }}
-                  type='text'
-                  name='ingredient'
-                  id={ing.id}
-                  value={ing.ingredient}
-                  autoFocus
-                />
-              </label>
+            <li className={styles.itemsBox} key={index}>
+              <label>Ingredient</label>
+              <h3>{ing.ingredient}</h3>
             </li>
           );
         })}
       </ul>
-      <button onClick={addExtraIngredient}>Add an Ingredient</button>
-      <button>Save</button>
-      <button>Discard</button>
+      <button type='button' onClick={addExtraIngredient}>
+        Add an Ingredient
+      </button>
+      <button
+        type='submit'
+        disabled={recipe.mealName.length === 0 || recipe.ingList.length === 0}
+      >
+        Submit
+      </button>
+      <button
+        onClick={() => {
+          setOpenFormModal(false);
+        }}
+      >
+        Discard
+      </button>
+      {openNewIngTab && (
+        <div>
+          <input name='ingredient' type='text' onChange={handleChangeNewIng} />
+          <button onClick={saveNewIng}>Save Ingredient</button>
+          <button
+            onClick={() => {
+              setOpenNewIngTab(false);
+            }}
+          >
+            Discard Ingredient
+          </button>
+        </div>
+      )}
     </form>
   );
 };
