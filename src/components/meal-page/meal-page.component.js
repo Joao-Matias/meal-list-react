@@ -9,16 +9,15 @@ const MealPage = () => {
   const [showBtn, setShowBtn] = useState(false);
   const [openFormModal, setOpenFormModal] = useState(false);
 
-  const [listOfRecipes, setListOfRecipes] = useState([]);
+  const [listOfRecipes, setListOfRecipes] = useState([
+    { mealName: 'Pizza de Cogumelos', ingList: [{ ingredient: 'Cogumelos' }] },
+  ]);
 
-  console.log(listOfRecipes);
   const toggleForm = () => {
     setOpenFormModal(true);
   };
 
-  // const openFormModal1 = () => {
-  //   openFormModal();
-  // };
+  console.log(listOfRecipes);
 
   return (
     <div className={style.mealPageContainer}>
@@ -26,11 +25,11 @@ const MealPage = () => {
         <button onClick={toggleForm} className={style.listOfMealsBtn}>
           Start a Recipe
         </button>
-        <ul>
+        <ul className={style.recipesContainer}>
           {listOfRecipes.map((recipe, i) => {
             return (
-              <li key={i}>
-                <h4>{recipe.mealName}</h4>
+              <li key={i} className={style.recipes}>
+                <button className={style.recipesBtn}>{recipe.mealName}</button>
               </li>
             );
           })}
@@ -44,8 +43,8 @@ const MealPage = () => {
             setListOfRecipes={setListOfRecipes}
           />
         )}
-        {/* <MealForm onClick={openFormModal1} /> */}
       </section>
+
       <Link
         onMouseEnter={() => {
           setShowBtn(true);

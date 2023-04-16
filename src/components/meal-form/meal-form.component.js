@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './meal-form.module.css';
+import { ImBin, ImPencil } from 'react-icons/im';
 
 const MealForm = (props) => {
   const { setOpenFormModal, setListOfRecipes } = props;
@@ -8,14 +9,15 @@ const MealForm = (props) => {
     mealName: '',
     ingList: [],
   });
-  const [newIng, setNewIng] = useState();
+  const [newIng, setNewIng] = useState('');
 
   const [openNewIngTab, setOpenNewIngTab] = useState(false);
+  const [ingNameChange, setIngNameChange] = useState();
 
   const submitForm = (event) => {
     event.preventDefault();
     setListOfRecipes((prevState) => {
-      return [...prevState, { ...recipe }];
+      return [...prevState, { ...recipe, id: Date.now() }];
     });
 
     setOpenFormModal(false);
@@ -56,6 +58,12 @@ const MealForm = (props) => {
     });
   };
 
+  const keyDownIngNameChange = (event) => {
+    if (event.key === 'Enter') {
+      console.log('ola');
+    }
+  };
+
   return (
     <form onSubmit={submitForm} className={styles.form}>
       <label>
@@ -69,6 +77,13 @@ const MealForm = (props) => {
             <li className={styles.itemsBox} key={index}>
               <label>Ingredient</label>
               <h3>{ing.ingredient}</h3>
+              <ImPencil
+                onClick={() => {
+                  setIngNameChange(true);
+                }}
+              />
+              {ingNameChange && <input onKeyDown={keyDownIngNameChange} />}
+              <ImBin />
             </li>
           );
         })}
@@ -92,7 +107,9 @@ const MealForm = (props) => {
       {openNewIngTab && (
         <div>
           <input name='ingredient' type='text' onChange={handleChangeNewIng} />
-          <button onClick={saveNewIng}>Save Ingredient</button>
+          <button disabled={newIng.length === 0} onClick={saveNewIng}>
+            Save Ingredient
+          </button>
           <button
             onClick={() => {
               setOpenNewIngTab(false);
