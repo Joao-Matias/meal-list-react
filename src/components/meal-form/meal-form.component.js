@@ -10,9 +10,11 @@ const MealForm = (props) => {
     ingList: [],
   });
   const [newIng, setNewIng] = useState('');
-
   const [openNewIngTab, setOpenNewIngTab] = useState(false);
   const [ingNameChange, setIngNameChange] = useState();
+  const [handleIngDelete, setHandleIngDelete] = useState();
+
+  const [selectedIng, setSelectedIng] = useState();
 
   const submitForm = (event) => {
     event.preventDefault();
@@ -58,10 +60,42 @@ const MealForm = (props) => {
     });
   };
 
-  const keyDownIngNameChange = (event) => {
-    if (event.key === 'Enter') {
-      console.log('ola');
+  const keyDownIngNameChange = (ing, event) => {
+    if (event.key === 'Enter' && event.target.value.length > 0) {
+      setRecipe((prevState) => {
+        const ingList = prevState.ingList.map((ingredient) => {
+          if (ingredient.id === ing.id) {
+            return { ...ingredient, ingredient: event.target.value };
+          } else {
+            return ingredient;
+          }
+        });
+        return { ...prevState, ingList };
+      });
+
+      setIngNameChange(false);
     }
+  };
+
+  const editIng = (ing) => {
+    setSelectedIng(ing);
+    setIngNameChange(true);
+  };
+
+  const deleteIng = (ing) => {
+    setSelectedIng(ing);
+    setHandleIngDelete(true);
+  };
+
+  const deleteIngredient = (ing) => {
+    setRecipe((prevState) => {
+      const ingList = prevState.ingList.filter((ingredient) => {
+        return ingredient.id !== ing.id;
+      });
+
+      return { ...prevState, ingList };
+    });
+    setHandleIngDelete(false);
   };
 
   return (
@@ -79,11 +113,40 @@ const MealForm = (props) => {
               <h3>{ing.ingredient}</h3>
               <ImPencil
                 onClick={() => {
-                  setIngNameChange(true);
+                  editIng(ing);
                 }}
               />
-              {ingNameChange && <input onKeyDown={keyDownIngNameChange} />}
-              <ImBin />
+              {ingNameChange && selectedIng.id === ing.id && (
+                <input
+                  onKeyDown={(event) => {
+                    keyDownIngNameChange(ing, event);
+                  }}
+                />
+              )}
+              <ImBin
+                onClick={() => {
+                  deleteIng(ing);
+                }}
+              />
+              {handleIngDelete && selectedIng.id === ing.id && (
+                <>
+                  <h3>Are you sure you want to delete?</h3>
+                  <button
+                    onClick={() => {
+                      deleteIngredient(ing);
+                    }}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => {
+                      setHandleIngDelete(false);
+                    }}
+                  >
+                    No
+                  </button>
+                </>
+              )}
             </li>
           );
         })}

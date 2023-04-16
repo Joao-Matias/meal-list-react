@@ -9,15 +9,11 @@ const MealPage = () => {
   const [showBtn, setShowBtn] = useState(false);
   const [openFormModal, setOpenFormModal] = useState(false);
 
-  const [listOfRecipes, setListOfRecipes] = useState([
-    { mealName: 'Pizza de Cogumelos', ingList: [{ ingredient: 'Cogumelos' }] },
-  ]);
+  const [listOfRecipes, setListOfRecipes] = useState([]);
 
   const toggleForm = () => {
     setOpenFormModal(true);
   };
-
-  console.log(listOfRecipes);
 
   return (
     <div className={style.mealPageContainer}>
