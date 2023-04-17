@@ -113,8 +113,6 @@
 .recipesBtn {
   cursor: pointer;
   width: 35rem;
-  /* border-radius: 1rem; */
+  border-radius: 1rem;
   padding: 1rem 0;
-  background-color: rgb(142, 142, 255);
-  border: none;
 }

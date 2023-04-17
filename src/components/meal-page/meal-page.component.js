@@ -2,17 +2,32 @@ import React, { useState } from 'react';
 import style from './meal-page.module.css';
 import listImg from '../../img/list.jpg';
 import MealForm from '../meal-form';
+import MealRecipeDetail from '../meal-recipe-detail';
 
 import { Link } from 'react-router-dom';
 
 const MealPage = () => {
   const [showBtn, setShowBtn] = useState(false);
   const [openFormModal, setOpenFormModal] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState();
 
-  const [listOfRecipes, setListOfRecipes] = useState([]);
+  const [listOfRecipes, setListOfRecipes] = useState([
+    {
+      mealName: 'Pizza',
+      mealImg:
+        'https://www.acouplecooks.com/wp-content/uploads/2019/06/Mushroom-Pizza-with-Herbs-011.jpg',
+      ingList: [{ ingredient: 'mushrooms' }],
+    },
+  ]);
 
   const toggleForm = () => {
     setOpenFormModal(true);
+    setSelectedRecipe(false);
+  };
+
+  const handleClickRecipe = (recipe) => {
+    setOpenFormModal(false);
+    setSelectedRecipe(recipe);
   };
 
   return (
@@ -25,7 +40,14 @@ const MealPage = () => {
           {listOfRecipes.map((recipe, i) => {
             return (
               <li key={i} className={style.recipes}>
-                <button className={style.recipesBtn}>{recipe.mealName}</button>
+                <button
+                  onClick={() => {
+                    handleClickRecipe(recipe);
+                  }}
+                  className={style.recipesBtn}
+                >
+                  {recipe.mealName}
+                </button>
               </li>
             );
           })}
@@ -39,6 +61,7 @@ const MealPage = () => {
             setListOfRecipes={setListOfRecipes}
           />
         )}
+        {selectedRecipe && <MealRecipeDetail selectedRecipe={selectedRecipe} />}
       </section>
 
       <Link

@@ -1,0 +1,38 @@
+.recipeDetails {
+  height: 97rem;
+  font-size: 5rem;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+}
+
+.recipeContainer {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+}
+
+.recipeName {
+  background-color: transparent;
+}
+
+.recipeIngContainer {
+  background-color: transparent;
+}
+
+.recipeIng {
+  list-style-type: none;
+  background-color: transparent;
+}
+
+.recipeImg {
+  width: 35rem;
+  margin: 0;
+  left: 0;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: 80% 20%;
+  opacity: 0.5;
+}

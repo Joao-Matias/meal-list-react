@@ -1,3 +1,5 @@
+/* main color #2b8a3e */
+
 * {
   max-width: 193rem;
   margin: 0 auto;
@@ -5,30 +7,4 @@
   font-family: 'Rubik', sans-serif;
   box-sizing: border-box;
   background-color: #eaf3ec;
-}
-
-.app {
-  display: flex;
-  color: #16451f;
-
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-
-  justify-content: space-between;
-}
-
-.title {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  transform: translateX(-50%);
-
-  font-size: 8rem;
-  padding: 2rem 5rem;
-  border-radius: 1rem;
-  border: groove #55a16586;
-  color: #0d2913;
-  background-color: transparent;
-  backdrop-filter: blur(10rem);
-  z-index: 2;
 }

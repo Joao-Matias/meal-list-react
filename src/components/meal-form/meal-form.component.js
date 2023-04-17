@@ -7,6 +7,7 @@ const MealForm = (props) => {
 
   const [recipe, setRecipe] = useState({
     mealName: '',
+    mealImg: '',
     ingList: [],
   });
   const [newIng, setNewIng] = useState('');
@@ -60,7 +61,12 @@ const MealForm = (props) => {
     });
   };
 
-  const keyDownIngNameChange = (ing, event) => {
+  const handleClickEditIng = (ing) => {
+    setSelectedIng(ing);
+    setIngNameChange(true);
+  };
+
+  const editIngredient = (ing, event) => {
     if (event.key === 'Enter' && event.target.value.length > 0) {
       setRecipe((prevState) => {
         const ingList = prevState.ingList.map((ingredient) => {
@@ -77,12 +83,7 @@ const MealForm = (props) => {
     }
   };
 
-  const editIng = (ing) => {
-    setSelectedIng(ing);
-    setIngNameChange(true);
-  };
-
-  const deleteIng = (ing) => {
+  const handleClickDeleteIng = (ing) => {
     setSelectedIng(ing);
     setHandleIngDelete(true);
   };
@@ -105,6 +106,11 @@ const MealForm = (props) => {
         <input onChange={updateRecipeName} name='mealName' type='text' />
       </label>
 
+      <label>
+        Recipe Image:
+        <input onChange={updateRecipeName} name='mealImg' type='text' />
+      </label>
+
       <ul>
         {recipe.ingList.map((ing, index) => {
           return (
@@ -113,19 +119,19 @@ const MealForm = (props) => {
               <h3>{ing.ingredient}</h3>
               <ImPencil
                 onClick={() => {
-                  editIng(ing);
+                  handleClickEditIng(ing);
                 }}
               />
               {ingNameChange && selectedIng.id === ing.id && (
                 <input
                   onKeyDown={(event) => {
-                    keyDownIngNameChange(ing, event);
+                    editIngredient(ing, event);
                   }}
                 />
               )}
               <ImBin
                 onClick={() => {
-                  deleteIng(ing);
+                  handleClickDeleteIng(ing);
                 }}
               />
               {handleIngDelete && selectedIng.id === ing.id && (
