@@ -8,9 +8,12 @@ const MealRecipeDetail = (props) => {
 
   return (
     <div className={style.recipeDetails}>
-      <img alt='' className={style.recipeImg} src={mealImg} />
-      <div className={style.recipeContainer}>
+      <div className={style.recipeImgContainer}>
         <h1 className={style.recipeName}>{mealName}</h1>
+        <img alt='' className={style.recipeImg} src={mealImg} />
+      </div>
+      <div className={style.recipeContainer}>
+        <h4>Ingredients:</h4>
         <ul className={style.recipeIngContainer}>
           {ingList.map((ing, i) => {
             return (

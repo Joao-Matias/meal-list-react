@@ -1,38 +1,69 @@
+/* main color #2b8a3e */
+/* second color #eaf3ec */
+
 .recipeDetails {
-  height: 97rem;
+  height: 91rem;
   font-size: 5rem;
-  background-color: white;
-  overflow: hidden;
   display: flex;
-  justify-content: space-around;
+  border-radius: 5rem;
+  box-shadow: 0rem 1rem 1rem #9797977c;
+  overflow: hidden;
+
+  margin: 3rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h4 {
+  background-color: white;
+  margin-top: 4rem;
+  font-size: 2.5rem;
+  margin-left: 3rem;
 }
 
 .recipeContainer {
   background-color: white;
-  display: flex;
+  display: block;
   flex-direction: column;
-  margin: 3rem 0;
+  width: 50%;
+  overflow: scroll;
 }
 
-.recipeName {
-  background-color: transparent;
+.recipeContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .recipeIngContainer {
   background-color: transparent;
+  margin-left: 2rem;
 }
 
 .recipeIng {
-  list-style-type: none;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  list-style-type: circle;
   background-color: transparent;
+  font-size: 1.5rem;
+}
+
+.recipeName {
+  margin-top: 3rem;
+  background-color: transparent;
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: 0.7rem;
+  color: #113719;
+}
+
+.recipeImgContainer {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.534);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .recipeImg {
-  width: 35rem;
-  margin: 0;
-  left: 0;
-  overflow: hidden;
-  object-fit: cover;
-  object-position: 80% 20%;
-  opacity: 0.5;
+  width: 85%;
+  margin-top: 4rem;
+  border-radius: 5rem;
 }

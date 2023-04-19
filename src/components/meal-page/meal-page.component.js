@@ -13,10 +13,28 @@ const MealPage = () => {
 
   const [listOfRecipes, setListOfRecipes] = useState([
     {
-      mealName: 'Pizza',
+      mealName: 'Mushroom Pizza',
       mealImg:
         'https://www.acouplecooks.com/wp-content/uploads/2019/06/Mushroom-Pizza-with-Herbs-011.jpg',
-      ingList: [{ ingredient: 'mushrooms' }],
+      ingList: [
+        { ingredient: '1 box of shitakke mushrooms' },
+        { ingredient: '1 block of cheese' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+        { ingredient: 'mushrooms' },
+      ],
     },
   ]);
 
@@ -61,7 +79,9 @@ const MealPage = () => {
             setListOfRecipes={setListOfRecipes}
           />
         )}
-        {selectedRecipe && <MealRecipeDetail selectedRecipe={selectedRecipe} />}
+        {selectedRecipe && (
+          <MealRecipeDetail timeout={1000} selectedRecipe={selectedRecipe} />
+        )}
       </section>
 
       <Link
