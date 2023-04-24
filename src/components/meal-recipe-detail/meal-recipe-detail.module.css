@@ -6,26 +6,26 @@
   font-size: 5rem;
   display: flex;
   border-radius: 5rem;
-  box-shadow: 0rem 1rem 1rem #9797977c;
+  box-shadow: 0rem 2rem 1rem #0000007c;
   overflow: hidden;
 
-  margin: 3rem;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 2rem;
 }
 
 h4 {
-  background-color: white;
+  background-color: transparent;
   margin-top: 4rem;
   font-size: 2.5rem;
   margin-left: 3rem;
 }
 
 .recipeContainer {
-  background-color: white;
-  display: block;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
   flex-direction: column;
   width: 50%;
   overflow: scroll;
+  gap: 5rem;
 }
 
 .recipeContainer::-webkit-scrollbar {
@@ -34,12 +34,11 @@ h4 {
 
 .recipeIngContainer {
   background-color: transparent;
-  margin-left: 2rem;
+  margin-left: 5rem;
+  line-height: 4rem;
 }
 
 .recipeIng {
-  margin-top: 5rem;
-  margin-left: 5rem;
   list-style-type: circle;
   background-color: transparent;
   font-size: 1.5rem;
@@ -56,7 +55,7 @@ h4 {
 
 .recipeImgContainer {
   width: 50%;
-  background-color: rgba(255, 255, 255, 0.534);
+  background-color: rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   flex-direction: column;

@@ -12,30 +12,15 @@ const MealPage = () => {
   const [selectedRecipe, setSelectedRecipe] = useState();
 
   const [listOfRecipes, setListOfRecipes] = useState([
-    {
-      mealName: 'Mushroom Pizza',
-      mealImg:
-        'https://www.acouplecooks.com/wp-content/uploads/2019/06/Mushroom-Pizza-with-Herbs-011.jpg',
-      ingList: [
-        { ingredient: '1 box of shitakke mushrooms' },
-        { ingredient: '1 block of cheese' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-        { ingredient: 'mushrooms' },
-      ],
-    },
+    // {
+    //   mealName: 'Mushroom Pizza',
+    //   mealImg:
+    //     'https://www.acouplecooks.com/wp-content/uploads/2019/06/Mushroom-Pizza-with-Herbs-011.jpg',
+    //   ingList: [
+    //     { ingredient: '1 box of shitakke mushrooms' },
+    //     { ingredient: '1 block of cheese' },
+    //   ],
+    // },
   ]);
 
   const toggleForm = () => {
@@ -62,7 +47,11 @@ const MealPage = () => {
                   onClick={() => {
                     handleClickRecipe(recipe);
                   }}
-                  className={style.recipesBtn}
+                  className={
+                    selectedRecipe.id === recipe.id
+                      ? style.selectedRecipe
+                      : style.recipesBtn
+                  }
                 >
                   {recipe.mealName}
                 </button>
@@ -75,13 +64,12 @@ const MealPage = () => {
       <section className={style.mealContainer}>
         {openFormModal && (
           <MealForm
+            setSelectedRecipe={setSelectedRecipe}
             setOpenFormModal={setOpenFormModal}
             setListOfRecipes={setListOfRecipes}
           />
         )}
-        {selectedRecipe && (
-          <MealRecipeDetail timeout={1000} selectedRecipe={selectedRecipe} />
-        )}
+        {selectedRecipe && <MealRecipeDetail selectedRecipe={selectedRecipe} />}
       </section>
 
       <Link

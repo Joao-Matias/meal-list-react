@@ -1,11 +1,11 @@
 .form {
-  padding-top: 5rem;
-  width: 120rem;
-  height: 97rem;
-  /* display: flex; */
-  flex-direction: column;
-  background-color: white;
+  height: 91rem;
   font-size: 5rem;
+  display: flex;
+  border-radius: 5rem;
+  box-shadow: 0rem 2rem 1rem #0000007c;
+  overflow: hidden;
+  margin: 2rem;
 }
 
 .form label,
