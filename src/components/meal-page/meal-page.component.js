@@ -3,6 +3,7 @@ import style from './meal-page.module.css';
 import listImg from '../../img/list.jpg';
 import MealForm from '../meal-form';
 import MealRecipeDetail from '../meal-recipe-detail';
+import { ImCross } from 'react-icons/im';
 
 import { Link } from 'react-router-dom';
 
@@ -11,17 +12,9 @@ const MealPage = () => {
   const [openFormModal, setOpenFormModal] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
 
-  const [listOfRecipes, setListOfRecipes] = useState([
-    // {
-    //   mealName: 'Mushroom Pizza',
-    //   mealImg:
-    //     'https://www.acouplecooks.com/wp-content/uploads/2019/06/Mushroom-Pizza-with-Herbs-011.jpg',
-    //   ingList: [
-    //     { ingredient: '1 box of shitakke mushrooms' },
-    //     { ingredient: '1 block of cheese' },
-    //   ],
-    // },
-  ]);
+  const [listOfRecipes, setListOfRecipes] = useState([]);
+  const [deleteRecipeModal, setDeleteRecipeModal] = useState(false);
+  const [recipeToDelete, setRecipeToDelete] = useState();
 
   const toggleForm = () => {
     setOpenFormModal(true);
@@ -31,6 +24,24 @@ const MealPage = () => {
   const handleClickRecipe = (recipe) => {
     setOpenFormModal(false);
     setSelectedRecipe(recipe);
+  };
+
+  const deleteRecipe = (recipe) => {
+    setDeleteRecipeModal(true);
+    setRecipeToDelete(recipe);
+  };
+
+  const handleDeleteRecipe = (recipe) => {
+    console.log(recipe);
+    setListOfRecipes((prevState) => {
+      const listOfRecipes = prevState.filter((rec) => {
+        return rec.id !== recipe.id;
+      });
+      return listOfRecipes;
+    });
+
+    setSelectedRecipe('');
+    setDeleteRecipeModal(false);
   };
 
   return (
@@ -43,18 +54,45 @@ const MealPage = () => {
           {listOfRecipes.map((recipe, i) => {
             return (
               <li key={i} className={style.recipes}>
-                <button
-                  onClick={() => {
-                    handleClickRecipe(recipe);
-                  }}
-                  className={
-                    selectedRecipe.id === recipe.id
-                      ? style.selectedRecipe
-                      : style.recipesBtn
-                  }
-                >
-                  {recipe.mealName}
-                </button>
+                {(deleteRecipeModal && recipeToDelete.id === recipe.id && (
+                  <div className={style.deleteModal}>
+                    <div className={style.deleteModalQuestion}>
+                      <h3>Are you sure you want to delete:</h3>
+                      <h2>{recipe.mealName}?</h2>
+                    </div>
+                    <h5
+                      onClick={() => {
+                        handleDeleteRecipe(recipe, i);
+                      }}
+                    >
+                      Yes
+                    </h5>
+                    <h5>No</h5>
+                  </div>
+                )) || (
+                  <>
+                    <button
+                      onClick={() => {
+                        handleClickRecipe(recipe);
+                      }}
+                      className={
+                        selectedRecipe.id === recipe.id
+                          ? style.selectedRecipe
+                          : style.recipesBtn
+                      }
+                    >
+                      {recipe.mealName}
+                    </button>
+                    <i
+                      className={style.deleteBox}
+                      onClick={() => {
+                        deleteRecipe(recipe);
+                      }}
+                    >
+                      <ImCross className={style.delete} />
+                    </i>
+                  </>
+                )}
               </li>
             );
           })}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './meal-form.module.css';
 import { ImBin, ImPencil } from 'react-icons/im';
+import { addRecipe } from '../../services/recipe-list';
 
 const MealForm = (props) => {
   const { setOpenFormModal, setListOfRecipes, setSelectedRecipe } = props;
@@ -19,12 +20,12 @@ const MealForm = (props) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    const seletedId = Date.now();
+    const finalRecipe = { ...recipe, id: Date.now() };
     setListOfRecipes((prevState) => {
-      return [...prevState, { ...recipe, id: seletedId }];
+      return [...prevState, finalRecipe];
     });
-
-    setSelectedRecipe({ ...recipe, id: seletedId });
+    setSelectedRecipe(finalRecipe);
+    addRecipe(finalRecipe);
     setOpenFormModal(false);
   };
 
