@@ -8,15 +8,91 @@
   border-radius: 5rem;
   box-shadow: 0rem 2rem 1rem #0000007c;
   overflow: hidden;
-
   margin: 2rem;
 }
 
-h4 {
+.recipeIngHeaderCont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   background-color: transparent;
+  align-items: center;
   margin-top: 4rem;
+}
+
+.recipeIngTitle {
+  background-color: transparent;
   font-size: 2.5rem;
   margin-left: 3rem;
+}
+
+.recipeIngAddBtnOn {
+  transition: all 1s;
+  display: flex;
+  background-color: transparent;
+  justify-content: flex-start;
+  height: 3.5rem;
+  width: 7%;
+  align-items: center;
+  border-radius: 3rem;
+  cursor: pointer;
+  padding: 0;
+  border: 0.2rem solid #95c59f;
+}
+
+.recipeIngAdd {
+  font-size: 1rem;
+}
+
+.recipeIngEditBtnOn {
+  transition: all 1s;
+  display: flex;
+  background-color: transparent;
+  justify-content: flex-start;
+  height: 3.5rem;
+  width: 13%;
+  align-items: center;
+  border-radius: 3rem;
+  cursor: pointer;
+  padding: 0;
+  border: 0.2rem solid #95c59f;
+}
+
+.recipeIngEditOff {
+  transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  background-color: #d5e8d8;
+  color: #113719;
+  height: 100%;
+  width: 60%;
+  padding: 0;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+
+.recipeIngEditOn {
+  transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  background-color: #113719;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-end;
+  border-radius: 3rem;
+  overflow: hidden;
+  color: #d5e8d8;
+}
+
+.recipeEditImg {
+  font-size: 2rem;
+  margin: 0 1.5rem;
+  background-color: #d5e8d8;
+  color: inherit;
+  background-color: transparent;
 }
 
 .recipeContainer {
@@ -36,12 +112,41 @@ h4 {
   background-color: transparent;
   margin-left: 5rem;
   line-height: 4rem;
+  width: 100%;
+  padding: 0;
 }
 
 .recipeIng {
   list-style-type: circle;
   background-color: transparent;
   font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 52rem;
+  margin: 0;
+}
+
+.newIng,
+.newIng:focus {
+  margin: 0;
+  width: 60%;
+  height: 4rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.1rem solid rgb(110, 110, 110);
+  outline: none;
+  font-size: 1.5rem;
+}
+
+.ingredientBtn {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3rem;
+  margin: 0;
+  width: 40%;
 }
 
 .recipeName {
@@ -51,6 +156,14 @@ h4 {
   font-weight: 500;
   letter-spacing: 0.7rem;
   color: #113719;
+}
+
+.btn {
+  background-color: transparent;
+  height: 4rem;
+  width: 1.7rem;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .recipeImgContainer {
@@ -65,4 +178,10 @@ h4 {
   width: 85%;
   margin-top: 4rem;
   border-radius: 5rem;
+}
+
+.recipeIngChange {
+  display: flex;
+  padding: 0;
+  margin: 0;
 }

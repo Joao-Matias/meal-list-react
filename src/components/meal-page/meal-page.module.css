@@ -76,11 +76,6 @@
   cursor: pointer;
 }
 
-.listOfMealsBtn:hover {
-  background-color: #95c59f;
-  color: #113719;
-}
-
 @keyframes bounce {
   0% {
     transform: translateY(0);
@@ -93,6 +88,11 @@
 
 .bounce {
   animation-name: bounce;
+}
+
+.listOfMealsBtn:hover {
+  background-color: #95c59f;
+  color: #113719;
 }
 
 .recipesContainer {

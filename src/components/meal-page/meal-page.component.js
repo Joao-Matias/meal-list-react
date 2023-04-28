@@ -44,7 +44,13 @@ const MealPage = () => {
             setListOfRecipes={setListOfRecipes}
           />
         )}
-        {selectedRecipe && <MealRecipeDetail selectedRecipe={selectedRecipe} />}
+        {selectedRecipe && (
+          <MealRecipeDetail
+            setListOfRecipes={setListOfRecipes}
+            listOfRecipes={listOfRecipes}
+            selectedRecipe={selectedRecipe}
+          />
+        )}
       </section>
 
       <Link
