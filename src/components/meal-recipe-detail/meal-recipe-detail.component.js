@@ -92,6 +92,7 @@ const MealRecipeDetail = (props) => {
         <h1 name='mealName' className={style.recipeName}>
           {mealName}
         </h1>
+
         <img alt='' className={style.recipeImg} src={mealImg} />
       </div>
       <div className={style.recipeContainer}>

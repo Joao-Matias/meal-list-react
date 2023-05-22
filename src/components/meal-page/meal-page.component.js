@@ -3,7 +3,7 @@ import style from './meal-page.module.css';
 import listImg from '../../img/list.jpg';
 import MealForm from '../meal-form';
 import MealRecipeDetail from '../meal-recipe-detail';
-import RecipeList from '../meal-recipe-list';
+import MealRecipeList from '../meal-recipe-list';
 import { getRecipeList } from '../../services/recipe-list';
 
 import { Link } from 'react-router-dom';
@@ -37,7 +37,7 @@ const MealPage = () => {
           Start a Recipe
         </button>
         <ul className={style.recipesContainer}>
-          <RecipeList
+          <MealRecipeList
             listOfRecipes={listOfRecipes}
             setOpenFormModal={setOpenFormModal}
             setSelectedRecipe={setSelectedRecipe}

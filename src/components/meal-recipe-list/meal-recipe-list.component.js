@@ -2,10 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { deleteRecipeStorage } from '../../services/recipe-list';
 
-import { ImCross } from 'react-icons/im';
+import { ImPencil, ImCross } from 'react-icons/im';
 import style from './meal-recipe-list.module.css';
 
-const RecipeList = (props) => {
+const MealRecipeList = (props) => {
   const {
     listOfRecipes,
     setOpenFormModal,
@@ -16,6 +16,10 @@ const RecipeList = (props) => {
 
   const [recipeToDelete, setRecipeToDelete] = useState();
   const [deleteRecipeModal, setDeleteRecipeModal] = useState(false);
+  const [editeNameModal, setEditeNameModal] = useState(false);
+  const [recipeToEdit, setRecipeToEdit] = useState();
+
+  const [newRecipeName, setNewRecipeName] = useState();
 
   const handleClickRecipe = (recipe) => {
     setOpenFormModal(false);
@@ -25,6 +29,11 @@ const RecipeList = (props) => {
   const deleteRecipe = (recipe) => {
     setDeleteRecipeModal(true);
     setRecipeToDelete(recipe);
+  };
+
+  const editRecipeName = (recipe) => {
+    setEditeNameModal(true);
+    setRecipeToEdit(recipe);
   };
 
   const handleDeleteRecipe = (recipe) => {
@@ -47,6 +56,26 @@ const RecipeList = (props) => {
   const closeDeleteModule = () => {
     setRecipeToDelete('');
     setDeleteRecipeModal(false);
+  };
+
+  const modifyRecipeName = (event) => {
+    setNewRecipeName(event.target.value);
+  };
+
+  const confirmNameChange = (event, recipe) => {
+    if (event.key === 'Enter') {
+      setListOfRecipes((prevState) => {
+        return prevState.map((recp) => {
+          if (recipe.id === recp.id) {
+            return { ...recp, mealName: newRecipeName };
+          } else {
+            return recp;
+          }
+        });
+      });
+
+      setEditeNameModal(false);
+    }
   };
 
   return listOfRecipes.map((recipe, i) => {
@@ -85,15 +114,37 @@ const RecipeList = (props) => {
                   : style.recipesBtn
               }
             >
-              {recipe.mealName}
+              {editeNameModal && recipeToEdit.id === recipe.id ? (
+                <input
+                  className={style.recipeNameEdit}
+                  placeholder='New name and press enter'
+                  autoFocus
+                  onChange={(event) => {
+                    modifyRecipeName(event);
+                  }}
+                  onKeyDown={(event) => {
+                    confirmNameChange(event, recipe);
+                  }}
+                />
+              ) : (
+                recipe.mealName
+              )}
             </button>
             <i
-              className={style.deleteBox}
+              className={style.editBox}
               onClick={() => {
                 deleteRecipe(recipe);
               }}
             >
-              <ImCross className={style.delete} />
+              <ImCross className={style.edit} />
+            </i>
+            <i
+              className={style.editBox}
+              onClick={() => {
+                editRecipeName(recipe);
+              }}
+            >
+              <ImPencil className={style.edit} />
             </i>
           </>
         )}
@@ -102,4 +153,4 @@ const RecipeList = (props) => {
   });
 };
 
-export default RecipeList;
+export default MealRecipeList;

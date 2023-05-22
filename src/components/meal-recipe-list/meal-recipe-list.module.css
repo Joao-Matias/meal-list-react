@@ -43,10 +43,11 @@ h5 {
   transition: all 0.3s;
   cursor: pointer;
   border: none;
-  padding: 2rem;
+  padding: 2rem 1rem;
   background-color: white;
   color: #0d2913;
   border-radius: 1rem;
+  text-align: left;
 }
 
 .recipesBtn:hover {
@@ -62,18 +63,32 @@ h5 {
   color: #113719;
   border: none;
   border-radius: 1rem;
+  text-align: left;
 }
 
-.deleteBox {
+.editBox {
   height: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.delete {
+.edit {
   display: flex;
   font-size: 1rem;
   opacity: 0.7;
   width: 3rem;
+}
+
+.recipeNameEdit,
+.recipeNameEdit:focus {
+  margin: 0;
+  width: 80%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.1rem solid rgb(110, 110, 110);
+  outline: none;
+  font-size: 1.3rem;
 }
