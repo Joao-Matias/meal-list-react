@@ -1,1 +1,5 @@
-export { addRecipe } from './recipe-list.service.js';
+export {
+  addRecipe,
+  getRecipeList,
+  deleteRecipeStorage,
+} from './recipe-list.service.js';

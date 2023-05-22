@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './meal-page.module.css';
 import listImg from '../../img/list.jpg';
 import MealForm from '../meal-form';
 import MealRecipeDetail from '../meal-recipe-detail';
-import RecipeList from '../recipe-list';
+import RecipeList from '../meal-recipe-list';
+import { getRecipeList } from '../../services/recipe-list';
 
 import { Link } from 'react-router-dom';
 
 const MealPage = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getRecipeList();
+      setListOfRecipes(response);
+      setSelectedRecipe(response[0]);
+    };
+
+    fetchData();
+  }, []);
+
   const [showBtn, setShowBtn] = useState(false);
   const [openFormModal, setOpenFormModal] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();

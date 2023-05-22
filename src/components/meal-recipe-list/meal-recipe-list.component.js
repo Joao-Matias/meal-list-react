@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import { deleteRecipeStorage } from '../../services/recipe-list';
 
 import { ImCross } from 'react-icons/im';
-import style from './recipe-list.module.css';
+import style from './meal-recipe-list.module.css';
 
 const RecipeList = (props) => {
   const {
@@ -27,15 +28,20 @@ const RecipeList = (props) => {
   };
 
   const handleDeleteRecipe = (recipe) => {
-    setListOfRecipes((prevState) => {
-      const listOfRecipes = prevState.filter((rec) => {
-        return rec.id !== recipe.id;
-      });
-      return listOfRecipes;
-    });
+    const response = deleteRecipeStorage(recipe);
 
-    setSelectedRecipe('');
-    setDeleteRecipeModal(false);
+    if (response) {
+      setListOfRecipes((prevState) => {
+        const listOfRecipes = prevState.filter((rec) => {
+          return rec.id !== recipe.id;
+        });
+
+        return listOfRecipes;
+      });
+
+      setSelectedRecipe('');
+      setDeleteRecipeModal(false);
+    }
   };
 
   const closeDeleteModule = () => {

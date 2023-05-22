@@ -68,6 +68,7 @@ const MealRecipeDetail = (props) => {
         });
       });
 
+      setUpdatedIng('Choose an Ingredient');
       setOpenEditInpt(false);
     }
   };
@@ -80,6 +81,7 @@ const MealRecipeDetail = (props) => {
     if (event.key === 'Enter') {
       ingList.unshift({ ingredient: updatedIng, id: Date.now() });
 
+      setUpdatedIng('Choose an Ingredient');
       setNewIngInpt(false);
     }
   };
