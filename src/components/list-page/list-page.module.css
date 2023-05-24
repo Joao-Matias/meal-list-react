@@ -1,13 +1,6 @@
 .listPageContainer {
   display: flex;
-  justify-content: space-between;
   height: 97rem;
-}
-
-.listContainer {
-  margin: 1rem;
-  background-color: white;
-  border-radius: 1rem;
 }
 
 .mealPageSwitchBox {

@@ -1,0 +1,23 @@
+.listContainerBox {
+  margin: 0;
+  width: 140rem;
+  margin-left: 40rem;
+}
+
+.listNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listNav button {
+  margin: 0;
+  width: 35rem;
+  height: 3rem;
+  font-size: 3rem;
+  border: 0.1rem solid transparent;
+  transition: all 0.3s;
+}
+
+.addNew {
+  margin: 0;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import style from './list-page.module.css';
 import mealImg from '../../img/meal.jpg';
+import ListNav from '../list-nav';
 
 import { Link } from 'react-router-dom';
 
@@ -9,9 +10,6 @@ const ListPage = () => {
 
   return (
     <div className={style.listPageContainer}>
-      <section>
-        <div className={style.listContainer}></div>
-      </section>
       <Link
         onMouseEnter={() => {
           setShowBtn(true);
@@ -29,6 +27,7 @@ const ListPage = () => {
         />
         {showBtn && <h1 className={style.mealSwitchBtn}>Meals</h1>}
       </Link>
+      <ListNav />
     </div>
   );
 };
