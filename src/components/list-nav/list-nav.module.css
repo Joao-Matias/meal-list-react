@@ -1,12 +1,24 @@
 .listContainerBox {
   margin: 0;
-  width: 140rem;
+  width: 155rem;
   margin-left: 40rem;
+  border-left: 0.3rem solid #eaf3ec;
+}
+
+.title {
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  font-size: 3rem;
+  color: #16451f;
+  border-bottom: 0.3rem solid #eaf3ec;
 }
 
 .listNav {
   display: flex;
   justify-content: space-between;
+  margin-right: 10rem;
+  margin-top: 1rem;
 }
 
 .listNav button {
@@ -18,6 +30,38 @@
   transition: all 0.3s;
 }
 
+.addNewBox {
+  display: flex;
+  align-items: center;
+  width: 13rem;
+  margin: 0;
+  border: 0.1rem solid #95c59f;
+  justify-content: space-between;
+  border-radius: 5rem;
+  background-color: #eaf3ec;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.addNewBox:hover .addNew {
+  background-color: #95c59f;
+}
+
+.addNewBox h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+  color: #16451f;
+  padding-left: 1rem;
+}
+
 .addNew {
   margin: 0;
+  font-size: 3.5rem;
+  border: 0.1rem solid #95c59f;
+  border-radius: 5rem;
+  padding: 0.8rem;
+  color: #16451f;
+  background-color: #eaf3ec;
+  transition: all 0.3s;
 }
