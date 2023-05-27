@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './list-nav.module.css';
 import { ImPlus } from 'react-icons/im';
 import ListLists from '../list-lists';
+import ListIngredients from '../list-ingredients';
 
 const ListNav = () => {
   const [openInputNewItem, setOpenInputNewItem] = useState(false);
@@ -19,7 +20,7 @@ const ListNav = () => {
       switch (activePage) {
         case 'Lists':
           setListOfLists((prevState) => {
-            return [{ ...prevState, name: updateName }];
+            return [...prevState, { listName: updateName }];
           });
           setOpenInputNewItem(false);
           break;
@@ -53,7 +54,10 @@ const ListNav = () => {
           <ImPlus className={style.addNew} />
         </div>
       </nav>
-      <ListLists listOfLists={listOfLists} />
+      <div>
+        <ListLists setActivePage={setActivePage} listOfLists={listOfLists} />
+        <ListIngredients />
+      </div>
     </section>
   );
 };
