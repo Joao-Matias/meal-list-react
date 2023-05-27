@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import style from './list-nav.module.css';
 import { ImPlus } from 'react-icons/im';
-import './list-nav.module.css';
+import ListLists from '../list-lists';
 
 const ListNav = () => {
   const [openInputNewItem, setOpenInputNewItem] = useState(false);
-  const [updateName, setUpdateName] = useState(``);
-  const [newElement, setNewElement] = useState([]);
+  const [updateName, setUpdateName] = useState({});
+  const [activePage, setActivePage] = useState('Lists');
+
+  const [listOfLists, setListOfLists] = useState([]);
 
   const addNewLine = () => {
     setOpenInputNewItem(true);
@@ -14,8 +16,16 @@ const ListNav = () => {
 
   const clickToAddNew = (keyDown) => {
     if (keyDown.key === 'Enter') {
-      setNewElement([updateName]);
-      setOpenInputNewItem(false);
+      switch (activePage) {
+        case 'Lists':
+          setListOfLists((prevState) => {
+            return [{ ...prevState, name: updateName }];
+          });
+          setOpenInputNewItem(false);
+          break;
+
+        default:
+      }
     }
   };
 
@@ -43,6 +53,7 @@ const ListNav = () => {
           <ImPlus className={style.addNew} />
         </div>
       </nav>
+      <ListLists listOfLists={listOfLists} />
     </section>
   );
 };
