@@ -20,11 +20,28 @@ const ListNav = () => {
       switch (activePage) {
         case 'Lists':
           setListOfLists((prevState) => {
-            return [...prevState, { listName: updateName }];
+            return [...prevState, { listName: updateName, ingredients: [] }];
           });
           setOpenInputNewItem(false);
           break;
 
+        case activePage:
+          setListOfLists((prevState) => {
+            const updatedList = prevState.map((list) => {
+              if (list.listName === activePage) {
+                return {
+                  ...list,
+                  ingredients: [...list.ingredients, updateName],
+                };
+              } else {
+                return list;
+              }
+            });
+
+            return updatedList;
+          });
+          setOpenInputNewItem(false);
+          break;
         default:
       }
     }
@@ -54,9 +71,9 @@ const ListNav = () => {
           <ImPlus className={style.addNew} />
         </div>
       </nav>
-      <div>
+      <div className={style.listContainer}>
         <ListLists setActivePage={setActivePage} listOfLists={listOfLists} />
-        <ListIngredients />
+        <ListIngredients listOfLists={listOfLists} activePage={activePage} />
       </div>
     </section>
   );

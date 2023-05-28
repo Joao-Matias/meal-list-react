@@ -65,3 +65,7 @@
   background-color: #eaf3ec;
   transition: all 0.3s;
 }
+
+.listContainer {
+  display: flex;
+}
