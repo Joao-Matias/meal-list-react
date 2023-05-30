@@ -4,8 +4,8 @@ import style from './list-lists.module.css';
 const ListLists = (props) => {
   const { listOfLists, setActivePage } = props;
 
-  const selectList = (listName) => {
-    setActivePage(listName);
+  const selectList = (list) => {
+    setActivePage(list);
   };
 
   return (
@@ -15,7 +15,7 @@ const ListLists = (props) => {
           <li
             key={i}
             onClick={() => {
-              selectList(list.listName);
+              selectList(list);
             }}
           >
             {list.listName}

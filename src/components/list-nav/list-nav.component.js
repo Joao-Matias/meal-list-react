@@ -7,7 +7,9 @@ import ListIngredients from '../list-ingredients';
 const ListNav = () => {
   const [openInputNewItem, setOpenInputNewItem] = useState(false);
   const [updateName, setUpdateName] = useState({});
-  const [activePage, setActivePage] = useState('Lists');
+  const [activePage, setActivePage] = useState({
+    listName: 'Lists',
+  });
 
   const [listOfLists, setListOfLists] = useState([]);
 
@@ -15,25 +17,26 @@ const ListNav = () => {
     setOpenInputNewItem(true);
   };
 
-  console.log(listOfLists);
-
   const clickToAddNew = (keyDown) => {
     if (keyDown.key === 'Enter') {
-      switch (activePage) {
+      switch (activePage.listName) {
         case 'Lists':
           setListOfLists((prevState) => {
-            return [...prevState, { listName: updateName, ingredients: [] }];
+            return [
+              ...prevState,
+              { listName: updateName, ingredients: [], id: Date.now() },
+            ];
           });
           setOpenInputNewItem(false);
           break;
 
-        case activePage:
+        case activePage.listName:
           setListOfLists((prevState) => {
             const updatedList = prevState.map((list) => {
-              if (list.listName === activePage) {
+              if (list.id === activePage.id) {
                 return {
                   ...list,
-                  ingredients: [...list.ingredients, updateName],
+                  ingredients: [...list.ingredients, { ingName: updateName }],
                 };
               } else {
                 return list;
@@ -42,8 +45,10 @@ const ListNav = () => {
 
             return updatedList;
           });
+
           setOpenInputNewItem(false);
           break;
+
         default:
       }
     }
