@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './list-ingredient.module.css';
+import { ImPencil, ImBin } from 'react-icons/im';
 
 const ListIngredients = (props) => {
   const { activePage, listOfLists } = props;
@@ -13,7 +14,15 @@ const ListIngredients = (props) => {
       {list === undefined
         ? []
         : list.ingredients.map((ing, i) => {
-            return <li key={i}>{ing.ingName}</li>;
+            return (
+              <div className={style.ingCont} key={i}>
+                <li className={style.ingName}>{ing.ingName}</li>
+                <div className={style.ingContEdit}>
+                  <ImPencil />
+                  <ImBin />
+                </div>
+              </div>
+            );
           })}
     </ul>
   );

@@ -3,4 +3,19 @@
   padding: 0;
   width: 115rem;
   height: 84.5rem;
+  list-style-type: none;
+}
+
+.ingCont {
+  display: flex;
+  font-size: 3rem;
+}
+
+.ingName {
+  margin: 0;
+}
+
+.ingContEdit {
+  margin: 0;
+  color: rgba(66, 66, 66, 0.7);
 }
