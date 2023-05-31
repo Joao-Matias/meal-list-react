@@ -18,7 +18,23 @@ const ListIngredients = (props) => {
     setSelectedIng(ing);
   };
 
-  const handleDeleteIngClick = (ing) => {};
+  const handleDeleteIngClick = (ing) => {
+    setListOfLists((prevState) => {
+      const updatedList = prevState.map((list) => {
+        if (list.id === activePage.id) {
+          const ingredientsList = list.ingredientsList.filter((ingredient) => {
+            return ingredient.id !== ing.id;
+          });
+
+          return { ...list, ingredientsList };
+        } else {
+          return list;
+        }
+      });
+
+      return updatedList;
+    });
+  };
 
   const editIngName = (event) => {
     setNewIngName(event.target.value);
