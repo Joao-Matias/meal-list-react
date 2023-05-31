@@ -24,7 +24,7 @@ const ListNav = () => {
           setListOfLists((prevState) => {
             return [
               ...prevState,
-              { listName: updateName, ingredients: [], id: Date.now() },
+              { listName: updateName, ingredientsList: [], id: Date.now() },
             ];
           });
           setOpenInputNewItem(false);
@@ -36,7 +36,10 @@ const ListNav = () => {
               if (list.id === activePage.id) {
                 return {
                   ...list,
-                  ingredients: [...list.ingredients, { ingName: updateName }],
+                  ingredientsList: [
+                    ...list.ingredientsList,
+                    { ingName: updateName, id: Date.now() },
+                  ],
                 };
               } else {
                 return list;
@@ -80,7 +83,11 @@ const ListNav = () => {
       </nav>
       <div className={style.listContainer}>
         <ListLists setActivePage={setActivePage} listOfLists={listOfLists} />
-        <ListIngredients listOfLists={listOfLists} activePage={activePage} />
+        <ListIngredients
+          listOfLists={listOfLists}
+          activePage={activePage}
+          setListOfLists={setListOfLists}
+        />
       </div>
     </section>
   );
