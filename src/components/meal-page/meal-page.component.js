@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from './meal-page.module.css';
 import listImg from '../../img/list.jpg';
 import MealForm from '../meal-form';
 import MealRecipeDetail from '../meal-recipe-detail';
 import MealRecipeList from '../meal-recipe-list';
 import { getRecipeList } from '../../services/recipe-list';
+import { Context } from '../../App';
 
 import { Link } from 'react-router-dom';
 
 const MealPage = () => {
+  const [, setListOfRecipes] = useContext(Context);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await getRecipeList();
@@ -23,8 +26,6 @@ const MealPage = () => {
   const [openFormModal, setOpenFormModal] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
 
-  const [listOfRecipes, setListOfRecipes] = useState([]);
-
   const toggleForm = () => {
     setOpenFormModal(true);
     setSelectedRecipe(false);
@@ -38,10 +39,8 @@ const MealPage = () => {
         </button>
         <ul className={style.recipesContainer}>
           <MealRecipeList
-            listOfRecipes={listOfRecipes}
             setOpenFormModal={setOpenFormModal}
             setSelectedRecipe={setSelectedRecipe}
-            setListOfRecipes={setListOfRecipes}
             selectedRecipe={selectedRecipe}
           />
         </ul>
@@ -52,16 +51,9 @@ const MealPage = () => {
           <MealForm
             setSelectedRecipe={setSelectedRecipe}
             setOpenFormModal={setOpenFormModal}
-            setListOfRecipes={setListOfRecipes}
           />
         )}
-        {selectedRecipe && (
-          <MealRecipeDetail
-            setListOfRecipes={setListOfRecipes}
-            listOfRecipes={listOfRecipes}
-            selectedRecipe={selectedRecipe}
-          />
-        )}
+        {selectedRecipe && <MealRecipeDetail selectedRecipe={selectedRecipe} />}
       </section>
 
       <Link

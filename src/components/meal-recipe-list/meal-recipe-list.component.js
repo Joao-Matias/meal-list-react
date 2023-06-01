@@ -1,19 +1,15 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { deleteRecipeStorage } from '../../services/recipe-list';
 
 import { ImPencil, ImCross } from 'react-icons/im';
 import style from './meal-recipe-list.module.css';
+import { Context } from '../../App';
 
 const MealRecipeList = (props) => {
-  const {
-    listOfRecipes,
-    setOpenFormModal,
-    setSelectedRecipe,
-    setListOfRecipes,
-    selectedRecipe,
-  } = props;
+  const { setOpenFormModal, setSelectedRecipe, selectedRecipe } = props;
 
+  const [listOfRecipes, setListOfRecipes] = useContext(Context);
   const [recipeToDelete, setRecipeToDelete] = useState();
   const [deleteRecipeModal, setDeleteRecipeModal] = useState(false);
   const [editeNameModal, setEditeNameModal] = useState(false);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from './list-ingredient.module.css';
+import style from './list-ingredients.module.css';
 import { ImPencil, ImBin } from 'react-icons/im';
 
 const ListIngredients = (props) => {

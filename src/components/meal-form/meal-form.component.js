@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './meal-form.module.css';
 import { ImBin, ImPencil } from 'react-icons/im';
 import { addRecipe } from '../../services/recipe-list';
+import { Context } from '../../App';
 
 const MealForm = (props) => {
-  const { setOpenFormModal, setListOfRecipes, setSelectedRecipe } = props;
+  const { setOpenFormModal, setSelectedRecipe } = props;
 
   const [recipe, setRecipe] = useState({
     mealName: '',
@@ -15,6 +16,7 @@ const MealForm = (props) => {
   const [openNewIngTab, setOpenNewIngTab] = useState(false);
   const [ingNameChange, setIngNameChange] = useState();
   const [handleIngDelete, setHandleIngDelete] = useState();
+  const [, setListOfRecipes] = useContext(Context);
 
   const [selectedIng, setSelectedIng] = useState();
 

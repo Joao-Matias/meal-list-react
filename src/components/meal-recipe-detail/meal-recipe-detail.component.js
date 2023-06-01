@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import style from './meal-recipe-detail.module.css';
 import { ImPencil, ImBin, ImPlus } from 'react-icons/im';
+import { Context } from '../../App';
 
 const MealRecipeDetail = (props) => {
-  const { selectedRecipe, setListOfRecipes, listOfRecipes } = props;
+  const { selectedRecipe } = props;
+  const [listOfRecipes, setListOfRecipes] = useContext(Context);
 
   const { mealName, ingList, mealImg, id } = listOfRecipes.find((list) => {
     return list.id === selectedRecipe.id;

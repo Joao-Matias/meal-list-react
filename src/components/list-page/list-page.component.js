@@ -5,11 +5,7 @@ import ListNav from '../list-nav';
 
 import { Link } from 'react-router-dom';
 
-const ListPage = (props) => {
-  const { listOfRecipes } = props;
-
-  console.log(listOfRecipes);
-
+const ListPage = () => {
   const [showBtn, setShowBtn] = useState(false);
 
   return (
