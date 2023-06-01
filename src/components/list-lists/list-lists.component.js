@@ -13,8 +13,6 @@ const ListLists = (props) => {
     setActivePage(list);
   };
 
-  console.log(listOfLists);
-
   const handleEditIngClick = (list) => {
     setInputModal(true);
     setToEdit(list);

@@ -3,15 +3,15 @@ import style from './list-nav.module.css';
 import { ImPlus } from 'react-icons/im';
 import ListLists from '../list-lists';
 import ListIngredients from '../list-ingredients';
+import ListImportModal from '../list-import-modal';
 
 const ListNav = () => {
   const [openInputNewItem, setOpenInputNewItem] = useState(false);
+  const [importRecipesModal, setImportRecipesModal] = useState(false);
   const [updateName, setUpdateName] = useState({});
   const [activePage, setActivePage] = useState({
     listName: 'Lists',
   });
-
-  console.log(activePage);
 
   const [listOfLists, setListOfLists] = useState([]);
 
@@ -59,6 +59,10 @@ const ListNav = () => {
     }
   };
 
+  const importRecipes = () => {
+    setImportRecipesModal(true);
+  };
+
   return (
     <section className={style.listContainerBox}>
       <h1 className={style.title}>Let's Build Your Shopping Lists!</h1>
@@ -72,26 +76,33 @@ const ListNav = () => {
         >
           Lists
         </button>
-        <div onClick={addNewLine} className={style.addNewBox}>
-          {openInputNewItem ? (
-            <input
-              onKeyDown={(event) => {
-                clickToAddNew(event);
-              }}
-              onChange={(event) => {
-                setUpdateName(event.target.value);
-              }}
-              autoFocus
-              placeholder='Press enter to confirm'
-            />
-          ) : (
-            <h3>Add New</h3>
-          )}
+        <div className={style.btnContainer}>
+          <div onClick={importRecipes} className={style.btnImport}>
+            <h3 className={style.importBtnText}>Import Ingredients</h3>
+            <ImPlus className={style.addNew} />
+          </div>
+          <div onClick={addNewLine} className={style.addNewBox}>
+            {openInputNewItem ? (
+              <input
+                onKeyDown={(event) => {
+                  clickToAddNew(event);
+                }}
+                onChange={(event) => {
+                  setUpdateName(event.target.value);
+                }}
+                autoFocus
+                placeholder='Press enter to confirm'
+              />
+            ) : (
+              <h3>Add New</h3>
+            )}
 
-          <ImPlus className={style.addNew} />
+            <ImPlus className={style.addNew} />
+          </div>
         </div>
       </nav>
       <div className={style.listContainer}>
+        {importRecipesModal && <ListImportModal />}
         <ListLists
           setListOfLists={setListOfLists}
           setActivePage={setActivePage}

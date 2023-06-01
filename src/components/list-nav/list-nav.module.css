@@ -19,6 +19,7 @@
   justify-content: space-between;
   margin-right: 10rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .listNav button {
@@ -68,4 +69,36 @@
 
 .listContainer {
   display: flex;
+}
+
+.btnContainer {
+  display: flex;
+  margin: 0;
+  width: 35rem;
+  justify-content: space-between;
+}
+
+.btnContainer h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+  color: #16451f;
+  padding-left: 1rem;
+}
+
+.btnImport {
+  display: flex;
+  align-items: center;
+  width: 20rem;
+  margin: 0;
+  border: 0.1rem solid #95c59f;
+  justify-content: space-between;
+  border-radius: 5rem;
+  background-color: #eaf3ec;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btnImport:hover .addNew {
+  background-color: #95c59f;
 }
