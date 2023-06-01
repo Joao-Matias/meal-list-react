@@ -11,6 +11,8 @@ const ListNav = () => {
     listName: 'Lists',
   });
 
+  console.log(activePage);
+
   const [listOfLists, setListOfLists] = useState([]);
 
   const addNewLine = () => {
@@ -61,7 +63,15 @@ const ListNav = () => {
     <section className={style.listContainerBox}>
       <h1 className={style.title}>Let's Build Your Shopping Lists!</h1>
       <nav className={style.listNav}>
-        <button>Lists</button>
+        <button
+          onClick={() => {
+            setActivePage({
+              listName: 'Lists',
+            });
+          }}
+        >
+          Lists
+        </button>
         <div onClick={addNewLine} className={style.addNewBox}>
           {openInputNewItem ? (
             <input
@@ -82,7 +92,12 @@ const ListNav = () => {
         </div>
       </nav>
       <div className={style.listContainer}>
-        <ListLists setActivePage={setActivePage} listOfLists={listOfLists} />
+        <ListLists
+          setListOfLists={setListOfLists}
+          setActivePage={setActivePage}
+          activePage={activePage}
+          listOfLists={listOfLists}
+        />
         <ListIngredients
           listOfLists={listOfLists}
           activePage={activePage}
