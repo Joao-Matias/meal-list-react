@@ -1,30 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import style from './meal-page.module.css';
 import listImg from '../../img/list.jpg';
 import MealForm from '../meal-form';
 import MealRecipeDetail from '../meal-recipe-detail';
 import MealRecipeList from '../meal-recipe-list';
-import { getRecipeList } from '../../services/recipe-list';
-import { Context } from '../../App';
 
 import { Link } from 'react-router-dom';
 
-const MealPage = () => {
-  const [, setListOfRecipes] = useContext(Context);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getRecipeList();
-      setListOfRecipes(response);
-      setSelectedRecipe(response[0]);
-    };
-
-    fetchData();
-  }, []);
+const MealPage = (props) => {
+  const { selectedRecipe, setSelectedRecipe } = props;
 
   const [showBtn, setShowBtn] = useState(false);
   const [openFormModal, setOpenFormModal] = useState(false);
-  const [selectedRecipe, setSelectedRecipe] = useState();
+
+  console.log(selectedRecipe);
 
   const toggleForm = () => {
     setOpenFormModal(true);
