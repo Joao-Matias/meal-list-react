@@ -13,8 +13,6 @@ const MealPage = (props) => {
   const [showBtn, setShowBtn] = useState(false);
   const [openFormModal, setOpenFormModal] = useState(false);
 
-  console.log(selectedRecipe);
-
   const toggleForm = () => {
     setOpenFormModal(true);
     setSelectedRecipe(false);

@@ -18,7 +18,6 @@ function App() {
       const response = await getRecipeList();
       setListOfRecipes(response);
       setSelectedRecipe(response[0]);
-      console.log(response);
     };
 
     fetchData();

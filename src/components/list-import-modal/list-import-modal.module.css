@@ -1,8 +1,8 @@
 .importModal {
-  background-color: #eaf3ecc0;
-  backdrop-filter: blur(2px);
+  background-color: #ffffffc0;
+  backdrop-filter: blur(4px);
   width: 150rem;
-  height: 80rem;
+  height: 96rem;
   position: absolute;
   z-index: 10;
   border-radius: 5rem;
@@ -12,9 +12,63 @@
 }
 
 .importContainer {
-  width: 90%;
-  height: 90%;
+  display: flex;
+  width: 130rem;
+  height: 80rem;
   margin: 2rem;
   border-radius: 5rem;
-  border: 1rem solid white;
+  background-color: #eaf3ec60;
+}
+
+.importContainer h1 {
+  font-size: 3.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.3rem solid #2b8a3e;
+  color: #16451f;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 76rem;
+  margin: 2rem;
+  border-right: 0.3rem solid #2b8a3e;
+}
+
+.listBox {
+  display: flex;
+  font-size: 3rem;
+  width: 18rem;
+  height: 2rem;
+  margin: 2rem 0;
+  justify-content: center;
+  align-items: center;
+  color: #113719;
+}
+
+.ingContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60rem;
+  height: 76rem;
+  margin: 2rem;
+  align-items: center;
+  border-right: 0.3rem solid #2b8a3e;
+}
+
+.ingBox {
+  font-size: 2rem;
+  margin: 2rem;
+  color: #113719;
+}
+
+.btnContainer {
+  margin-top: 5rem;
+}
+
+.btnContainer button {
+  font-size: 2rem;
 }

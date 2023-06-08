@@ -65,6 +65,7 @@ const ListNav = () => {
 
   return (
     <section className={style.listContainerBox}>
+      {importRecipesModal && <ListImportModal />}
       <h1 className={style.title}>Let's Build Your Shopping Lists!</h1>
       <nav className={style.listNav}>
         <button
@@ -102,7 +103,6 @@ const ListNav = () => {
         </div>
       </nav>
       <div className={style.listContainer}>
-        {importRecipesModal && <ListImportModal />}
         <ListLists
           setListOfLists={setListOfLists}
           setActivePage={setActivePage}
