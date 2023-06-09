@@ -13,9 +13,9 @@ const ListNav = () => {
     listName: 'Lists',
   });
 
-  // console.log(activePage);
-
   const [listOfLists, setListOfLists] = useState([]);
+
+  console.log(listOfLists);
 
   const addNewLine = () => {
     setOpenInputNewItem(true);
@@ -67,7 +67,13 @@ const ListNav = () => {
 
   return (
     <section className={style.listContainerBox}>
-      {importRecipesModal && <ListImportModal setActivePage={setActivePage} />}
+      {importRecipesModal && (
+        <ListImportModal
+          setImportRecipesModal={setImportRecipesModal}
+          activePage={activePage}
+          setListOfLists={setListOfLists}
+        />
+      )}
       <h1 className={style.title}>Let's Build Your Shopping Lists!</h1>
       <nav className={style.listNav}>
         <button
@@ -80,7 +86,7 @@ const ListNav = () => {
           Lists
         </button>
         <div className={style.btnContainer}>
-          {listOfLists.length > 0 && (
+          {listOfLists.length > 0 && activePage.listName !== 'Lists' && (
             <div hidden onClick={importRecipes} className={style.btnImport}>
               <h3 className={style.importBtnText}>Import Ingredients</h3>
               <ImPlus className={style.addNew} />

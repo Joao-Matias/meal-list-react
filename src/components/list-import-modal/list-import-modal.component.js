@@ -3,15 +3,15 @@ import style from './list-import-modal.module.css';
 import { Context } from '../../App';
 
 const ListImportModal = (props) => {
-  const { setActivePage } = props;
+  const { activePage, setImportRecipesModal, setListOfLists } = props;
 
   const [listOfRecipes] = useContext(Context);
 
-  const [selectedList, setSelectedList] = useState(listOfRecipes[0]);
+  const [selectedRecipe, setSelectedRecipe] = useState(listOfRecipes[0]);
   const [selectedIngList, setSelectedIngList] = useState([]);
 
   const listClickHandler = (list) => {
-    setSelectedList(list);
+    setSelectedRecipe(list);
   };
 
   const selectIngredients = (selectedIng) => {
@@ -43,7 +43,7 @@ const ListImportModal = (props) => {
 
   const selectAllIng = () => {
     setSelectedIngList((prevState) => {
-      const newIngs = selectedList.ingList.filter((ing) => {
+      const newIngs = selectedRecipe.ingList.filter((ing) => {
         return !selectedIngList.includes(ing);
       });
 
@@ -51,9 +51,23 @@ const ListImportModal = (props) => {
     });
   };
 
-  const importIngredients = () => {};
+  const importIngredients = () => {
+    setListOfLists((prevState) => {
+      const selectedList = prevState.filter((list) => {
+        return list.id === activePage.id;
+      });
 
-  console.log(selectedIngList);
+      // ...selectedIngList
+      // return [
+      //   ...prevState,
+      //   { ...selectedList, ingredientsList: selectedIngList },
+      // ];
+    });
+
+    setImportRecipesModal(false);
+  };
+
+  // console.log(selectedRecipe);
 
   return (
     <section className={style.importModal}>
@@ -76,7 +90,7 @@ const ListImportModal = (props) => {
         </section>
         <section className={style.ingContainer}>
           <h1>Ingredients</h1>
-          {selectedList.ingList.map((ing, i) => {
+          {selectedRecipe.ingList.map((ing, i) => {
             return (
               <div
                 className={
