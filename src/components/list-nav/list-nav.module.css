@@ -37,6 +37,7 @@
   align-items: center;
   width: 13rem;
   margin: 0;
+  margin-left: 1rem;
   border: 0.1rem solid #95c59f;
   justify-content: space-between;
   border-radius: 5rem;
@@ -76,7 +77,7 @@
   display: flex;
   margin: 0;
   width: 35rem;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .btnContainer h3 {

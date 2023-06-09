@@ -47,6 +47,7 @@
   justify-content: center;
   align-items: center;
   color: #113719;
+  cursor: pointer;
 }
 
 .ingContainer {
@@ -60,9 +61,30 @@
 }
 
 .ingBox {
-  font-size: 2rem;
+  display: flex;
+  font-size: 2.5rem;
   margin: 2rem;
   color: #113719;
+  cursor: pointer;
+  width: 50rem;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.ingBoxSelected {
+  display: flex;
+  font-size: 2.5rem;
+  margin: 2rem;
+  color: #113719;
+  cursor: pointer;
+  background-color: #2b8a3e;
+  width: 50rem;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
 }
 
 .btnContainer {
