@@ -47,7 +47,7 @@ const ListIngredients = (props) => {
           if (list.id === activeList.id) {
             const ingredientsList = list.ingredientsList.map((ingredient) => {
               if (ingredient.id === ing.id) {
-                return { ...ingredient, ingName: newIngName };
+                return { ...ingredient, ingredient: newIngName };
               } else {
                 return ingredient;
               }
@@ -83,7 +83,7 @@ const ListIngredients = (props) => {
                     }}
                   />
                 ) : (
-                  <li className={style.ingName}>{ing.ingName}</li>
+                  <li className={style.ingName}>{ing.ingredient}</li>
                 )}
 
                 <div className={style.ingContEdit}>

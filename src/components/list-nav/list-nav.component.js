@@ -15,8 +15,6 @@ const ListNav = () => {
 
   const [listOfLists, setListOfLists] = useState([]);
 
-  console.log(listOfLists);
-
   const addNewLine = () => {
     setOpenInputNewItem(true);
   };
@@ -42,7 +40,7 @@ const ListNav = () => {
                   ...list,
                   ingredientsList: [
                     ...list.ingredientsList,
-                    { ingName: updateName, id: Date.now() },
+                    { ingredient: updateName, id: Date.now() },
                   ],
                 };
               } else {

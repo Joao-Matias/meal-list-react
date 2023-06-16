@@ -25,7 +25,7 @@ const ListLists = (props) => {
       setListOfLists((prevState) => {
         return prevState.map((lst) => {
           if (lst.id === id) {
-            return { ...lst, listName: updatedListName };
+            return { ...lst, ingredient: updatedListName };
           } else {
             return lst;
           }

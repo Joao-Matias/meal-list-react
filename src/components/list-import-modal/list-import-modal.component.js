@@ -57,17 +57,22 @@ const ListImportModal = (props) => {
         return list.id === activePage.id;
       });
 
-      // ...selectedIngList
-      // return [
-      //   ...prevState,
-      //   { ...selectedList, ingredientsList: selectedIngList },
-      // ];
+      const fullList = prevState.map((list) => {
+        if (list.id === selectedList[0].id) {
+          return {
+            ...list,
+            ingredientsList: [...list.ingredientsList, ...selectedIngList],
+          };
+        } else {
+          return list;
+        }
+      });
+
+      return [...fullList];
     });
 
     setImportRecipesModal(false);
   };
-
-  // console.log(selectedRecipe);
 
   return (
     <section className={style.importModal}>
