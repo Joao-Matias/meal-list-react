@@ -54,7 +54,7 @@ const ListLists = (props) => {
     <ul className={style.listOfLists}>
       {listOfLists.map((list, i) => {
         return (
-          <li key={i}>
+          <li className={style.list} key={i}>
             {inputModal && list.id === toEdit.id ? (
               <input
                 onChange={(event) => {
@@ -67,17 +67,19 @@ const ListLists = (props) => {
                 placeholder='Press enter to confirm'
               />
             ) : (
-              <h3
+              <div
+                className={style.listNameCont}
                 onClick={() => {
                   selectList(list);
                 }}
               >
-                {list.listName}
-              </h3>
+                <h3 className={style.listName}>{list.listName}</h3>
+              </div>
             )}
 
             <div className={style.ingContEdit}>
               <div
+                className={style.pencil}
                 onClick={() => {
                   handleEditIngClick(list);
                 }}
@@ -85,6 +87,7 @@ const ListLists = (props) => {
                 <ImPencil />
               </div>
               <div
+                className={style.bin}
                 onClick={() => {
                   handleDeleteIngClick(list);
                 }}

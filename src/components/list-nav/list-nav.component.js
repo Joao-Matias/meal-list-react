@@ -74,15 +74,24 @@ const ListNav = () => {
       )}
       <h1 className={style.title}>Let's Build Your Shopping Lists!</h1>
       <nav className={style.listNav}>
-        <button
-          onClick={() => {
-            setActivePage({
-              listName: 'Lists',
-            });
-          }}
+        <div
+          className={
+            activePage.listName === 'Lists'
+              ? style.listBtnContActive
+              : style.listBtnCont
+          }
         >
-          Lists
-        </button>
+          <button
+            className={style.listBtn}
+            onClick={() => {
+              setActivePage({
+                listName: 'Lists',
+              });
+            }}
+          >
+            <h5>Lists</h5>
+          </button>
+        </div>
         <div className={style.btnContainer}>
           {listOfLists.length > 0 && activePage.listName !== 'Lists' && (
             <div hidden onClick={importRecipes} className={style.btnImport}>
