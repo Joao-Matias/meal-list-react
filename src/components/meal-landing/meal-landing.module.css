@@ -46,13 +46,7 @@
   transform: translate(-50%, -5%);
 }
 
-.enterMealBtn:hover strong {
-  background-color: #16451f;
-  color: #eaf3ec;
-}
-
 .enterMealBtn strong {
-  transition: all 0.3s ease-out;
   font-size: 4.5rem;
   text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.6);
 }
