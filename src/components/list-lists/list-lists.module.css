@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   border: 0.1rem solid #95c59f36;
+  cursor: pointer;
 }
 
 .listNameCont {
@@ -28,8 +29,9 @@
   margin: 0;
   width: 80%;
   transition: all 0.3s;
-  background-color: #1a5325;
+  background-color: #16451f;
   border-radius: 1rem;
+  transform: translateX(32%);
 }
 
 .listNameContActive h3 {

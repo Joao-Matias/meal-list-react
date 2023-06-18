@@ -103,6 +103,7 @@ const ListNav = () => {
           <div onClick={addNewLine} className={style.addNewBox}>
             {openInputNewItem ? (
               <input
+                maxLength={activePage.listName === 'Lists' ? '22' : '50'}
                 onKeyDown={(event) => {
                   clickToAddNew(event);
                 }}
