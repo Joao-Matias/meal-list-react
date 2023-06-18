@@ -25,7 +25,7 @@ const ListLists = (props) => {
       setListOfLists((prevState) => {
         return prevState.map((lst) => {
           if (lst.id === id) {
-            return { ...lst, ingredient: updatedListName };
+            return { ...lst, listName: updatedListName };
           } else {
             return lst;
           }
@@ -35,6 +35,8 @@ const ListLists = (props) => {
       setInputModal(false);
     }
   };
+
+  console.log(listOfLists);
 
   const handleDeleteIngClick = (list) => {
     setListOfLists((prevState) => {
@@ -57,6 +59,7 @@ const ListLists = (props) => {
           <li className={style.list} key={i}>
             {inputModal && list.id === toEdit.id ? (
               <input
+                className={style.inputNewName}
                 onChange={(event) => {
                   setUpdatedListName(event.target.value);
                 }}
@@ -68,7 +71,11 @@ const ListLists = (props) => {
               />
             ) : (
               <div
-                className={style.listNameCont}
+                className={
+                  activePage.listName === list.listName
+                    ? style.listNameContActive
+                    : style.listNameCont
+                }
                 onClick={() => {
                   selectList(list);
                 }}

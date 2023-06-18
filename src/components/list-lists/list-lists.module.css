@@ -18,13 +18,27 @@
   display: flex;
   padding: 1rem;
   margin: 0;
-  width: 70%;
+  width: 80%;
   transition: all 0.3s;
+}
+
+.listNameContActive {
+  display: flex;
+  padding: 1rem;
+  margin: 0;
+  width: 80%;
+  transition: all 0.3s;
+  background-color: #1a5325;
+  border-radius: 1rem;
+}
+
+.listNameContActive h3 {
+  color: #eaf3ec;
 }
 
 .listName {
   font-size: 1.7rem;
-  color: #113719;
+  color: #1a5325;
 }
 
 .listNameCont:hover {
@@ -41,20 +55,36 @@
   display: flex;
   width: 7rem;
   color: #0000006b;
-  justify-content: space-evenly;
+  height: 4rem;
 }
 
 .pencil {
   display: flex;
   align-items: center;
-  height: 3rem;
+  cursor: pointer;
+  width: 50%;
   border-right: 0.1rem solid #95c59f36;
-  margin: 0;
-  padding-right: 1.5rem;
+  border-left: 0.1rem solid #95c59f36;
+}
+
+.pencil:hover {
+  background-color: #eaf3ec;
 }
 
 .bin {
   display: flex;
   align-items: center;
-  margin: 0;
+  cursor: pointer;
+  width: 50%;
+}
+
+.bin:hover {
+  background-color: #eaf3ec;
+}
+
+.inputNewName {
+  display: flex;
+  font-size: 1.7rem;
+  outline: none;
+  border: none;
 }
