@@ -116,7 +116,11 @@ const ListNav = () => {
               />
             ) : (
               <div>
-                <h3>Add New</h3>
+                <h3>
+                  {activePage.listName === 'Lists'
+                    ? 'Add New List'
+                    : 'Add New Item'}
+                </h3>
               </div>
             )}
 
