@@ -32,9 +32,8 @@
 .addNewBox {
   display: flex;
   align-items: center;
-  width: 13rem;
-  margin: 0;
-  margin-left: 1rem;
+  width: 20rem;
+  margin: 0rem 10rem;
   border: 0.1rem solid #95c59f;
   justify-content: space-between;
   border-radius: 5rem;
@@ -53,6 +52,14 @@
   font-weight: 600;
   color: #16451f;
   padding-left: 1rem;
+}
+
+.newInput {
+  display: flex;
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
 }
 
 .addNew {
@@ -109,7 +116,7 @@
 .btnContainer {
   display: flex;
   margin: 0;
-  width: 35rem;
+  width: 60rem;
   justify-content: flex-end;
 }
 

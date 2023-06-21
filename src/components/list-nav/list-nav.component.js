@@ -112,9 +112,12 @@ const ListNav = () => {
                 }}
                 autoFocus
                 placeholder='Press enter to confirm'
+                className={style.newInput}
               />
             ) : (
-              <h3>Add New</h3>
+              <div>
+                <h3>Add New</h3>
+              </div>
             )}
 
             <ImPlus className={style.addNew} />
