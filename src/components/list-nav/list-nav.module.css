@@ -68,14 +68,13 @@
 
 .listBtnContActive {
   margin: 0;
-  background-color: #16451f;
+  background-color: #eaf3ec;
   width: 35.3rem;
-  border-radius: 1rem;
   transition: all 0.3s;
 }
 
 .listBtnContActive .listBtn h5 {
-  color: #eaf3ec;
+  color: #16451f;
 }
 
 .listBtnCont {

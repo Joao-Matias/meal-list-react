@@ -13,6 +13,9 @@ const ListLists = (props) => {
     setActivePage(list);
   };
 
+  console.log(activePage);
+  console.log(listOfLists);
+
   const handleEditIngClick = (list) => {
     setInputModal(true);
     setToEdit(list);
@@ -23,20 +26,28 @@ const ListLists = (props) => {
 
     if (event.key === 'Enter') {
       setListOfLists((prevState) => {
-        return prevState.map((lst) => {
+        const updatedList = prevState.map((lst) => {
           if (lst.id === id) {
             return { ...lst, listName: updatedListName };
           } else {
             return lst;
           }
         });
+
+        setActivePage((prevState) => {
+          if (list.id === activePage.id) {
+            return { ...prevState, listName: updatedListName };
+          } else {
+            return { ...prevState };
+          }
+        });
+
+        return updatedList;
       });
 
       setInputModal(false);
     }
   };
-
-  console.log(listOfLists);
 
   const handleDeleteIngClick = (list) => {
     setListOfLists((prevState) => {
@@ -53,7 +64,13 @@ const ListLists = (props) => {
   };
 
   return (
-    <ul className={style.listOfLists}>
+    <ul
+      className={
+        activePage.listName === 'Lists'
+          ? style.listOfListsActive
+          : style.listOfLists
+      }
+    >
       {listOfLists.map((list, i) => {
         return (
           <li className={style.list} key={i}>
