@@ -6,7 +6,7 @@ const ListIngredients = (props) => {
   const { activePage, listOfLists, setListOfLists } = props;
 
   const [editInput, setEditInput] = useState(false);
-  const [newIngName, setNewIngName] = useState();
+  const [newIngName, setNewIngName] = useState('');
   const [selectedIng, setSelectedIng] = useState();
 
   const activeList = listOfLists.find((list) => {
@@ -46,7 +46,7 @@ const ListIngredients = (props) => {
         const updatedList = prevState.map((list) => {
           if (list.id === activeList.id) {
             const ingredientsList = list.ingredientsList.map((ingredient) => {
-              if (ingredient.id === ing.id) {
+              if (ingredient.id === ing.id && newIngName.length > 0) {
                 return { ...ingredient, ingredient: newIngName };
               } else {
                 return ingredient;
@@ -61,6 +61,7 @@ const ListIngredients = (props) => {
         return updatedList;
       });
 
+      setNewIngName('');
       setEditInput(false);
     }
   };
@@ -81,6 +82,8 @@ const ListIngredients = (props) => {
                     onChange={(event) => {
                       editIngName(event);
                     }}
+                    className={style.newInput}
+                    placeholder='Insert new item name and press Enter'
                   />
                 ) : (
                   <li className={style.ingName}>{ing.ingredient}</li>
@@ -91,6 +94,7 @@ const ListIngredients = (props) => {
                     onClick={() => {
                       handleEditIngClick(ing);
                     }}
+                    className={style.pencil}
                   >
                     <ImPencil />
                   </div>
@@ -98,6 +102,7 @@ const ListIngredients = (props) => {
                     onClick={() => {
                       handleDeleteIngClick(ing);
                     }}
+                    className={style.bin}
                   >
                     <ImBin />
                   </div>
