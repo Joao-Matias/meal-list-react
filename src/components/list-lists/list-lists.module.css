@@ -1,9 +1,11 @@
 .listOfLists {
   list-style-type: none;
   width: 35rem;
+  height: 85rem;
   margin: 0;
   padding: 0;
   font-size: 2rem;
+  overflow: scroll;
 }
 
 .listOfListsActive {
@@ -13,6 +15,12 @@
   padding: 0;
   font-size: 2rem;
   background-color: #eaf3ec;
+  overflow: scroll;
+}
+
+.listOfLists::-webkit-scrollbar,
+.listOfListsActive::-webkit-scrollbar {
+  display: none;
 }
 
 .list {
