@@ -25,7 +25,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  border-bottom: 0.3rem solid #2b8a3e;
+  border-bottom: 0.2rem solid #95c59f;
   color: #16451f;
 }
 
@@ -35,7 +35,8 @@
   width: 20rem;
   height: 76rem;
   margin: 2rem;
-  border-right: 0.3rem solid #2b8a3e;
+  border-right: 0.2rem solid #95c59f;
+  overflow: scroll;
 }
 
 .listBox {
@@ -57,7 +58,13 @@
   height: 76rem;
   margin: 2rem;
   align-items: center;
-  border-right: 0.3rem solid #2b8a3e;
+  border-right: 0.2rem solid #95c59f;
+  overflow: scroll;
+}
+
+.ingContainer::-webkit-scrollbar,
+.listContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .ingBox {
@@ -79,18 +86,63 @@
   margin: 2rem;
   color: #113719;
   cursor: pointer;
-  background-color: #2b8a3e;
+  background-color: #16451f;
   width: 50rem;
   height: 4rem;
   justify-content: center;
   align-items: center;
   transition: all 0.3s;
+  color: #eaf3ec;
 }
 
 .btnContainer {
-  margin-top: 5rem;
+  margin-top: 7rem;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+  width: 40rem;
+  height: 70rem;
+  justify-content: space-around;
+}
+
+.btnContainer button:first-child {
+  width: 100%;
+  height: 49%;
+  border-radius: 5rem 5rem 0rem 0rem;
+  background-color: #eaf3ec;
+  color: #16451f;
+  font-size: 3rem;
+  line-height: 5rem;
+  letter-spacing: 0.5rem;
+  transition: all 0.2s;
+  transition-timing-function: ease-in-out;
+  border: 0.1rem solid #95c59f;
+  cursor: pointer;
+}
+
+.btnContainer button:first-child:hover {
+  background-color: #16451f;
+  color: #eaf3ec;
+  scale: 1.04;
 }
 
 .btnContainer button {
-  font-size: 2rem;
+  width: 100%;
+  height: 49%;
+  border-radius: 0rem 0rem 5rem 5rem;
+  background-color: #eaf3ec;
+  color: #16451f;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 5rem;
+  letter-spacing: 0.5rem;
+  transition: all 0.2s;
+  border: 0.1rem solid #95c59f;
+  cursor: pointer;
+}
+
+.btnContainer button:hover {
+  background-color: #16451f;
+  color: #eaf3ec;
+  scale: 1.04;
 }

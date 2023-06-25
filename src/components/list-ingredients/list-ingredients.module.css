@@ -19,6 +19,11 @@
   border-bottom: 0.1rem solid #b4d6bb;
   width: 80%;
   justify-content: space-between;
+  transition: all 0.05s;
+}
+
+.ingCont:hover {
+  transform: scale(1.02, 1.04);
 }
 
 .ingName {
