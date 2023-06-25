@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import style from './list-ingredients.module.css';
 import { ImPencil, ImBin } from 'react-icons/im';
 
 const ListIngredients = (props) => {
   const { activePage, listOfLists, setListOfLists } = props;
+
+  const dragItem = useRef();
+  const dragOverItem = useRef();
 
   const [editInput, setEditInput] = useState(false);
   const [newIngName, setNewIngName] = useState('');
@@ -66,6 +69,34 @@ const ListIngredients = (props) => {
     }
   };
 
+  const dragStart = (e, index) => {
+    dragItem.current = index;
+  };
+
+  const dragEnter = (e, index) => {
+    dragOverItem.current = index;
+  };
+
+  const dragDrop = (e) => {
+    const copyListItems = [...activeList.ingredientsList];
+    const dragItemContent = copyListItems[dragItem.current];
+
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+
+    setListOfLists((prevState) => {
+      return prevState.map((list) => {
+        if (list.id === activeList.id) {
+          return { ...activeList, ingredientsList: copyListItems };
+        } else {
+          return list;
+        }
+      });
+    });
+  };
+
   return (
     <ul className={style.ingredientsList}>
       {activeList === undefined
@@ -86,7 +117,19 @@ const ListIngredients = (props) => {
                     placeholder='Insert new item name and press Enter'
                   />
                 ) : (
-                  <li className={style.ingName}>{ing.ingredient}</li>
+                  <li
+                    draggable='true'
+                    onDragStart={(e) => {
+                      dragStart(e, i);
+                    }}
+                    onDragEnter={(e) => {
+                      dragEnter(e, i);
+                    }}
+                    onDragEnd={dragDrop}
+                    className={style.ingName}
+                  >
+                    {ing.ingredient}
+                  </li>
                 )}
 
                 <div className={style.ingContEdit}>
