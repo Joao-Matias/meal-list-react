@@ -4,7 +4,7 @@ import { ImPlus } from 'react-icons/im';
 import ListLists from '../list-lists';
 import ListIngredients from '../list-ingredients';
 import ListImportModal from '../list-import-modal';
-import { addList } from '../../services/recipe-list';
+import { addList, addNewItem } from '../../services/recipe-list';
 import { Context } from '../../App';
 
 const ListNav = () => {
@@ -21,27 +21,33 @@ const ListNav = () => {
     setOpenInputNewItem(true);
   };
 
+  console.log(listOfLists);
+
   const clickToAddNew = (keyDown) => {
     if (keyDown.key === 'Enter') {
       switch (activePage.listName) {
         case 'Lists':
-          const id = Date.now();
+          const listId = Date.now();
 
           setListOfLists((prevState) => {
             const newList = {
               listName: updateName,
               ingredientsList: [],
-              id: id,
+              id: listId,
             };
 
             return [...prevState, newList];
           });
 
-          addList({ listName: updateName, ingredientsList: [], id: id });
+          addList({ listName: updateName, ingredientsList: [], id: listId });
           setOpenInputNewItem(false);
           break;
 
         case activePage.listName:
+          addNewItem(activePage, updateName, itemId);
+
+          const itemId = Date.now();
+
           setListOfLists((prevState) => {
             const updatedList = prevState.map((list) => {
               if (list.id === activePage.id) {
@@ -49,7 +55,7 @@ const ListNav = () => {
                   ...list,
                   ingredientsList: [
                     ...list.ingredientsList,
-                    { ingredient: updateName, id: Date.now() },
+                    { ingredient: updateName, id: itemId },
                   ],
                 };
               } else {

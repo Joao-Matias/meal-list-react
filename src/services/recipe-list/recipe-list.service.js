@@ -31,14 +31,25 @@ export function addList(list) {
   return list;
 }
 
-export function addNewItem(selectedList) {
+export function addNewItem(selectedList, updateName, itemId) {
   const shoppingList = getShoppingList();
   const selectedShoppingList = shoppingList.find((list) => {
     return list.listName === selectedList.listName;
   });
 
-  // localStorage.setItem(
-  //   'shoppingList',
-  //   JSON.stringify([...selectedShoppingList.ingredientsList, 'ola'])
-  // );
+  const updatedList = shoppingList.map((list) => {
+    if (list.id === selectedShoppingList.id) {
+      return {
+        ...list,
+        ingredientsList: [
+          ...list.ingredientsList,
+          { ingredient: updateName, itemId },
+        ],
+      };
+    } else {
+      return list;
+    }
+  });
+
+  localStorage.setItem('shoppingList', JSON.stringify(updatedList));
 }
