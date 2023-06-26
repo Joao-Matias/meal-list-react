@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import style from './list-nav.module.css';
 import { ImPlus } from 'react-icons/im';
 import ListLists from '../list-lists';
 import ListIngredients from '../list-ingredients';
 import ListImportModal from '../list-import-modal';
+import { addList } from '../../services/recipe-list';
+import { Context } from '../../App';
 
 const ListNav = () => {
   const [openInputNewItem, setOpenInputNewItem] = useState(false);
@@ -13,7 +15,7 @@ const ListNav = () => {
     listName: 'Lists',
   });
 
-  const [listOfLists, setListOfLists] = useState([]);
+  const [, , listOfLists, setListOfLists] = useContext(Context);
 
   const addNewLine = () => {
     setOpenInputNewItem(true);
@@ -23,12 +25,19 @@ const ListNav = () => {
     if (keyDown.key === 'Enter') {
       switch (activePage.listName) {
         case 'Lists':
+          const id = Date.now();
+
           setListOfLists((prevState) => {
-            return [
-              ...prevState,
-              { listName: updateName, ingredientsList: [], id: Date.now() },
-            ];
+            const newList = {
+              listName: updateName,
+              ingredientsList: [],
+              id: id,
+            };
+
+            return [...prevState, newList];
           });
+
+          addList({ listName: updateName, ingredientsList: [], id: id });
           setOpenInputNewItem(false);
           break;
 

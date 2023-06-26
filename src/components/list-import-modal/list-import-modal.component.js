@@ -115,8 +115,10 @@ const ListImportModal = (props) => {
         </section>
         <section>
           <div className={style.btnContainer}>
-            <button onClick={selectAllIng}>Select All Ingredients</button>
-            <button onClick={importIngredients}>
+            <button className={style.selectIngs} onClick={selectAllIng}>
+              Select All Ingredients
+            </button>
+            <button className={style.importIngs} onClick={importIngredients}>
               Import Selected Ingredients
             </button>
           </div>

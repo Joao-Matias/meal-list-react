@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { getRecipeList } from './services/recipe-list';
+import { getRecipeList, getShoppingList } from './services/recipe-list';
 
 import Landing from './components/landing';
 import MealPage from './components/meal-page';
@@ -12,19 +12,24 @@ export const Context = React.createContext();
 function App() {
   const [listOfRecipes, setListOfRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState();
+  const [listOfLists, setListOfLists] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getRecipeList();
-      setListOfRecipes(response);
-      setSelectedRecipe(response[0]);
+      const recipeResponse = await getRecipeList();
+      const listResponse = await getShoppingList();
+      setListOfLists(listResponse);
+      setListOfRecipes(recipeResponse);
+      setSelectedRecipe(recipeResponse[0]);
     };
 
     fetchData();
   }, []);
 
   return (
-    <Context.Provider value={[listOfRecipes, setListOfRecipes]}>
+    <Context.Provider
+      value={[listOfRecipes, setListOfRecipes, listOfLists, setListOfLists]}
+    >
       <Router>
         <Routes>
           <Route

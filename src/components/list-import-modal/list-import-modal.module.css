@@ -105,43 +105,44 @@
   justify-content: space-around;
 }
 
-.btnContainer button:first-child {
+.selectIngs {
   width: 100%;
-  height: 49%;
-  border-radius: 5rem 5rem 0rem 0rem;
+  height: 30%;
+  border-radius: 5rem;
   background-color: #eaf3ec;
   color: #16451f;
   font-size: 3rem;
   line-height: 5rem;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.3rem;
   transition: all 0.2s;
   transition-timing-function: ease-in-out;
   border: 0.1rem solid #95c59f;
   cursor: pointer;
+  font-weight: 600;
 }
 
-.btnContainer button:first-child:hover {
+.selectIngs:hover {
   background-color: #16451f;
   color: #eaf3ec;
   scale: 1.04;
 }
 
-.btnContainer button {
+.importIngs {
   width: 100%;
-  height: 49%;
-  border-radius: 0rem 0rem 5rem 5rem;
+  height: 30%;
+  border-radius: 5rem;
   background-color: #eaf3ec;
   color: #16451f;
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 5rem;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.3rem;
   transition: all 0.2s;
   border: 0.1rem solid #95c59f;
   cursor: pointer;
 }
 
-.btnContainer button:hover {
+.importIngs:hover {
   background-color: #16451f;
   color: #eaf3ec;
   scale: 1.04;

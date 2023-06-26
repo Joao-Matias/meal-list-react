@@ -18,3 +18,27 @@ export function deleteRecipeStorage(recipe) {
 
   return true;
 }
+
+//////
+
+export function getShoppingList() {
+  return JSON.parse(localStorage.getItem('shoppingList') || '[]');
+}
+
+export function addList(list) {
+  const shoppingList = getShoppingList();
+  localStorage.setItem('shoppingList', JSON.stringify([...shoppingList, list]));
+  return list;
+}
+
+export function addNewItem(selectedList) {
+  const shoppingList = getShoppingList();
+  const selectedShoppingList = shoppingList.find((list) => {
+    return list.listName === selectedList.listName;
+  });
+
+  // localStorage.setItem(
+  //   'shoppingList',
+  //   JSON.stringify([...selectedShoppingList.ingredientsList, 'ola'])
+  // );
+}
