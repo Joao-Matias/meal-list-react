@@ -21,8 +21,6 @@ const ListNav = () => {
     setOpenInputNewItem(true);
   };
 
-  console.log(listOfLists);
-
   const clickToAddNew = (keyDown) => {
     if (keyDown.key === 'Enter') {
       switch (activePage.listName) {

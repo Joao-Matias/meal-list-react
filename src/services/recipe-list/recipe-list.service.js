@@ -54,3 +54,18 @@ export function addNewItem(selectedList, updateName, itemId) {
   localStorage.setItem('shoppingList', JSON.stringify(updatedList));
   return true;
 }
+
+export function editListName(selectedListId, newName) {
+  const shoppingList = getShoppingList();
+
+  const updateList = shoppingList.map((list) => {
+    if (list.id === selectedListId) {
+      return { ...list, listName: newName };
+    } else {
+      return list;
+    }
+  });
+
+  localStorage.setItem('shoppingList', JSON.stringify(updateList));
+  return true;
+}

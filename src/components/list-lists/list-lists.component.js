@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import style from './list-lists.module.css';
 import { ImPencil, ImBin } from 'react-icons/im';
+import { editListName } from '../../services/recipe-list';
 
 const ListLists = (props) => {
   const { listOfLists, setActivePage, setListOfLists, activePage } = props;
@@ -22,13 +23,19 @@ const ListLists = (props) => {
     const { id } = list;
 
     if (event.key === 'Enter') {
-      setListOfLists((prevState) => {
-        const updatedList = prevState.map((lst) => {
-          if (lst.id === id) {
-            return { ...lst, listName: updatedListName };
-          } else {
-            return lst;
-          }
+      const response = editListName(id, updatedListName);
+
+      if (response) {
+        setListOfLists((prevState) => {
+          const updatedList = prevState.map((lst) => {
+            if (lst.id === id) {
+              return { ...lst, listName: updatedListName };
+            } else {
+              return lst;
+            }
+          });
+
+          return updatedList;
         });
 
         setActivePage((prevState) => {
@@ -38,9 +45,7 @@ const ListLists = (props) => {
             return { ...prevState };
           }
         });
-
-        return updatedList;
-      });
+      }
 
       setInputModal(false);
     }
