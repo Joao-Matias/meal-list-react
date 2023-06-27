@@ -43,7 +43,7 @@ export function addNewItem(selectedList, updateName, itemId) {
         ...list,
         ingredientsList: [
           ...list.ingredientsList,
-          { ingredient: updateName, itemId },
+          { ingredient: updateName, id: itemId },
         ],
       };
     } else {
@@ -52,4 +52,5 @@ export function addNewItem(selectedList, updateName, itemId) {
   });
 
   localStorage.setItem('shoppingList', JSON.stringify(updatedList));
+  return true;
 }

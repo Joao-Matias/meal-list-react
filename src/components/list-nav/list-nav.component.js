@@ -44,27 +44,28 @@ const ListNav = () => {
           break;
 
         case activePage.listName:
-          addNewItem(activePage, updateName, itemId);
-
           const itemId = Date.now();
 
-          setListOfLists((prevState) => {
-            const updatedList = prevState.map((list) => {
-              if (list.id === activePage.id) {
-                return {
-                  ...list,
-                  ingredientsList: [
-                    ...list.ingredientsList,
-                    { ingredient: updateName, id: itemId },
-                  ],
-                };
-              } else {
-                return list;
-              }
-            });
+          const response = addNewItem(activePage, updateName, itemId);
 
-            return updatedList;
-          });
+          if (response)
+            setListOfLists((prevState) => {
+              const updatedList = prevState.map((list) => {
+                if (list.id === activePage.id) {
+                  return {
+                    ...list,
+                    ingredientsList: [
+                      ...list.ingredientsList,
+                      { ingredient: updateName, id: itemId },
+                    ],
+                  };
+                } else {
+                  return list;
+                }
+              });
+
+              return updatedList;
+            });
 
           setOpenInputNewItem(false);
           break;
