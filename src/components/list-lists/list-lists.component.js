@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './list-lists.module.css';
 import { ImPencil, ImBin } from 'react-icons/im';
-import { editListName } from '../../services/recipe-list';
+import { editListName, deleteList } from '../../services/recipe-list';
 
 const ListLists = (props) => {
   const { listOfLists, setActivePage, setListOfLists, activePage } = props;
@@ -52,16 +52,20 @@ const ListLists = (props) => {
   };
 
   const handleDeleteIngClick = (list) => {
-    setListOfLists((prevState) => {
-      return prevState.filter((lst) => {
-        return lst.id !== list.id;
-      });
-    });
+    const response = deleteList(list);
 
-    if (activePage.id === list.id) {
-      setActivePage({
-        listName: 'Lists',
+    if (response) {
+      setListOfLists((prevState) => {
+        return prevState.filter((lst) => {
+          return lst.id !== list.id;
+        });
       });
+
+      if (activePage.id === list.id) {
+        setActivePage({
+          listName: 'Lists',
+        });
+      }
     }
   };
 

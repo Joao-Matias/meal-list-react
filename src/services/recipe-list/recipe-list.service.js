@@ -69,3 +69,13 @@ export function editListName(selectedListId, newName) {
   localStorage.setItem('shoppingList', JSON.stringify(updateList));
   return true;
 }
+
+export function deleteList(listToDelete) {
+  const shoppingList = getShoppingList();
+  const updateList = shoppingList.filter((list) => {
+    return list.id !== listToDelete.id;
+  });
+
+  localStorage.setItem('shoppingList', JSON.stringify(updateList));
+  return true;
+}

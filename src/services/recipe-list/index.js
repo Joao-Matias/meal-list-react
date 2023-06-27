@@ -6,4 +6,5 @@ export {
   addList,
   addNewItem,
   editListName,
+  deleteList,
 } from './recipe-list.service.js';
