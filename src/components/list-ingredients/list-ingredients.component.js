@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import style from './list-ingredients.module.css';
 import { ImPencil, ImBin } from 'react-icons/im';
+import { editIngredient } from '../../services/recipe-list';
 
 const ListIngredients = (props) => {
   const { activePage, listOfLists, setListOfLists } = props;
@@ -45,24 +46,27 @@ const ListIngredients = (props) => {
 
   const confirmIngNameChange = (event, ing) => {
     if (event.key === 'Enter') {
-      setListOfLists((prevState) => {
-        const updatedList = prevState.map((list) => {
-          if (list.id === activeList.id) {
-            const ingredientsList = list.ingredientsList.map((ingredient) => {
-              if (ingredient.id === ing.id && newIngName.length > 0) {
-                return { ...ingredient, ingredient: newIngName };
-              } else {
-                return ingredient;
-              }
-            });
-            return { ...list, ingredientsList };
-          } else {
-            return list;
-          }
-        });
+      const response = editIngredient(ing, activeList, newIngName);
 
-        return updatedList;
-      });
+      if (response)
+        setListOfLists((prevState) => {
+          const updatedList = prevState.map((list) => {
+            if (list.id === activeList.id) {
+              const ingredientsList = list.ingredientsList.map((ingredient) => {
+                if (ingredient.id === ing.id && newIngName.length > 0) {
+                  return { ...ingredient, ingredient: newIngName };
+                } else {
+                  return ingredient;
+                }
+              });
+              return { ...list, ingredientsList };
+            } else {
+              return list;
+            }
+          });
+
+          return updatedList;
+        });
 
       setNewIngName('');
       setEditInput(false);
