@@ -102,15 +102,16 @@ const ListIngredients = (props) => {
 
     const response = rearrangeIngredients(activeList, copyListItems);
 
-    setListOfLists((prevState) => {
-      return prevState.map((list) => {
-        if (list.id === activeList.id) {
-          return { ...activeList, ingredientsList: copyListItems };
-        } else {
-          return list;
-        }
+    if (response)
+      setListOfLists((prevState) => {
+        return prevState.map((list) => {
+          if (list.id === activeList.id) {
+            return { ...activeList, ingredientsList: copyListItems };
+          } else {
+            return list;
+          }
+        });
       });
-    });
   };
 
   return (
