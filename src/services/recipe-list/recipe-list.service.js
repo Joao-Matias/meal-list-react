@@ -2,7 +2,7 @@ export function getRecipeList() {
   return JSON.parse(localStorage.getItem('recipeList') || '[]');
 }
 
-export function addRecipe(recipe) {
+export function addRecipeStorage(recipe) {
   const recipeList = getRecipeList();
   localStorage.setItem('recipeList', JSON.stringify([...recipeList, recipe]));
   return recipe;
@@ -25,7 +25,7 @@ export function getShoppingList() {
   return JSON.parse(localStorage.getItem('shoppingList') || '[]');
 }
 
-export function addList(list) {
+export function addShoppingList(list) {
   const shoppingList = getShoppingList();
   localStorage.setItem('shoppingList', JSON.stringify([...shoppingList, list]));
   return list;
@@ -135,6 +135,22 @@ export function transfereIngredients(activePage, selectedIngList) {
       return list;
     }
   });
+
+  localStorage.setItem('shoppingList', JSON.stringify(updatedList));
+  return true;
+}
+
+export function rearrangeIngredients(activeList, copyListItems) {
+  const shoppingList = getShoppingList();
+  const updatedList = shoppingList.map((list) => {
+    if (list.id === activeList.id) {
+      return { ...activeList, ingredientsList: copyListItems };
+    } else {
+      return list;
+    }
+  });
+
+  console.log(updatedList);
 
   localStorage.setItem('shoppingList', JSON.stringify(updatedList));
   return true;

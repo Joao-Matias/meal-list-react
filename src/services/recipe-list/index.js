@@ -1,13 +1,14 @@
 export {
-  addRecipe,
+  addRecipeStorage,
   getRecipeList,
   deleteRecipeStorage,
   getShoppingList,
-  addList,
+  addShoppingList,
   addNewItem,
   editListName,
   deleteList,
   editIngredient,
   deleteIngredient,
   transfereIngredients,
+  rearrangeIngredients,
 } from './recipe-list.service.js';

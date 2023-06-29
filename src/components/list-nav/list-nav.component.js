@@ -4,7 +4,7 @@ import { ImPlus } from 'react-icons/im';
 import ListLists from '../list-lists';
 import ListIngredients from '../list-ingredients';
 import ListImportModal from '../list-import-modal';
-import { addList, addNewItem } from '../../services/recipe-list';
+import { addShoppingList, addNewItem } from '../../services/recipe-list';
 import { Context } from '../../App';
 
 const ListNav = () => {
@@ -37,7 +37,11 @@ const ListNav = () => {
             return [...prevState, newList];
           });
 
-          addList({ listName: updateName, ingredientsList: [], id: listId });
+          addShoppingList({
+            listName: updateName,
+            ingredientsList: [],
+            id: listId,
+          });
           setOpenInputNewItem(false);
           break;
 

@@ -1,7 +1,11 @@
 import React, { useRef, useState } from 'react';
 import style from './list-ingredients.module.css';
 import { ImPencil, ImBin } from 'react-icons/im';
-import { editIngredient, deleteIngredient } from '../../services/recipe-list';
+import {
+  editIngredient,
+  deleteIngredient,
+  rearrangeIngredients,
+} from '../../services/recipe-list';
 
 const ListIngredients = (props) => {
   const { activePage, listOfLists, setListOfLists } = props;
@@ -78,22 +82,25 @@ const ListIngredients = (props) => {
     }
   };
 
-  const dragStart = (e, index) => {
+  const dragStart = (index) => {
     dragItem.current = index;
   };
 
-  const dragEnter = (e, index) => {
+  const dragEnter = (index) => {
     dragOverItem.current = index;
   };
 
-  const dragDrop = (e) => {
+  const dragDrop = () => {
     const copyListItems = [...activeList.ingredientsList];
     const dragItemContent = copyListItems[dragItem.current];
+    console.log(dragItemContent);
 
     copyListItems.splice(dragItem.current, 1);
     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
     dragItem.current = null;
     dragOverItem.current = null;
+
+    const response = rearrangeIngredients(activeList, copyListItems);
 
     setListOfLists((prevState) => {
       return prevState.map((list) => {
@@ -128,11 +135,11 @@ const ListIngredients = (props) => {
                 ) : (
                   <li
                     draggable='true'
-                    onDragStart={(e) => {
-                      dragStart(e, i);
+                    onDragStart={() => {
+                      dragStart(i);
                     }}
-                    onDragEnter={(e) => {
-                      dragEnter(e, i);
+                    onDragEnter={() => {
+                      dragEnter(i);
                     }}
                     onDragEnd={dragDrop}
                     className={style.ingName}

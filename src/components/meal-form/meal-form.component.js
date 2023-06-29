@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styles from './meal-form.module.css';
 import { ImBin, ImPencil } from 'react-icons/im';
-import { addRecipe } from '../../services/recipe-list';
+import { addRecipeStorage } from '../../services/recipe-list';
 import { Context } from '../../App';
 
 const MealForm = (props) => {
@@ -27,7 +27,7 @@ const MealForm = (props) => {
       return [...prevState, finalRecipe];
     });
     setSelectedRecipe(finalRecipe);
-    addRecipe(finalRecipe);
+    addRecipeStorage(finalRecipe);
     setOpenFormModal(false);
   };
 
