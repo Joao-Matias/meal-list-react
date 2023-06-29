@@ -8,4 +8,5 @@ export {
   editListName,
   deleteList,
   editIngredient,
+  deleteIngredient,
 } from './recipe-list.service.js';

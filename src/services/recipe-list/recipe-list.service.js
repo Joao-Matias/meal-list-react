@@ -100,3 +100,21 @@ export function editIngredient(ing, activeList, newName) {
   localStorage.setItem('shoppingList', JSON.stringify(updateList));
   return true;
 }
+
+export function deleteIngredient(ingToDelete, activePage) {
+  const shoppingList = getShoppingList();
+  const updatedList = shoppingList.map((list) => {
+    if (list.id === activePage.id) {
+      const ingredientsList = list.ingredientsList.filter((ingredient) => {
+        return ingredient.id !== ingToDelete.id;
+      });
+
+      return { ...list, ingredientsList };
+    } else {
+      return list;
+    }
+  });
+
+  localStorage.setItem('shoppingList', JSON.stringify(updatedList));
+  return true;
+}

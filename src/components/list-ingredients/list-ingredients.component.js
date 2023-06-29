@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import style from './list-ingredients.module.css';
 import { ImPencil, ImBin } from 'react-icons/im';
-import { editIngredient } from '../../services/recipe-list';
+import { editIngredient, deleteIngredient } from '../../services/recipe-list';
 
 const ListIngredients = (props) => {
   const { activePage, listOfLists, setListOfLists } = props;
@@ -23,21 +23,26 @@ const ListIngredients = (props) => {
   };
 
   const handleDeleteIngClick = (ing) => {
-    setListOfLists((prevState) => {
-      const updatedList = prevState.map((list) => {
-        if (list.id === activePage.id) {
-          const ingredientsList = list.ingredientsList.filter((ingredient) => {
-            return ingredient.id !== ing.id;
-          });
+    const response = deleteIngredient(ing, activePage);
 
-          return { ...list, ingredientsList };
-        } else {
-          return list;
-        }
+    if (response)
+      setListOfLists((prevState) => {
+        const updatedList = prevState.map((list) => {
+          if (list.id === activePage.id) {
+            const ingredientsList = list.ingredientsList.filter(
+              (ingredient) => {
+                return ingredient.id !== ing.id;
+              }
+            );
+
+            return { ...list, ingredientsList };
+          } else {
+            return list;
+          }
+        });
+
+        return updatedList;
       });
-
-      return updatedList;
-    });
   };
 
   const editIngName = (event) => {
