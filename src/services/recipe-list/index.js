@@ -9,4 +9,5 @@ export {
   deleteList,
   editIngredient,
   deleteIngredient,
+  transfereIngredients,
 } from './recipe-list.service.js';

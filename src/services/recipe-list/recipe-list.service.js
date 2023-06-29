@@ -118,3 +118,24 @@ export function deleteIngredient(ingToDelete, activePage) {
   localStorage.setItem('shoppingList', JSON.stringify(updatedList));
   return true;
 }
+
+export function transfereIngredients(activePage, selectedIngList) {
+  const shoppingList = getShoppingList();
+  const selectedList = shoppingList.filter((list) => {
+    return list.id === activePage.id;
+  });
+
+  const updatedList = shoppingList.map((list) => {
+    if (list.id === selectedList[0].id) {
+      return {
+        ...list,
+        ingredientsList: [...list.ingredientsList, ...selectedIngList],
+      };
+    } else {
+      return list;
+    }
+  });
+
+  localStorage.setItem('shoppingList', JSON.stringify(updatedList));
+  return true;
+}

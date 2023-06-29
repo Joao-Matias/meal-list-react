@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import style from './list-import-modal.module.css';
 import { Context } from '../../App';
+import { transfereIngredients } from '../../services/recipe-list';
 
 const ListImportModal = (props) => {
   const { activePage, setImportRecipesModal, setListOfLists } = props;
@@ -52,24 +53,27 @@ const ListImportModal = (props) => {
   };
 
   const importIngredients = () => {
-    setListOfLists((prevState) => {
-      const selectedList = prevState.filter((list) => {
-        return list.id === activePage.id;
-      });
+    const response = transfereIngredients(activePage, selectedIngList);
 
-      const fullList = prevState.map((list) => {
-        if (list.id === selectedList[0].id) {
-          return {
-            ...list,
-            ingredientsList: [...list.ingredientsList, ...selectedIngList],
-          };
-        } else {
-          return list;
-        }
-      });
+    if (response)
+      setListOfLists((prevState) => {
+        const selectedList = prevState.filter((list) => {
+          return list.id === activePage.id;
+        });
 
-      return [...fullList];
-    });
+        const fullList = prevState.map((list) => {
+          if (list.id === selectedList[0].id) {
+            return {
+              ...list,
+              ingredientsList: [...list.ingredientsList, ...selectedIngList],
+            };
+          } else {
+            return list;
+          }
+        });
+
+        return [...fullList];
+      });
 
     setImportRecipesModal(false);
   };
