@@ -95,7 +95,7 @@ const ListLists = (props) => {
             ) : (
               <div
                 className={
-                  activePage.listName === list.listName
+                  activePage.id === list.id
                     ? style.listNameContActive
                     : style.listNameCont
                 }

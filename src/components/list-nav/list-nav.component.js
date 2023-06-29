@@ -10,7 +10,7 @@ import { Context } from '../../App';
 const ListNav = () => {
   const [openInputNewItem, setOpenInputNewItem] = useState(false);
   const [importRecipesModal, setImportRecipesModal] = useState(false);
-  const [updateName, setUpdateName] = useState({});
+  const [updateName, setUpdateName] = useState('');
   const [activePage, setActivePage] = useState({
     listName: 'Lists',
   });
@@ -23,56 +23,67 @@ const ListNav = () => {
 
   const clickToAddNew = (keyDown) => {
     if (keyDown.key === 'Enter') {
-      switch (activePage.listName) {
-        case 'Lists':
-          const listId = Date.now();
+      if (updateName.trim().length < 1) {
+        setOpenInputNewItem(false);
+        return;
+      } else {
+        switch (activePage.listName) {
+          case 'Lists':
+            const listId = Date.now();
 
-          setListOfLists((prevState) => {
-            const newList = {
+            setListOfLists((prevState) => {
+              const newList = {
+                listName: updateName,
+                ingredientsList: [],
+                id: listId,
+              };
+
+              return [...prevState, newList];
+            });
+
+            addShoppingList({
               listName: updateName,
               ingredientsList: [],
               id: listId,
-            };
-
-            return [...prevState, newList];
-          });
-
-          addShoppingList({
-            listName: updateName,
-            ingredientsList: [],
-            id: listId,
-          });
-          setOpenInputNewItem(false);
-          break;
-
-        case activePage.listName:
-          const itemId = Date.now();
-
-          const response = addNewItem(activePage, updateName, itemId);
-
-          if (response)
-            setListOfLists((prevState) => {
-              const updatedList = prevState.map((list) => {
-                if (list.id === activePage.id) {
-                  return {
-                    ...list,
-                    ingredientsList: [
-                      ...list.ingredientsList,
-                      { ingredient: updateName, id: itemId },
-                    ],
-                  };
-                } else {
-                  return list;
-                }
-              });
-
-              return updatedList;
             });
+            setOpenInputNewItem(false);
+            setUpdateName('');
+            break;
 
-          setOpenInputNewItem(false);
-          break;
+          case activePage.listName:
+            if (updateName.trim().length < 1) {
+              setOpenInputNewItem(false);
+              return;
+            } else {
+              const itemId = Date.now();
 
-        default:
+              const response = addNewItem(activePage, updateName, itemId);
+
+              if (response)
+                setListOfLists((prevState) => {
+                  const updatedList = prevState.map((list) => {
+                    if (list.id === activePage.id) {
+                      return {
+                        ...list,
+                        ingredientsList: [
+                          ...list.ingredientsList,
+                          { ingredient: updateName, id: itemId },
+                        ],
+                      };
+                    } else {
+                      return list;
+                    }
+                  });
+
+                  return updatedList;
+                });
+
+              setOpenInputNewItem(false);
+              setUpdateName('');
+              break;
+            }
+          default:
+        }
       }
     }
   };
