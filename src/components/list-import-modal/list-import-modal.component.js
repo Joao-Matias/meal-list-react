@@ -11,6 +11,8 @@ const ListImportModal = (props) => {
   const [selectedRecipe, setSelectedRecipe] = useState(listOfRecipes[0]);
   const [selectedIngList, setSelectedIngList] = useState([]);
 
+  console.log(listOfRecipes);
+
   const listClickHandler = (list) => {
     setSelectedRecipe(list);
   };

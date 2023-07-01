@@ -15,7 +15,7 @@ const ListNav = () => {
     listName: 'Lists',
   });
 
-  const [, , listOfLists, setListOfLists] = useContext(Context);
+  const [listOfRecipes, , listOfLists, setListOfLists] = useContext(Context);
 
   const addNewLine = () => {
     setOpenInputNewItem(true);
@@ -122,12 +122,14 @@ const ListNav = () => {
           </button>
         </div>
         <div className={style.btnContainer}>
-          {listOfLists.length > 0 && activePage.listName !== 'Lists' && (
-            <div hidden onClick={importRecipes} className={style.btnImport}>
-              <h3 className={style.importBtnText}>Import Ingredients</h3>
-              <ImPlus className={style.addNew} />
-            </div>
-          )}
+          {listOfLists.length > 0 &&
+            listOfRecipes.length > 0 &&
+            activePage.listName !== 'Lists' && (
+              <div hidden onClick={importRecipes} className={style.btnImport}>
+                <h3 className={style.importBtnText}>Import Ingredients</h3>
+                <ImPlus className={style.addNew} />
+              </div>
+            )}
 
           <div onClick={addNewLine} className={style.addNewBox}>
             {openInputNewItem ? (

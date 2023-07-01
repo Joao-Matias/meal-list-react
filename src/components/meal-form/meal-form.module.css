@@ -4,16 +4,243 @@
   display: flex;
   border-radius: 5rem;
   box-shadow: 0rem 2rem 1rem #0000007c;
-  overflow: hidden;
   margin: 2rem;
+  background-color: #eaf3ec;
+  overflow: hidden;
 }
 
-.form label,
-.form li,
-.form ul {
-  background-color: transparent;
+.recipeListCont {
+  height: 86rem;
+  width: 54rem;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+}
+
+.recipeListCont::-webkit-scrollbar {
+  display: none;
+}
+
+.itemsBox:first-child {
+  padding-top: 5rem;
 }
 
 .itemsBox {
-  list-style: none;
+  padding: 1.5rem 0rem;
+  display: flex;
+}
+
+.itemsBox h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  width: 49rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+  margin: 0;
+}
+
+.edit,
+.delete {
+  display: flex;
+  margin: 0;
+  font-size: 2.7rem;
+  width: 3rem;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.edit:hover,
+.delete:hover {
+  color: #16451f;
+  background-color: #95c59f67;
+}
+
+.formCont {
+  margin-top: 5rem;
+}
+
+.inputBoxes {
+  display: flex;
+  width: 85rem;
+  height: 5rem;
+  justify-content: space-between;
+}
+
+.recipeNameBox {
+  display: flex;
+  font-size: 2rem;
+  width: 35rem;
+  margin: 0;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.recipeName {
+  font-size: 2.3rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.recipeNameInput {
+  margin: 0;
+}
+
+.recipeImageBox {
+  display: flex;
+  font-size: 2rem;
+  width: 35rem;
+  margin: 0;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.recipeImage {
+  font-size: 2.3rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.recipeImageInput {
+  margin: 0;
+}
+
+.containerNewIng {
+  display: flex;
+  width: 100rem;
+}
+
+.newIngBox {
+  width: 40rem;
+  height: 7rem;
+  margin: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.newIngInput {
+  height: 3rem;
+  width: 25rem;
+  font-size: 2rem;
+  background-color: transparent;
+  border: 0px solid;
+  outline: none;
+  border-bottom: 0.1rem solid black;
+  margin-bottom: 1rem;
+  padding: 0;
+  transform: translateY(-30%);
+}
+
+.newIngCont {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.saveIng,
+.discardIng {
+  margin: 0;
+  padding: 0;
+  background-color: #95c59f;
+  border: none;
+  width: 13rem;
+  display: flex;
+  align-items: center;
+  height: 3.5rem;
+  transition: all 0.2s;
+  border: 0.1rem solid #113719;
+}
+
+.saveIng h3,
+.discardIng h3 {
+  color: black;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.saveIng:hover,
+.discardIng:hover {
+  background-color: #16451f;
+}
+
+.saveIng:hover h3,
+.discardIng:hover h3 {
+  color: #eaf3ec;
+}
+
+.inputsCont {
+  display: flex;
+  flex-direction: column;
+  width: 46rem;
+  margin: 0;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-end;
+  height: 5rem;
+  margin: 3rem;
+}
+
+.add,
+.submit,
+.discard {
+  margin: 0;
+  padding: 0;
+  background-color: #95c59f;
+  border: none;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  transition: all 0.2s;
+  border: 0.1rem solid #113719;
+}
+
+.submitDisable {
+  margin: 0;
+  padding: 0;
+  background-color: #95c59f38;
+  border: none;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  transition: all 0.2s;
+  border: 0.1rem solid #113719;
+}
+
+.submitDisable h3 {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.add h3,
+.submit h3,
+.discard h3 {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.add:hover,
+.submit:hover,
+.discard:hover {
+  background-color: #16451f;
+  border-radius: 10rem;
+  transform: translateY(-10%);
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.add:hover h3,
+.submit:hover h3,
+.discard:hover h3 {
+  color: #eaf3ec;
 }

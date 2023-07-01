@@ -150,8 +150,6 @@ export function rearrangeIngredients(activeList, copyListItems) {
     }
   });
 
-  console.log(updatedList);
-
   localStorage.setItem('shoppingList', JSON.stringify(updatedList));
   return true;
 }

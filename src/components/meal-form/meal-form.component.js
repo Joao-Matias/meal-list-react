@@ -56,6 +56,12 @@ const MealForm = (props) => {
     setOpenNewIngTab(false);
   };
 
+  const clickSaveNewIng = (e) => {
+    if (e.key === 'Enter' && newIng.length !== 0) {
+      saveNewIng();
+    }
+  };
+
   const updateRecipeName = (event) => {
     const {
       target: { name, value },
@@ -107,104 +113,143 @@ const MealForm = (props) => {
   return (
     <form onSubmit={submitForm} className={styles.form}>
       <div className={styles.formCont}>
-        <label>
-          Recipe Name:
-          <input
-            maxLength='20'
-            onChange={updateRecipeName}
-            name='mealName'
-            type='text'
-          />
-        </label>
-
-        <label>
-          Recipe Image:
-          <input onChange={updateRecipeName} name='mealImg' type='text' />
-        </label>
-
-        <ul>
-          {recipe.ingList.map((ing, index) => {
-            return (
-              <li className={styles.itemsBox} key={index}>
-                <label>Ingredient</label>
-                <h3>{ing.ingredient}</h3>
-                <ImPencil
-                  onClick={() => {
-                    handleClickEditIng(ing);
-                  }}
-                />
-                {ingNameChange && selectedIng.id === ing.id && (
-                  <input
-                    onKeyDown={(event) => {
-                      editIngredient(ing, event);
-                    }}
-                  />
-                )}
-                <ImBin
-                  onClick={() => {
-                    handleClickDeleteIng(ing);
-                  }}
-                />
-                {handleIngDelete && selectedIng.id === ing.id && (
-                  <>
-                    <h3>Are you sure you want to delete?</h3>
-                    <button
-                      onClick={() => {
-                        deleteIngredient(ing);
-                      }}
-                    >
-                      Yes
-                    </button>
-                    <button
-                      onClick={() => {
-                        setHandleIngDelete(false);
-                      }}
-                    >
-                      No
-                    </button>
-                  </>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-        <button type='button' onClick={addExtraIngredient}>
-          Add an Ingredient
-        </button>
-        <button
-          type='submit'
-          disabled={recipe.mealName.length === 0 || recipe.ingList.length === 0}
-        >
-          Submit
-        </button>
-        <button
-          onClick={() => {
-            setOpenFormModal(false);
-          }}
-        >
-          Discard
-        </button>
-        {openNewIngTab && (
-          <div>
+        <div className={styles.inputBoxes}>
+          <label className={styles.recipeNameBox}>
+            <h3 className={styles.recipeName}> Recipe Name:</h3>
             <input
-              autoFocus
-              maxLength='50'
-              name='ingredient'
+              className={styles.recipeNameInput}
+              maxLength='20'
+              onChange={updateRecipeName}
+              name='mealName'
               type='text'
-              onChange={handleChangeNewIng}
             />
-            <button disabled={newIng.length === 0} onClick={saveNewIng}>
-              Save Ingredient
-            </button>
-            <button
-              onClick={() => {
-                setOpenNewIngTab(false);
-              }}
-            >
-              Discard Ingredient
-            </button>
+          </label>
+
+          <label className={styles.recipeImageBox}>
+            <h3 className={styles.recipeImage}>Recipe Image:</h3>
+            <input
+              className={styles.recipeImageInput}
+              onChange={updateRecipeName}
+              name='mealImg'
+              type='text'
+            />
+          </label>
+        </div>
+        <div className={styles.containerNewIng}>
+          <ul className={styles.recipeListCont}>
+            {recipe.ingList.map((ing, index) => {
+              return (
+                <li className={styles.itemsBox} key={index}>
+                  <h3>{ing.ingredient}</h3>
+                  <div className={styles.edit}>
+                    <ImPencil
+                      onClick={() => {
+                        handleClickEditIng(ing);
+                      }}
+                    />
+                  </div>
+                  {ingNameChange && selectedIng.id === ing.id && (
+                    <input
+                      onKeyDown={(event) => {
+                        editIngredient(ing, event);
+                      }}
+                    />
+                  )}
+                  <div className={styles.delete}>
+                    <ImBin
+                      onClick={() => {
+                        handleClickDeleteIng(ing);
+                      }}
+                    />
+                  </div>
+                  {handleIngDelete && selectedIng.id === ing.id && (
+                    <>
+                      <h3>Are you sure you want to delete?</h3>
+                      <button
+                        onClick={() => {
+                          deleteIngredient(ing);
+                        }}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={() => {
+                          setHandleIngDelete(false);
+                        }}
+                      >
+                        No
+                      </button>
+                    </>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <div className={styles.inputsCont}>
+            <div className={styles.btns}>
+              <button
+                className={styles.add}
+                type='button'
+                onClick={addExtraIngredient}
+              >
+                <h3>Add Ingredient</h3>
+              </button>
+              <button
+                type='submit'
+                className={
+                  recipe.mealName.length === 0 || recipe.ingList.length === 0
+                    ? styles.submitDisable
+                    : styles.submit
+                }
+                disabled={
+                  recipe.mealName.length === 0 || recipe.ingList.length === 0
+                }
+              >
+                <h3>Submit</h3>
+              </button>
+              <button
+                className={styles.discard}
+                onClick={() => {
+                  setOpenFormModal(false);
+                }}
+              >
+                <h3>Discard</h3>
+              </button>
+            </div>
+            {openNewIngTab && (
+              <div className={styles.newIngBox}>
+                <input
+                  className={styles.newIngInput}
+                  autoFocus
+                  maxLength='40'
+                  name='ingredient'
+                  type='text'
+                  onChange={handleChangeNewIng}
+                  onKeyDown={(e) => {
+                    clickSaveNewIng(e);
+                  }}
+                />
+                <div className={styles.newIngCont}>
+                  <button
+                    className={styles.saveIng}
+                    disabled={newIng.length === 0}
+                    onClick={saveNewIng}
+                  >
+                    <h3>Save Ingredient</h3>
+                  </button>
+                  <button
+                    className={styles.discardIng}
+                    onClick={() => {
+                      setOpenNewIngTab(false);
+                    }}
+                  >
+                    <h3>Discard Ingredient</h3>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </form>
   );
