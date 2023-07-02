@@ -83,20 +83,24 @@ const MealRecipeList = (props) => {
               <h3>Are you sure you want to delete:</h3>
               <h2>{recipe.mealName}?</h2>
             </div>
-            <h5
-              onClick={() => {
-                handleDeleteRecipe(recipe, i);
-              }}
-            >
-              Yes
-            </h5>
-            <h5
-              onClick={() => {
-                closeDeleteModule(recipe);
-              }}
-            >
-              No
-            </h5>
+            <button className={style.deleteQuestions}>
+              <h5
+                onClick={() => {
+                  handleDeleteRecipe(recipe, i);
+                }}
+              >
+                Yes
+              </h5>
+            </button>
+            <button className={style.deleteQuestions}>
+              <h5
+                onClick={() => {
+                  closeDeleteModule(recipe);
+                }}
+              >
+                No
+              </h5>
+            </button>
           </div>
         )) || (
           <>
@@ -112,6 +116,8 @@ const MealRecipeList = (props) => {
             >
               {editeNameModal && recipeToEdit.id === recipe.id ? (
                 <input
+                  type='text'
+                  maxLength='20'
                   className={style.recipeNameEdit}
                   placeholder='New name and press enter'
                   autoFocus
@@ -123,25 +129,25 @@ const MealRecipeList = (props) => {
                   }}
                 />
               ) : (
-                recipe.mealName
+                <h3 className={style.recipeName}>{recipe.mealName}</h3>
               )}
             </button>
-            <i
+            <button
               className={style.editBox}
               onClick={() => {
                 deleteRecipe(recipe);
               }}
             >
               <ImCross className={style.edit} />
-            </i>
-            <i
+            </button>
+            <button
               className={style.editBox}
               onClick={() => {
                 editRecipeName(recipe);
               }}
             >
               <ImPencil className={style.edit} />
-            </i>
+            </button>
           </>
         )}
       </li>
