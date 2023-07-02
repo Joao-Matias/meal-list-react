@@ -110,10 +110,11 @@
 
 .recipeIngContainer {
   background-color: transparent;
-  margin-left: 5rem;
+  margin-left: 1rem;
   line-height: 4rem;
   width: 100%;
   padding: 0;
+  width: 57rem;
 }
 
 .recipeIng {
@@ -123,8 +124,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 52rem;
-  margin: 0;
+  width: 56rem;
+  margin: 1rem 0rem;
 }
 
 .newIng,
@@ -146,7 +147,32 @@
   align-items: center;
   font-size: 3rem;
   margin: 0;
-  width: 40%;
+  width: 10rem;
+}
+
+.edit,
+.delete {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 5rem;
+  transition: all 0.2s;
+}
+
+.edit:hover,
+.delete:hover {
+  background-color: #eaf3ec;
+  color: #16451f;
+  border-radius: 2rem;
+}
+
+.ingName {
+  margin: 0;
+  width: 46rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  height: 4rem;
 }
 
 .recipeName {

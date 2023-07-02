@@ -125,6 +125,8 @@ const MealRecipeDetail = (props) => {
         <ul className={style.recipeIngContainer}>
           {newIngInpt && (
             <input
+              type='text'
+              maxLength='38'
               placeholder='Enter new ingredient and press enter'
               autoFocus
               className={style.newIng}
@@ -141,6 +143,8 @@ const MealRecipeDetail = (props) => {
               <li className={style.recipeIng} key={i}>
                 {openEditInpt && selectedIng === ing.id && editBtnSlide ? (
                   <input
+                    type='text'
+                    maxLength='38'
                     placeholder='Enter new ingredient and press enter'
                     autoFocus
                     className={style.newIng}
@@ -152,22 +156,26 @@ const MealRecipeDetail = (props) => {
                     }}
                   />
                 ) : (
-                  ing.ingredient
+                  <h3 className={style.ingName}>{ing.ingredient}</h3>
                 )}
                 {editBtnSlide && (
                   <div className={style.ingredientBtn}>
-                    <ImPencil
-                      onClick={() => {
-                        modalEditIngredient(ing);
-                      }}
-                      className={style.btn}
-                    />
-                    <ImBin
-                      onClick={() => {
-                        deleteIngredient(ing);
-                      }}
-                      className={style.btn}
-                    />
+                    <button className={style.edit}>
+                      <ImPencil
+                        onClick={() => {
+                          modalEditIngredient(ing);
+                        }}
+                        className={style.btn}
+                      />
+                    </button>
+                    <button button className={style.delete}>
+                      <ImBin
+                        onClick={() => {
+                          deleteIngredient(ing);
+                        }}
+                        className={style.btn}
+                      />
+                    </button>
                   </div>
                 )}
               </li>
