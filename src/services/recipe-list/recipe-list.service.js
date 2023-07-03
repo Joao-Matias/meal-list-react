@@ -61,6 +61,24 @@ export function changeIngredientName(selectedListId, selectedIng, newName) {
   return true;
 }
 
+export function deleteRecipeIngredient(selectedListId, selectedIngredient) {
+  const recipeList = getRecipeList();
+  const updatedList = recipeList.map((recipe) => {
+    if (recipe.id === selectedListId) {
+      const ingList = recipe.ingList.filter((ingredient) => {
+        return ingredient.id !== selectedIngredient.id;
+      });
+      return { ...recipe, ingList };
+    } else {
+      return recipe;
+    }
+  });
+
+  localStorage.setItem('recipeList', JSON.stringify(updatedList));
+
+  return true;
+}
+
 //////
 
 export function getShoppingList() {

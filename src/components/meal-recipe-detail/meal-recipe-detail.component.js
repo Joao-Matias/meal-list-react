@@ -5,6 +5,7 @@ import { Context } from '../../App';
 import {
   addNewIngredient,
   changeIngredientName,
+  deleteRecipeIngredient,
 } from '../../services/recipe-list';
 
 const MealRecipeDetail = (props) => {
@@ -31,18 +32,21 @@ const MealRecipeDetail = (props) => {
   };
 
   const deleteIngredient = (ing) => {
-    setListOfRecipes((prevState) => {
-      return prevState.map((recipe) => {
-        if (recipe.id === id) {
-          const ingList = recipe.ingList.filter((ingredient) => {
-            return ingredient.id !== ing.id;
-          });
-          return { ...recipe, ingList };
-        } else {
-          return recipe;
-        }
+    const response = deleteRecipeIngredient(id, ing);
+
+    if (response)
+      setListOfRecipes((prevState) => {
+        return prevState.map((recipe) => {
+          if (recipe.id === id) {
+            const ingList = recipe.ingList.filter((ingredient) => {
+              return ingredient.id !== ing.id;
+            });
+            return { ...recipe, ingList };
+          } else {
+            return recipe;
+          }
+        });
       });
-    });
   };
 
   const modalEditIngredient = (ing) => {

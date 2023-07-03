@@ -4,6 +4,7 @@ export {
   deleteRecipeStorage,
   addNewIngredient,
   changeIngredientName,
+  deleteRecipeIngredient,
   getShoppingList,
   addShoppingList,
   addNewItem,
