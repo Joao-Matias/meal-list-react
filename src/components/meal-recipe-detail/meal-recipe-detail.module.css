@@ -158,6 +158,7 @@
   padding: 0;
   width: 5rem;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .edit:hover,

@@ -2,7 +2,10 @@ import React, { useContext, useState } from 'react';
 import style from './meal-recipe-detail.module.css';
 import { ImPencil, ImBin, ImPlus } from 'react-icons/im';
 import { Context } from '../../App';
-import { addNewIngredient } from '../../services/recipe-list';
+import {
+  addNewIngredient,
+  changeIngredientName,
+} from '../../services/recipe-list';
 
 const MealRecipeDetail = (props) => {
   const { selectedRecipe } = props;
@@ -53,23 +56,26 @@ const MealRecipeDetail = (props) => {
 
   const saveNewIng = (ing, event) => {
     if (event.key === 'Enter') {
-      setListOfRecipes((prevState) => {
-        return prevState.map((recipe) => {
-          if (recipe.id === id) {
-            const ingList = recipe.ingList.map((ingredient) => {
-              if (ingredient.id === ing.id) {
-                return { ...ingredient, ingredient: updatedIng };
-              } else {
-                return ingredient;
-              }
-            });
+      const response = changeIngredientName(id, ing, updatedIng);
 
-            return { ...recipe, ingList };
-          } else {
-            return recipe;
-          }
+      if (response)
+        setListOfRecipes((prevState) => {
+          return prevState.map((recipe) => {
+            if (recipe.id === id) {
+              const ingList = recipe.ingList.map((ingredient) => {
+                if (ingredient.id === ing.id) {
+                  return { ...ingredient, ingredient: updatedIng };
+                } else {
+                  return ingredient;
+                }
+              });
+
+              return { ...recipe, ingList };
+            } else {
+              return recipe;
+            }
+          });
         });
-      });
 
       setUpdatedIng('Choose an Ingredient');
       setOpenEditInpt(false);
@@ -178,21 +184,21 @@ const MealRecipeDetail = (props) => {
                 )}
                 {editBtnSlide && (
                   <div className={style.ingredientBtn}>
-                    <button className={style.edit}>
-                      <ImPencil
-                        onClick={() => {
-                          modalEditIngredient(ing);
-                        }}
-                        className={style.btn}
-                      />
+                    <button
+                      className={style.edit}
+                      onClick={() => {
+                        modalEditIngredient(ing);
+                      }}
+                    >
+                      <ImPencil className={style.btn} />
                     </button>
-                    <button button className={style.delete}>
-                      <ImBin
-                        onClick={() => {
-                          deleteIngredient(ing);
-                        }}
-                        className={style.btn}
-                      />
+                    <button
+                      onClick={() => {
+                        deleteIngredient(ing);
+                      }}
+                      className={style.delete}
+                    >
+                      <ImBin className={style.btn} />
                     </button>
                   </div>
                 )}

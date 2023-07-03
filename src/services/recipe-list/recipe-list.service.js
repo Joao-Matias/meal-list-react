@@ -37,6 +37,30 @@ export function addNewIngredient(selectedId, newName, newId) {
   return true;
 }
 
+export function changeIngredientName(selectedListId, selectedIng, newName) {
+  const recipeList = getRecipeList();
+
+  const updatedList = recipeList.map((recipe) => {
+    if (recipe.id === selectedListId) {
+      const ingList = recipe.ingList.map((ingredient) => {
+        if (ingredient.id === selectedIng.id) {
+          return { ...ingredient, ingredient: newName };
+        } else {
+          return ingredient;
+        }
+      });
+
+      return { ...recipe, ingList };
+    } else {
+      return recipe;
+    }
+  });
+
+  localStorage.setItem('recipeList', JSON.stringify(updatedList));
+
+  return true;
+}
+
 //////
 
 export function getShoppingList() {
