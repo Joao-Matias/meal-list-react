@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import style from './meal-recipe-detail.module.css';
 import { ImPencil, ImBin, ImPlus } from 'react-icons/im';
 import { Context } from '../../App';
+import { addNewIngredient } from '../../services/recipe-list';
 
 const MealRecipeDetail = (props) => {
   const { selectedRecipe } = props;
@@ -80,8 +81,25 @@ const MealRecipeDetail = (props) => {
   };
 
   const newIngredient = (event) => {
+    const newId = Date.now();
+
     if (event.key === 'Enter') {
-      ingList.unshift({ ingredient: updatedIng, id: Date.now() });
+      const response = addNewIngredient(id, updatedIng, newId);
+
+      if (response) {
+        setListOfRecipes((prevState) => {
+          return prevState.map((list) => {
+            if (list.id === id) {
+              return {
+                ...list,
+                ingList: [{ ingredient: updatedIng, id: newId }, ...ingList],
+              };
+            } else {
+              return list;
+            }
+          });
+        });
+      }
 
       setUpdatedIng('Choose an Ingredient');
       setNewIngInpt(false);

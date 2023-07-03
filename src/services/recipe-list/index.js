@@ -2,6 +2,7 @@ export {
   addRecipeStorage,
   getRecipeList,
   deleteRecipeStorage,
+  addNewIngredient,
   getShoppingList,
   addShoppingList,
   addNewItem,

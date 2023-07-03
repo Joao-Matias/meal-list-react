@@ -15,7 +15,7 @@ const MealRecipeList = (props) => {
   const [editeNameModal, setEditeNameModal] = useState(false);
   const [recipeToEdit, setRecipeToEdit] = useState();
 
-  const [newRecipeName, setNewRecipeName] = useState();
+  const [newRecipeName, setNewRecipeName] = useState('');
 
   const handleClickRecipe = (recipe) => {
     setOpenFormModal(false);
@@ -60,17 +60,24 @@ const MealRecipeList = (props) => {
 
   const confirmNameChange = (event, recipe) => {
     if (event.key === 'Enter') {
-      setListOfRecipes((prevState) => {
-        return prevState.map((recp) => {
-          if (recipe.id === recp.id) {
-            return { ...recp, mealName: newRecipeName };
-          } else {
-            return recp;
-          }
+      if (newRecipeName.length === 0) {
+        setListOfRecipes((prevState) => {
+          return prevState;
         });
-      });
+        setEditeNameModal(false);
+      } else {
+        setListOfRecipes((prevState) => {
+          return prevState.map((recp) => {
+            if (recipe.id === recp.id) {
+              return { ...recp, mealName: newRecipeName };
+            } else {
+              return recp;
+            }
+          });
+        });
 
-      setEditeNameModal(false);
+        setEditeNameModal(false);
+      }
     }
   };
 

@@ -19,6 +19,24 @@ export function deleteRecipeStorage(recipe) {
   return true;
 }
 
+export function addNewIngredient(selectedId, newName, newId) {
+  const recipeList = getRecipeList();
+  const updatedList = recipeList.map((list) => {
+    if (list.id === selectedId) {
+      return {
+        ...list,
+        ingList: [{ ingredient: newName, id: newId }, ...list.ingList],
+      };
+    } else {
+      return list;
+    }
+  });
+
+  localStorage.setItem('recipeList', JSON.stringify(updatedList));
+
+  return true;
+}
+
 //////
 
 export function getShoppingList() {
