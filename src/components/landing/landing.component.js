@@ -9,10 +9,10 @@ const Landing = () => {
     <div className={style.container}>
       <h1 className={style.title}>MeaList</h1>
       <div className={style.app}>
-        <Link to='/meals'>
+        <Link className={style.link} to='/meals'>
           <MealLanding />
         </Link>
-        <Link to='/lists'>
+        <Link className={style.link} to='/lists'>
           <ListLanding />
         </Link>
       </div>

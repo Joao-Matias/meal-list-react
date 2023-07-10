@@ -1,21 +1,27 @@
 .container {
-  height: 97rem;
+  height: 88rem;
   margin: 4rem 0;
+  position: relative;
 }
 
 .app {
   display: flex;
   color: #16451f;
   width: 120rem;
-  height: 97rem;
+  height: 88rem;
 
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.link {
+  margin: 0;
 }
 
 .title {
-  position: absolute;
-  left: 50%;
-  top: 10%;
+  position: fixed;
+
+  margin: 30rem 96rem;
   transform: translateX(-50%);
 
   font-size: 8rem;
@@ -26,4 +32,42 @@
   background-color: transparent;
   backdrop-filter: blur(10rem);
   z-index: 2;
+}
+
+/*  */
+@media (max-width: 120em) {
+  .title {
+    left: 50%;
+    margin: 30rem 0rem;
+  }
+}
+
+@media (max-width: 75em) {
+  .app {
+    width: 90rem;
+  }
+
+  .link {
+    width: auto;
+  }
+}
+
+@media (max-width: 61em) {
+  .app {
+    flex-direction: column;
+    width: 70rem;
+    gap: 2rem;
+  }
+
+  .title {
+    left: 43%;
+    margin: 30rem 0rem;
+  }
+}
+
+@media (max-width: 38em) {
+  .title {
+    left: 50%;
+    margin: 30rem 0rem;
+  }
 }
