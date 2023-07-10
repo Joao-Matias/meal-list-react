@@ -50,6 +50,11 @@
   .link {
     width: auto;
   }
+
+  .title {
+    left: 50%;
+    margin: 20rem 0rem;
+  }
 }
 
 @media (max-width: 61em) {
@@ -63,11 +68,23 @@
     left: 43%;
     margin: 30rem 0rem;
   }
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 45em) {
 }
 
 @media (max-width: 38em) {
   .title {
     left: 50%;
     margin: 30rem 0rem;
+  }
+
+  .container {
+    width: 60rem;
   }
 }

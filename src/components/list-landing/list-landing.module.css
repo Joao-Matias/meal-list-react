@@ -5,12 +5,21 @@
   cursor: pointer;
 }
 
-.imgBox:hover .enterListBtn {
+.imgBox:hover .enterMealBtn {
   scale: 105%;
   opacity: 1;
 }
 
 .imgBox:hover {
+  scale: 105%;
+  opacity: 1;
+}
+
+.imgBoxMobile {
+  transition: all 0.3s ease-out;
+  opacity: 0.4;
+  position: relative;
+  cursor: pointer;
   scale: 105%;
   opacity: 1;
 }
@@ -21,8 +30,31 @@
   border-radius: 1rem;
 }
 
-.enterListBtn {
-  font-size: 3rem;
+.enterMealBtnMobile {
+  font-size: 3.5rem;
+  width: 35rem;
+  height: 15rem;
+  color: #16451f;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #eaf3ec;
+  padding: 1rem;
+
+  opacity: 1;
+  border-radius: 1rem;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.enterMealBtnMobile strong {
+  font-size: 4.5rem;
+  text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.6);
+}
+
+.enterMealBtn {
+  font-size: 3.5rem;
   width: 35rem;
   height: 15rem;
   color: #16451f;
@@ -39,14 +71,39 @@
   cursor: pointer;
 }
 
-.enterListBtn:hover {
+.enterMealBtn:hover {
   background-color: #16451f;
   color: #eaf3ec;
   box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
   transform: translate(-50%, -5%);
 }
 
-.enterListBtn strong {
+.enterMealBtn strong {
   font-size: 4.5rem;
   text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.6);
+}
+
+/*  */
+@media (max-width: 120em) {
+}
+
+@media (max-width: 75em) {
+  .img {
+    width: 49rem;
+  }
+}
+
+@media (max-width: 61em) {
+  .img {
+    width: 65rem;
+  }
+}
+
+@media (max-width: 45em) {
+}
+
+@media (max-width: 38em) {
+  .img {
+    width: 58rem;
+  }
 }
