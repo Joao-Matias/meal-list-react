@@ -15,15 +15,6 @@
   opacity: 1;
 }
 
-.imgBoxMobile {
-  transition: all 0.3s ease-out;
-  opacity: 0.4;
-  position: relative;
-  cursor: pointer;
-  scale: 105%;
-  opacity: 1;
-}
-
 .img {
   width: 58rem;
   background-size: cover;

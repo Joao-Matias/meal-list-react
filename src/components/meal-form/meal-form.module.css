@@ -244,3 +244,35 @@
 .discard:hover h3 {
   color: #eaf3ec;
 }
+
+
+/*  */
+@media (max-width: 100em) {
+  .form {
+    height: 91rem;
+    font-size: 5rem;
+    display: flex;
+    border-radius: 5rem;
+    box-shadow: 0rem 2rem 1rem #0000007c;
+    margin: 2rem;
+    background-color: #eaf3ec;
+    overflow: hidden;
+    width:98rem;
+  }
+
+}
+
+@media (max-width: 75em) {
+
+}
+
+@media (max-width: 61em) {
+
+}
+
+@media (max-width: 45em) {
+}
+
+@media (max-width: 38em) {
+
+}

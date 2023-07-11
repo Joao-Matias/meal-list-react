@@ -136,3 +136,31 @@
   height: 5rem;
   background-color: transparent;
 }
+
+
+/*  */
+@media (max-width: 100em) {
+  .recipes {
+    width: 30rem;
+  }
+
+  .deleteModalQuestion h3,
+.deleteModalQuestion h2 {
+  font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 75em) {
+
+}
+
+@media (max-width: 61em) {
+
+}
+
+@media (max-width: 45em) {
+}
+
+@media (max-width: 38em) {
+
+}

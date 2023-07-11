@@ -108,3 +108,38 @@
 .recipesContainer::-webkit-scrollbar {
   display: none;
 }
+
+
+/*  */
+@media (max-width: 100em) {
+  .listOfMealsContainer {
+    width: 30rem;
+  }
+
+  .mealContainer {
+    width: 100rem;
+  }
+
+  .listPageSwitchBox:hover {
+  width: 27rem;
+  opacity: 1;
+}
+ 
+}
+
+@media (max-width: 75em) {
+  .listOfMealsContainer {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 61em) {
+
+}
+
+@media (max-width: 45em) {
+}
+
+@media (max-width: 38em) {
+
+}

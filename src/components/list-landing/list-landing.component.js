@@ -6,7 +6,7 @@ const ListLanding = () => {
   const size = window.innerWidth;
 
   return (
-    <section className={size < 976 ? styles.imgBoxMobile : styles.imgBox}>
+    <section className={  styles.imgBox}>
       <img
         className={styles.img}
         src={listImg}
@@ -22,3 +22,5 @@ const ListLanding = () => {
 };
 
 export default ListLanding;
+
+
