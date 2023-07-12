@@ -57,7 +57,7 @@
 
 .listOfMealsBtn {
   position: relative;
-  height: 10%;
+  height: 10rem;
   top: 3%;
   font-size: 3rem;
   border-radius: 1rem;
@@ -103,12 +103,12 @@
   gap: 2rem;
   font-size: 5rem;
   overflow: scroll;
+  height: 76rem;
 }
 
 .recipesContainer::-webkit-scrollbar {
   display: none;
 }
-
 
 /*  */
 @media (max-width: 100em) {
@@ -121,25 +121,26 @@
   }
 
   .listPageSwitchBox:hover {
-  width: 27rem;
-  opacity: 1;
-}
- 
+    width: 27rem;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 75em) {
   .listOfMealsContainer {
     width: 25rem;
   }
+
+  .mealContainer {
+    width: 70rem;
+  }
 }
 
 @media (max-width: 61em) {
-
 }
 
 @media (max-width: 45em) {
 }
 
 @media (max-width: 38em) {
-
 }

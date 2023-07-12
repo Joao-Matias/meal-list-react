@@ -140,27 +140,43 @@ const MealForm = (props) => {
             {recipe.ingList.map((ing, index) => {
               return (
                 <li className={styles.itemsBox} key={index}>
-                  <h3>{ing.ingredient}</h3>
-                  <div className={styles.edit}>
-                    <ImPencil
-                      onClick={() => {
-                        handleClickEditIng(ing);
+                  {ingNameChange && selectedIng.id === ing.id ? (
+                    <input
+                      autoFocus
+                      type='text'
+                      maxLength='32'
+                      placeholder='Enter new ingredient and press enter'
+                      className={styles.inputNameChange}
+                      onKeyDown={(event) => {
+                        editIngredient(ing, event);
                       }}
                     />
+                  ) : (
+                    <h3>{ing.ingredient}</h3>
+                  )}
+                  {/* <h3>{ing.ingredient}</h3> */}
+                  <div
+                    className={styles.edit}
+                    onClick={() => {
+                      handleClickEditIng(ing);
+                    }}
+                  >
+                    <ImPencil />
                   </div>
-                  {ingNameChange && selectedIng.id === ing.id && (
+                  {/* {ingNameChange && selectedIng.id === ing.id && (
                     <input
                       onKeyDown={(event) => {
                         editIngredient(ing, event);
                       }}
                     />
-                  )}
-                  <div className={styles.delete}>
-                    <ImBin
-                      onClick={() => {
-                        handleClickDeleteIng(ing);
-                      }}
-                    />
+                  )} */}
+                  <div
+                    className={styles.delete}
+                    onClick={() => {
+                      handleClickDeleteIng(ing);
+                    }}
+                  >
+                    <ImBin />
                   </div>
                   {handleIngDelete && selectedIng.id === ing.id && (
                     <>
@@ -221,7 +237,7 @@ const MealForm = (props) => {
                 <input
                   className={styles.newIngInput}
                   autoFocus
-                  maxLength='40'
+                  maxLength='32'
                   name='ingredient'
                   type='text'
                   onChange={handleChangeNewIng}

@@ -5,7 +5,7 @@
   display: flex;
   border: 0.2rem solid #95c59f;
   border-radius: 1rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 5rem;
 }
 
@@ -133,10 +133,9 @@
   align-items: center;
   font-size: 1.9rem;
   font-weight: 500;
-  height: 5rem;
+  height: 4rem;
   background-color: transparent;
 }
-
 
 /*  */
 @media (max-width: 100em) {
@@ -145,22 +144,32 @@
   }
 
   .deleteModalQuestion h3,
-.deleteModalQuestion h2 {
-  font-size: 1.2rem;
+  .deleteModalQuestion h2 {
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 75em) {
+  .recipes {
+    width: 25rem;
+    height: 5rem;
+  }
 
+  .selectedRecipe {
+    padding-left: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .recipeNameEdit {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 61em) {
-
 }
 
 @media (max-width: 45em) {
 }
 
 @media (max-width: 38em) {
-
 }
