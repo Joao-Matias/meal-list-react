@@ -12,38 +12,24 @@
 }
 
 .listPageSwitchBox {
-  width: 15rem;
+  width: 35rem;
   overflow: hidden;
-  right: 0%;
-  position: absolute;
+
   transition: all 0.3s ease-out;
   opacity: 0.4;
+  display: flex;
+  margin: 0;
+  padding-left: 15rem;
 }
 
 .listPageSwitchBox:hover {
-  width: 32.5rem;
+  width: 35rem;
   opacity: 1;
+  padding-left: 0rem;
 }
 
 .listPageSwitchImg {
   height: 97rem;
-}
-
-.listSwitchBtn {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  transform: translateX(-50%);
-
-  font-size: 5rem;
-  padding: 2rem 5rem;
-  border-radius: 1rem;
-  border: groove #55a16586;
-  color: #0d2913;
-  background-color: transparent;
-  backdrop-filter: blur(10rem);
-  z-index: 2;
-  opacity: 1;
 }
 
 .listOfMealsContainer {
@@ -117,12 +103,21 @@
   }
 
   .mealContainer {
-    width: 100rem;
+    width: 97rem;
+  }
+
+  .listPageSwitchBox {
+    width: 25rem;
+    padding-left: 9rem;
   }
 
   .listPageSwitchBox:hover {
     width: 27rem;
     opacity: 1;
+  }
+
+  .linkBox {
+    margin-right: 0;
   }
 }
 
@@ -134,12 +129,66 @@
   .mealContainer {
     width: 70rem;
   }
+
+  .listPageSwitchBox {
+    padding-left: 10rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .listPageSwitchBox:hover {
+    opacity: 1;
+  }
+
+  .linkBox {
+    width: 15rem;
+  }
 }
 
 @media (max-width: 61em) {
+  .mealContainer {
+    width: 55rem;
+  }
 }
 
 @media (max-width: 45em) {
+  .mealPageContainer {
+    flex-direction: column;
+  }
+
+  .listOfMealsContainer {
+    width: 100%;
+    height: 55rem;
+  }
+
+  .recipesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 40rem;
+  }
+
+  .mealContainer {
+    width: 100%;
+    margin: 2rem 0rem;
+  }
+
+  .listPageSwitchBox {
+    padding: 0;
+    height: 20rem;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .listPageSwitchImg {
+    margin: 0;
+  }
+
+  .linkBox {
+    margin: 0;
+    height: 20rem;
+    width: 72rem;
+  }
 }
 
 @media (max-width: 38em) {

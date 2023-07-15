@@ -319,9 +319,38 @@
 }
 
 @media (max-width: 61em) {
+  .form,
+  .formCont,
+  .containerNewIng,
+  .recipeListCont,
+  .inputsCont {
+    width: 55rem;
+  }
 }
 
 @media (max-width: 45em) {
+  .form {
+    width: 72rem;
+    height: 70rem;
+    margin: 2rem 0rem;
+  }
+
+  .formCont {
+    margin: 2rem 5rem;
+    width: 72rem;
+  }
+
+  .containerNewIng {
+    height: 59rem;
+  }
+
+  .recipeListCont {
+    height: 37rem;
+  }
+
+  .inputsCont {
+    height: 22rem;
+  }
 }
 
 @media (max-width: 38em) {

@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 const MealPage = (props) => {
   const { selectedRecipe, setSelectedRecipe } = props;
 
-  const [showBtn, setShowBtn] = useState(false);
   const [openFormModal, setOpenFormModal] = useState(false);
 
   const toggleForm = () => {
@@ -42,24 +41,15 @@ const MealPage = (props) => {
         )}
         {selectedRecipe && <MealRecipeDetail selectedRecipe={selectedRecipe} />}
       </section>
-
-      <Link
-        onMouseEnter={() => {
-          setShowBtn(true);
-        }}
-        onMouseLeave={() => {
-          setShowBtn(false);
-        }}
-        to='/lists'
-        className={style.listPageSwitchBox}
-      >
-        <img
-          className={style.listPageSwitchImg}
-          src={listImg}
-          alt='Someone writing in a book'
-        />
-        {showBtn && <h1 className={style.listSwitchBtn}>Lists</h1>}
-      </Link>
+      <div className={style.linkBox}>
+        <Link to='/lists' className={style.listPageSwitchBox}>
+          <img
+            className={style.listPageSwitchImg}
+            src={listImg}
+            alt='Someone writing in a book'
+          />
+        </Link>
+      </div>
     </div>
   );
 };
