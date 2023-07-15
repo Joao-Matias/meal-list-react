@@ -330,26 +330,29 @@
 
 @media (max-width: 45em) {
   .form {
-    width: 72rem;
+    width: 100%;
     height: 70rem;
     margin: 2rem 0rem;
   }
 
   .formCont {
-    margin: 2rem 5rem;
-    width: 72rem;
+    margin: 2rem 0rem;
+    width: 100%;
   }
 
   .containerNewIng {
     height: 59rem;
+    width: 75%;
   }
 
   .recipeListCont {
     height: 37rem;
+    width: 100%;
   }
 
   .inputsCont {
     height: 22rem;
+    width: 100%;
   }
 }
 

@@ -187,9 +187,12 @@
   .linkBox {
     margin: 0;
     height: 20rem;
-    width: 72rem;
+    width: 100%;
   }
 }
 
 @media (max-width: 38em) {
+  .linkBox {
+    width: 100%;
+  }
 }
