@@ -20,7 +20,7 @@ const MealRecipeDetail = (props) => {
   const [openEditInpt, setOpenEditInpt] = useState(false);
   const [newIngInpt, setNewIngInpt] = useState(false);
 
-  const [updatedIng, setUpdatedIng] = useState();
+  const [updatedIng, setUpdatedIng] = useState('');
   const [selectedIng, setSelectedIng] = useState();
 
   const editRecipeItems = () => {
@@ -58,8 +58,16 @@ const MealRecipeDetail = (props) => {
     setUpdatedIng(event.target.value);
   };
 
+  console.log(updatedIng);
+
   const saveNewIng = (ing, event) => {
     if (event.key === 'Enter') {
+      if (updatedIng.trim().length === 0) {
+        setUpdatedIng('');
+        setOpenEditInpt(false);
+        return;
+      }
+
       const response = changeIngredientName(id, ing, updatedIng);
 
       if (response)
@@ -81,7 +89,7 @@ const MealRecipeDetail = (props) => {
           });
         });
 
-      setUpdatedIng('Choose an Ingredient');
+      setUpdatedIng('');
       setOpenEditInpt(false);
     }
   };
@@ -94,6 +102,12 @@ const MealRecipeDetail = (props) => {
     const newId = Date.now();
 
     if (event.key === 'Enter') {
+      if (updatedIng.trim().length === 0) {
+        setUpdatedIng('');
+        setNewIngInpt(false);
+        return;
+      }
+
       const response = addNewIngredient(id, updatedIng, newId);
 
       if (response) {
@@ -111,7 +125,7 @@ const MealRecipeDetail = (props) => {
         });
       }
 
-      setUpdatedIng('Choose an Ingredient');
+      setUpdatedIng('');
       setNewIngInpt(false);
     }
   };
