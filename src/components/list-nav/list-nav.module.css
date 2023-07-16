@@ -1,7 +1,6 @@
 .listContainerBox {
   margin: 0;
-  width: 155rem;
-  margin-left: 40rem;
+  width: 80%;
   border-left: 0.3rem solid #eaf3ec;
   height: 96.7rem;
 }
@@ -18,15 +17,6 @@
 .listNav {
   display: flex;
   justify-content: space-between;
-}
-
-.listNav button {
-  margin: 0;
-  width: 35rem;
-  height: 3rem;
-  font-size: 3rem;
-  border: 0.1rem solid transparent;
-  transition: all 0.3s;
 }
 
 .addNewBox {
@@ -76,19 +66,9 @@
 
 .listBtnContActive {
   margin: 0;
-  background-color: #eaf3ec;
-  width: 35.3rem;
+  width: 23.6%;
   transition: all 0.3s;
-}
-
-.listBtnContActive .listBtn h5 {
-  color: #16451f;
-}
-
-.listBtnCont {
-  margin: 0;
-  transition: all 0.3s;
-  width: 35.3rem;
+  padding: 0;
 }
 
 .listBtnCont:hover {
@@ -99,8 +79,7 @@
   display: flex;
   justify-content: center;
   background-color: transparent;
-  cursor: pointer;
-  color: #16451f;
+  border: 0rem solid transparent;
 }
 
 .listBtn h5 {
@@ -108,6 +87,7 @@
   color: #113719;
   font-weight: 500;
   letter-spacing: 0.7rem;
+  margin: 0;
 }
 
 .listContainer {
@@ -117,7 +97,7 @@
 .btnContainer {
   display: flex;
   margin: 0;
-  width: 60rem;
+  width: 80%;
   justify-content: flex-end;
 }
 
@@ -144,4 +124,58 @@
 
 .btnImport:hover .addNew {
   background-color: #95c59f;
+}
+
+/*  */
+
+@media (max-width: 120em) {
+}
+
+@media (max-width: 100em) {
+}
+
+@media (max-width: 75em) {
+  .listContainerBox {
+    width: 85%;
+  }
+}
+
+@media (max-width: 61em) {
+  .listContainer {
+    flex-direction: column;
+  }
+
+  .btnContainer {
+    width: 90%;
+  }
+
+  .addNewBox {
+    margin: 0rem 3rem;
+  }
+}
+
+@media (max-width: 45em) {
+  .listNav {
+    flex-direction: column;
+  }
+
+  .listBtnContActive {
+    width: 100%;
+    margin: 2rem 0rem;
+  }
+
+  .btnContainer {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .addNewBox {
+    margin: 0;
+  }
+
+  .listContainerBox {
+    height: 100%;
+  }
+}
+
+@media (max-width: 38em) {
 }

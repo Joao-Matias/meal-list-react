@@ -17,7 +17,7 @@
   margin-top: 2rem;
   margin-left: 2rem;
   border-bottom: 0.1rem solid #b4d6bb;
-  width: 80%;
+  width: 90%;
   justify-content: space-between;
   transition: all 0.05s;
 }
@@ -32,6 +32,11 @@
   margin-left: 2rem;
   width: 80%;
   cursor: pointer;
+  overflow: scroll;
+}
+
+.ingName::-webkit-scrollbar {
+  display: none;
 }
 
 .ingContEdit {
@@ -68,4 +73,35 @@
   width: 80%;
   height: 2.5rem;
   padding: 0;
+}
+
+/*  */
+@media (max-width: 100em) {
+  .ingName {
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 75em) {
+}
+
+@media (max-width: 61em) {
+  .ingredientsList {
+    border: 0;
+    height: 37rem;
+    width: 100%;
+  }
+
+  .ingCont {
+    width: 95%;
+  }
+}
+
+@media (max-width: 45em) {
+}
+
+@media (max-width: 38em) {
+  .ingredientsList {
+    height: 36.5rem;
+  }
 }

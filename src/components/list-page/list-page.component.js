@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './list-page.module.css';
 import mealImg from '../../img/meal.jpg';
 import ListNav from '../list-nav';
@@ -6,27 +6,17 @@ import ListNav from '../list-nav';
 import { Link } from 'react-router-dom';
 
 const ListPage = () => {
-  const [showBtn, setShowBtn] = useState(false);
-
   return (
     <div className={style.listPageContainer}>
-      <Link
-        onMouseEnter={() => {
-          setShowBtn(true);
-        }}
-        onMouseLeave={() => {
-          setShowBtn(false);
-        }}
-        to='/meals'
-        className={style.mealPageSwitchBox}
-      >
-        <img
-          className={style.mealPageSwitchImg}
-          src={mealImg}
-          alt='A jar with ingredients'
-        />
-        {showBtn && <h1 className={style.mealSwitchBtn}>Meals</h1>}
-      </Link>
+      <div className={style.linkBox}>
+        <Link to='/meals' className={style.mealPageSwitchBox}>
+          <img
+            className={style.mealPageSwitchImg}
+            src={mealImg}
+            alt='A jar with ingredients'
+          />
+        </Link>
+      </div>
       <ListNav />
     </div>
   );

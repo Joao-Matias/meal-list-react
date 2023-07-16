@@ -85,47 +85,51 @@ const ListImportModal = (props) => {
       <div className={style.importContainer}>
         <section className={style.listContainer}>
           <h1>Lists</h1>
-          {listOfRecipes.map((list, i) => {
-            return (
-              <div
-                onClick={() => {
-                  listClickHandler(list);
-                }}
-                className={style.listBox}
-                key={i}
-              >
-                <h3>{list.mealName}</h3>
-              </div>
-            );
-          })}
+          <div className={style.listContainerColumns}>
+            {listOfRecipes.map((list, i) => {
+              return (
+                <div
+                  onClick={() => {
+                    listClickHandler(list);
+                  }}
+                  className={style.listBox}
+                  key={i}
+                >
+                  <h3>{list.mealName}</h3>
+                </div>
+              );
+            })}
+          </div>
         </section>
         <section className={style.ingContainer}>
           <h1>Ingredients</h1>
-          {selectedRecipe.ingList.map((ing, i) => {
-            return (
-              <div
-                className={
-                  selectedIngList.includes(ing)
-                    ? style.ingBoxSelected
-                    : style.ingBox
-                }
-                onClick={() => {
-                  selectIngredients(ing);
-                }}
-                key={i}
-              >
-                <h3>{ing.ingredient}</h3>
-              </div>
-            );
-          })}
+          <div className={style.ingContainerColumns}>
+            {selectedRecipe.ingList.map((ing, i) => {
+              return (
+                <div
+                  className={
+                    selectedIngList.includes(ing)
+                      ? style.ingBoxSelected
+                      : style.ingBox
+                  }
+                  onClick={() => {
+                    selectIngredients(ing);
+                  }}
+                  key={i}
+                >
+                  <h3>{ing.ingredient}</h3>
+                </div>
+              );
+            })}
+          </div>
         </section>
-        <section>
+        <section className={style.btnContainerBox}>
           <div className={style.btnContainer}>
             <button className={style.selectIngs} onClick={selectAllIng}>
-              Select All Ingredients
+              <h3>Select All Ingredients</h3>
             </button>
             <button className={style.importIngs} onClick={importIngredients}>
-              Import Selected Ingredients
+              <h3>Import Selected Ingredients</h3>
             </button>
           </div>
         </section>

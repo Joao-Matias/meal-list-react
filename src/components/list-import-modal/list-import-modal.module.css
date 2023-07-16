@@ -1,7 +1,7 @@
 .importModal {
   background-color: #ffffffc0;
   backdrop-filter: blur(4px);
-  width: 150rem;
+  width: 80%;
   height: 96rem;
   position: absolute;
   z-index: 10;
@@ -12,12 +12,14 @@
 }
 
 .importContainer {
-  display: flex;
-  width: 130rem;
-  height: 80rem;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 1fr;
+  width: 80%;
+  background-color: #eaf3ec60;
   margin: 2rem;
   border-radius: 5rem;
-  background-color: #eaf3ec60;
+  height: 80rem;
+  justify-content: center;
 }
 
 .importContainer h1 {
@@ -32,7 +34,6 @@
 .listContainer {
   display: flex;
   flex-direction: column;
-  width: 20rem;
   height: 76rem;
   margin: 2rem;
   border-right: 0.2rem solid #95c59f;
@@ -54,7 +55,6 @@
 .ingContainer {
   display: flex;
   flex-direction: column;
-  width: 60rem;
   height: 76rem;
   margin: 2rem;
   align-items: center;
@@ -62,7 +62,10 @@
   overflow: scroll;
 }
 
-.ingContainer::-webkit-scrollbar,
+.ingContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .listContainer::-webkit-scrollbar {
   display: none;
 }
@@ -96,13 +99,13 @@
 }
 
 .btnContainer {
+  margin: 0;
   margin-top: 7rem;
   display: flex;
   flex-direction: column;
-  margin-right: 2rem;
-  width: 40rem;
   height: 70rem;
   justify-content: space-around;
+  align-items: center;
 }
 
 .selectIngs {
@@ -146,4 +149,104 @@
   background-color: #16451f;
   color: #eaf3ec;
   scale: 1.04;
+}
+
+/*  */
+@media (max-width: 100em) {
+  .selectIngs,
+  .importIngs {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+
+  .btnContainer {
+    margin: 0;
+  }
+}
+
+@media (max-width: 75em) {
+  .importContainer {
+    grid-template-rows: 3;
+    grid-template-columns: none;
+    height: 90rem;
+  }
+
+  .listContainer {
+    height: 30rem;
+  }
+
+  .listContainerColumns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+    overflow: scroll;
+  }
+
+  .ingContainerColumns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+    overflow: scroll;
+    width: 100%;
+  }
+
+  .ingBox,
+  .ingBoxSelected {
+    width: auto;
+    overflow: scroll;
+    margin: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .listBox {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .ingContainer {
+    height: 30rem;
+  }
+
+  .btnContainerBox {
+    width: 90%;
+  }
+
+  .btnContainer {
+    flex-direction: row;
+    height: 20rem;
+    justify-content: space-between;
+  }
+
+  .selectIngs,
+  .importIngs {
+    width: 40%;
+    height: 70%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 61em) {
+  .selectIngs,
+  .importIngs {
+    height: 80%;
+  }
+
+  .importModal {
+    width: 85%;
+  }
+}
+
+@media (max-width: 45em) {
+  .importModal {
+    height: 107rem;
+  }
+}
+
+@media (max-width: 38em) {
+  .selectIngs,
+  .importIngs {
+    height: 90%;
+    width: 45%;
+  }
 }

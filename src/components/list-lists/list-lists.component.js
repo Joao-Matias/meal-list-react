@@ -82,6 +82,7 @@ const ListLists = (props) => {
           <li className={style.list} key={i}>
             {inputModal && list.id === toEdit.id ? (
               <input
+                maxLength='30'
                 className={style.inputNewName}
                 onChange={(event) => {
                   setUpdatedListName(event.target.value);

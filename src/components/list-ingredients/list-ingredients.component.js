@@ -123,6 +123,7 @@ const ListIngredients = (props) => {
               <div className={style.ingCont} key={i}>
                 {editInput && selectedIng.id === ing.id ? (
                   <input
+                    maxLength='65'
                     autoFocus
                     onKeyDown={(event) => {
                       confirmIngNameChange(event, ing);

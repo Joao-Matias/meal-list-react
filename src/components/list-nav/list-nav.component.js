@@ -101,15 +101,12 @@ const ListNav = () => {
           setListOfLists={setListOfLists}
         />
       )}
-      <h1 className={style.title}>Let's Build Your Shopping Lists!</h1>
+      <h1 className={style.title}>
+        Click Lists and create new. When a List is selected create an
+        ingredient!
+      </h1>
       <nav className={style.listNav}>
-        <div
-          className={
-            activePage.listName === 'Lists'
-              ? style.listBtnContActive
-              : style.listBtnCont
-          }
-        >
+        <div className={style.listBtnContActive}>
           <button
             className={style.listBtn}
             onClick={() => {
@@ -134,7 +131,7 @@ const ListNav = () => {
           <div onClick={addNewLine} className={style.addNewBox}>
             {openInputNewItem ? (
               <input
-                maxLength={activePage.listName === 'Lists' ? '22' : '65'}
+                maxLength={activePage.listName === 'Lists' ? '30' : '65'}
                 onKeyDown={(event) => {
                   clickToAddNew(event);
                 }}
