@@ -251,7 +251,7 @@
   .recipeContainer {
     height: 50rem;
     margin: 0;
-    width: 66rem;
+    width: 100%;
   }
 
   .recipeIngHeaderCont {
@@ -265,12 +265,12 @@
   }
 
   .recipeIngContainer {
-    width: 60rem;
+    width: 90%;
     margin-left: 4rem;
   }
 
   .recipeIng {
-    width: 60rem;
+    width: 100%;
   }
 
   .recipeContainer {
@@ -281,11 +281,15 @@
 @media (max-width: 61em) {
   .recipeImgContainer {
     height: 41rem;
-    width: 51rem;
+    width: 90%;
   }
 
   .recipeContainer {
-    width: 51rem;
+    width: 100%;
+  }
+
+  .recipeIngHeaderCont {
+    width: 90%;
   }
 
   .recipeIngTitle {
@@ -293,12 +297,12 @@
   }
 
   .recipeIngContainer {
-    width: 49rem;
+    width: 90%;
     margin-left: 2rem;
   }
 
   .recipeIng {
-    width: 47rem;
+    width: 100%;
   }
 }
 

@@ -5,7 +5,6 @@
   display: flex;
   border: 0.2rem solid #95c59f;
   border-radius: 1rem;
-  /* overflow: hidden; */
   height: 5rem;
 }
 
@@ -166,6 +165,13 @@
 }
 
 @media (max-width: 61em) {
+  .recipeName {
+    width: 100%;
+  }
+
+  .recipes {
+    width: 100%;
+  }
 }
 
 @media (max-width: 45em) {

@@ -274,11 +274,11 @@
 
 @media (max-width: 75em) {
   .form {
-    width: 66rem;
+    width: 100%;
   }
 
   .formCont {
-    width: 66rem;
+    width: 100%;
     margin-top: 2rem;
   }
 
@@ -293,7 +293,7 @@
 
   .containerNewIng {
     flex-direction: column;
-    width: 66rem;
+    width: 100%;
     height: 84rem;
   }
 
@@ -304,7 +304,7 @@
   }
 
   .recipeListCont {
-    width: 66rem;
+    width: 100%;
     height: 60rem;
   }
 
@@ -313,7 +313,8 @@
   }
 
   .itemsBox {
-    padding-left: 2rem;
+    width: 100%;
+    padding-left: 1rem;
     justify-content: space-evenly;
   }
 }
@@ -324,7 +325,7 @@
   .containerNewIng,
   .recipeListCont,
   .inputsCont {
-    width: 55rem;
+    width: 100%;
   }
 }
 

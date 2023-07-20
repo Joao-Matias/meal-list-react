@@ -11,6 +11,10 @@
   background-color: white;
 }
 
+.link {
+  width: 15%;
+}
+
 .listPageSwitchBox {
   width: 35rem;
   overflow: hidden;
@@ -123,11 +127,11 @@
 
 @media (max-width: 75em) {
   .listOfMealsContainer {
-    width: 25rem;
+    width: 26%;
   }
 
   .mealContainer {
-    width: 70rem;
+    width: 60%;
   }
 
   .listPageSwitchBox {
@@ -141,14 +145,22 @@
   }
 
   .linkBox {
-    width: 15rem;
+    width: 10%;
   }
 }
 
 @media (max-width: 61em) {
-  .mealContainer {
-    width: 55rem;
+  .listOfMealsContainer {
+    width: 30%;
   }
+
+  .mealContainer {
+    width: 50%;
+  }
+}
+
+.linkBox {
+  width: 8%;
 }
 
 @media (max-width: 45em) {
