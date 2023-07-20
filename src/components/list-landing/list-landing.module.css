@@ -86,11 +86,24 @@
 }
 
 @media (max-width: 61em) {
+  .imgBox {
+    width: 100%;
+    opacity: 0.8;
+  }
+
+  .imgBox:hover {
+    scale: none;
+  }
+
+  .imgBox:hover .enterMealBtn {
+    scale: none;
+    opacity: 0;
+  }
+
   .img {
-    width: 65rem;
+    width: 100%;
   }
 }
-
 @media (max-width: 45em) {
 }
 

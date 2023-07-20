@@ -2,6 +2,8 @@
   height: 88rem;
   margin: 4rem 0;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .app {
@@ -18,12 +20,18 @@
   margin: 0;
 }
 
-.title {
+.titleBox {
+  display: flex;
+  width: 25%;
   position: fixed;
+  z-index: 10;
+  height: 20%;
+  justify-content: center;
+  align-items: center;
+}
 
-  margin: 30rem 96rem;
-  transform: translateX(-50%);
-
+.title {
+  transform: translateY(100%);
   font-size: 8rem;
   padding: 2rem 5rem;
   border-radius: 1rem;
@@ -36,10 +44,6 @@
 
 /*  */
 @media (max-width: 120em) {
-  .title {
-    left: 50%;
-    margin: 30rem 0rem;
-  }
 }
 
 @media (max-width: 75em) {
@@ -59,19 +63,20 @@
 
 @media (max-width: 61em) {
   .app {
-    flex-direction: column;
-    width: 70rem;
+    height: 100%;
+    width: 100%;
     gap: 2rem;
-  }
-
-  .title {
-    left: 43%;
-    margin: 30rem 0rem;
+    align-items: center;
+    /* flex-direction: column; */
   }
 
   .container {
     display: flex;
     justify-content: center;
+  }
+
+  .link {
+    width: 45%;
   }
 }
 

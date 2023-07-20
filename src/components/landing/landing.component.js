@@ -7,7 +7,10 @@ import ListLanding from '../list-landing';
 const Landing = () => {
   return (
     <div className={style.container}>
-      <h1 className={style.title}>MeaList</h1>
+      <div className={style.titleBox}>
+        <h1 className={style.title}>MeaList</h1>
+      </div>
+
       <div className={style.app}>
         <Link className={style.link} to='/meals'>
           <MealLanding />
