@@ -330,7 +330,11 @@
 
 @media (max-width: 38em) {
   .recipeIngContainer {
-    margin-left: 4rem;
-    width: 57rem;
+    margin-left: 2rem;
+    width: 90%;
+  }
+
+  .recipeIng {
+    width: 100%;
   }
 }

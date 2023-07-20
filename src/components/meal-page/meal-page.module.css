@@ -211,4 +211,10 @@
   .linkBox {
     width: 100%;
   }
+
+  .recipesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 40rem;
+  }
 }
