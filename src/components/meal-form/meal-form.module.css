@@ -334,6 +334,7 @@
     width: 100%;
     height: 70rem;
     margin: 2rem 0rem;
+    transform: translateY(-65%);
   }
 
   .formCont {

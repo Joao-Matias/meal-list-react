@@ -201,6 +201,10 @@
     height: 20rem;
     width: 100%;
   }
+
+  .listPageSwitchBox:hover {
+    width: 100%;
+  }
 }
 
 @media (max-width: 38em) {
