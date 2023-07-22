@@ -6,7 +6,7 @@ const MealLanding = () => {
   const size = window.innerWidth;
 
   return (
-    <section className={ styles.imgBox} >
+    <section className={styles.imgBox}>
       <img
         className={styles.img}
         src={mealImg}
