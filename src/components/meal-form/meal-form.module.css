@@ -367,7 +367,7 @@
 
 @media (max-width: 38em) {
   .form {
-    transform: translateY(-50%);
+    transform: translateY(-45%);
   }
 }
 
@@ -377,5 +377,17 @@
   .newIngInput,
   .containerNewIng {
     width: 90%;
+  }
+
+  .inputBoxes {
+    margin-top: 2rem;
+  }
+
+  .recipeListCont {
+    height: 30rem;
+  }
+
+  .form {
+    height: 65rem;
   }
 }

@@ -110,6 +110,10 @@
   .title {
     font-size: 5.5rem;
   }
+
+  .titleBox {
+    position: absolute;
+  }
 }
 
 @media (max-width: 30em) {

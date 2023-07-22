@@ -225,3 +225,9 @@
     height: 15rem;
   }
 }
+
+@media (max-width: 30em) {
+  .mealPageContainer {
+    height: 85rem;
+  }
+}
