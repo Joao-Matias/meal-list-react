@@ -250,3 +250,15 @@
     width: 45%;
   }
 }
+
+@media (max-width: 30em) {
+  .selectIngs h3,
+  .importIngs h3 {
+    font-size: 1.2rem;
+  }
+
+  .selectIngs,
+  .importIngs {
+    width: 48%;
+  }
+}

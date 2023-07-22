@@ -191,3 +191,11 @@
 
 @media (max-width: 38em) {
 }
+
+@media (max-width: 30em) {
+  .btnImport,
+  .addNewBox {
+    width: 45%;
+    overflow: hidden;
+  }
+}

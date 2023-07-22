@@ -22,10 +22,9 @@
 
 .titleBox {
   display: flex;
-  width: 25%;
+  width: 0%;
   position: fixed;
   z-index: 10;
-  height: 20%;
   justify-content: center;
   align-items: center;
 }
@@ -80,10 +79,6 @@
 }
 
 @media (max-width: 45em) {
-  .titleBox {
-    width: 25%;
-  }
-
   .title {
     font-size: 6.5rem;
   }
@@ -119,6 +114,10 @@
 
 @media (max-width: 30em) {
   .link {
-    width: 80%;
+    width: 60%;
+  }
+
+  .title {
+    transform: translateY(-50%);
   }
 }
