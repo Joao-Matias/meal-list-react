@@ -222,6 +222,6 @@
   .recipesContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 40rem;
+    height: 15rem;
   }
 }

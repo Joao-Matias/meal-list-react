@@ -191,4 +191,13 @@
   .selectedRecipe {
     width: 90%;
   }
+
+  .deleteModalQuestion h3,
+  .deleteModalQuestion h2 {
+    font-size: 1.2rem;
+  }
+
+  .recipes {
+    width: 100%;
+  }
 }

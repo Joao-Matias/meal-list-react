@@ -358,5 +358,24 @@
   }
 }
 
+.form {
+  width: 100%;
+  height: 70rem;
+  margin: 2rem 0rem;
+  transform: translateY(-65%);
+}
+
 @media (max-width: 38em) {
+  .form {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 30em) {
+  .btns,
+  .newIngBox,
+  .newIngInput,
+  .containerNewIng {
+    width: 90%;
+  }
 }
