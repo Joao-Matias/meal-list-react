@@ -152,16 +152,28 @@
   .addNewBox {
     margin: 0rem 3rem;
   }
+
+  .listNav {
+    position: fixed;
+    left: 15%;
+    width: 85%;
+    background-color: #eaf3ec;
+  }
+
+  .listBtn h5 {
+    color: #16451f;
+  }
 }
 
 @media (max-width: 45em) {
   .listNav {
     flex-direction: column;
+    padding: 0.5rem 0rem;
   }
 
   .listBtnContActive {
     width: 100%;
-    margin: 2rem 0rem;
+    margin: 0rem 0rem;
   }
 
   .btnContainer {

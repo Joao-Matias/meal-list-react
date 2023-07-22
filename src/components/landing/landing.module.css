@@ -98,4 +98,16 @@
   .container {
     width: 60rem;
   }
+
+  .app {
+    flex-direction: column;
+  }
+
+  .link {
+    width: 50%;
+  }
+
+  .title {
+    font-size: 5.5rem;
+  }
 }

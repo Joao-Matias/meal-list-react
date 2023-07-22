@@ -175,11 +175,20 @@
 }
 
 @media (max-width: 45em) {
+  .recipes,
+  .selectedRecipe,
+  .recipesBtn:hover {
+    width: 80%;
+  }
+
+  .recipesBtn:hover {
+    padding: 0rem 2rem;
+  }
 }
 
 @media (max-width: 38em) {
   .recipesBtn,
   .selectedRecipe {
-    width: 100%;
+    width: 90%;
   }
 }

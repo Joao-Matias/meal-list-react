@@ -6,7 +6,7 @@ const ListLanding = () => {
   const size = window.innerWidth;
 
   return (
-    <section className={  styles.imgBox}>
+    <section className={styles.imgBox}>
       <img
         className={styles.img}
         src={listImg}
@@ -15,12 +15,10 @@ const ListLanding = () => {
       <button
         className={size < 976 ? styles.enterMealBtnMobile : styles.enterMealBtn}
       >
-        Let's make proper <strong>Lists</strong>
+        Let's make some <strong>Lists</strong>
       </button>
     </section>
   );
 };
 
 export default ListLanding;
-
-

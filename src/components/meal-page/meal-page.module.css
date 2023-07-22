@@ -177,6 +177,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 40rem;
+    width: 100%;
   }
 
   .mealContainer {
@@ -194,6 +195,12 @@
 
   .listPageSwitchImg {
     margin: 0;
+    opacity: 0.7;
+    transition: all 0.3s;
+  }
+
+  .listPageSwitchImg:hover {
+    opacity: 1;
   }
 
   .linkBox {

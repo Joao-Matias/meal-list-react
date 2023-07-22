@@ -120,7 +120,17 @@
 }
 
 @media (max-width: 38em) {
-  .img {
-    width: 58rem;
+  .imgBox {
+    width: 100%;
+  }
+
+  .enterMealBtnMobile {
+    font-size: 1.8rem;
+    width: 70%;
+    height: 10rem;
+  }
+
+  .enterMealBtnMobile strong {
+    font-size: 3.5rem;
   }
 }
